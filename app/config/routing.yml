@@ -4,15 +4,15 @@ brooter_web:
 
 brooter_blog:
     resource: "@BrooterBlogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /blog
 
 brooter_user:
     resource: "@BrooterUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 brooter_admin:
     resource: "@BrooterAdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 app:
     resource: "@AppBundle/Controller/"
