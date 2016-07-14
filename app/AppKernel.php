@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Brooter\UserBundle\BrooterUserBundle(),
             new Brooter\BlogBundle\BrooterBlogBundle(),
             new Brooter\WebBundle\BrooterWebBundle(),
+            new FOS\UserBundle\FOSUserBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
