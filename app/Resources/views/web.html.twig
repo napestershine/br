@@ -12,14 +12,12 @@
     <title>Brooter</title>
 
     <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="{{ path('RealEstateTheme/css/custom/style.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/custom/style.css') }} ">
     <!-- Color css -->
-    <link rel="stylesheet" type="text/css" href="{{ path('RealEstateTheme/css/responsive/responsive.css') }}  ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/responsive/responsive.css') }}  ">
     <!-- Fixing Internet Explorer ______________________________________-->
 
     <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="js/html5shiv.js"></script>
     <![endif]-->
 
 
@@ -78,20 +76,20 @@
                 <ul id="rev_slider" class="rev_slider"  data-version="5.0">	<!-- SLIDE  -->
                     <li data-index="rs-16" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/home/1.png"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="High Rise Building" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="images/home4/slide-1.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('RealEstateTheme/images/home4/slide-1.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     </li>
                     <!-- Slide -->
 
 
                     <li data-index="rs-17" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/home/1.png"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="High Rise Building" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="images/home4/slide-2.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('RealEstateTheme/images/home4/slide-2.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     </li>
 
 
                     <li data-index="rs-18" data-transition="zoomout" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="images/home/1.png"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="High Rise Building" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="images/home4/slide-3.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <img src="{{ asset('RealEstateTheme/images/home4/slide-3.jpg') }}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                     </li>
 
                 </ul>
@@ -377,7 +375,7 @@
                             <div class="history">
                                 <div class="item">
                                     <div class="image_holder">
-                                        <img src="images/home/22.jpg" alt="images">
+                                        <img src="{{ asset('RealEstateTheme/images/home/22.jpg') }}" alt="images">
                                     </div>
                                     <div class="text">
                                         <a href="property-details.html"><h6>High Rise Building</h6></a>
@@ -388,7 +386,7 @@
 
                                 <div class="item">
                                     <div class="image_holder">
-                                        <img src="images/home/23.jpg" alt="images">
+                                        <img src="{{ asset('RealEstateTheme/images/home/23.jpg') }}" alt="images">
                                     </div>
                                     <div class="text">
                                         <a href="property-details.html"><h6>Low Rise Building</h6></a>
@@ -399,7 +397,7 @@
 
                                 <div class="item">
                                     <div class="image_holder">
-                                        <img src="images/home/24.jpg" alt="images">
+                                        <img src="{{ asset('RealEstateTheme/images/home/24.jpg') }}" alt="images">
                                     </div>
                                     <div class="text">
                                         <a href="property-details.html"><h6>Jango Beach House</h6></a>
@@ -457,34 +455,34 @@
     <!-- Js File_________________________________ -->
 
     <!-- j Query -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
 
     <!-- Bootstrap JS -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/bootstrap.min.js') }}"></script>
 
 
 
     <!-- Tooltip -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
 
     <!-- ui js -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
 
     <!-- Fancybox js -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
 
     <!-- owl.carousel -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
 
     <!-- revolution -->
-    <script src="{{ path('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ path('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
+    <script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
 
     <!-- Main js -->
-    <script type="text/javascript" src="{{ path('RealEstateTheme/js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/main.js') }}"></script>
     {% endblock %}
 </div> <!-- End .boxed_wrapper -->
 </body>
