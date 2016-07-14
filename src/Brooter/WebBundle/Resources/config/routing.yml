@@ -1,0 +1,3 @@
+brooter_web_homepage:
+    path:     /
+    defaults: { _controller: BrooterWebBundle:Default:index }
