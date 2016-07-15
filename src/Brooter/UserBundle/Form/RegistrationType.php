@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
+
 class RegistrationType extends BaseType
 {
     private $class;
@@ -24,6 +25,7 @@ class RegistrationType extends BaseType
     {
         $this->class = $class;
     }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
