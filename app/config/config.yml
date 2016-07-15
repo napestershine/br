@@ -73,7 +73,7 @@ doctrine:
 
 stof_doctrine_extensions:
     class:
-        tree: AdminBundle\TreeListener
+        tree: Brooter\AdminBundle\TreeListener
 
 # Swiftmailer Configuration
 swiftmailer:

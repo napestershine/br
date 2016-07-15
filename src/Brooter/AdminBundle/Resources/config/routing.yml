@@ -1,3 +1,7 @@
+brooter_admin_category:
+    resource: "@BrooterAdminBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
 brooter_admin_slider:
     resource: "@BrooterAdminBundle/Resources/config/routing/slider.yml"
     prefix:   /slider
