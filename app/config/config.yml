@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: doctrine_extensions.yml }
     - { resource: "@BrooterAdminBundle/Resources/config/services.yml" }
     - { resource: "@BrooterUserBundle/Resources/config/services.yml" }
     - { resource: "@BrooterBlogBundle/Resources/config/services.yml" }
@@ -62,12 +63,24 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            gedmo_tree:
+                type: annotation
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                alias: GedmoTree # this one is default and will default to the name set for the mapping
+                is_bundle: false
+
+stof_doctrine_extensions:
+    class:
+        tree: AdminBundle\TreeListener
 
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
+    password:  "%mailer_password%"
     spool:     { type: memory }
 
 fos_user:
@@ -77,3 +90,24 @@ fos_user:
     registration:
         form:
             type: Brooter\UserBundle\Form\RegistrationType
+        confirmation:
+            enabled: true
+            from_email:
+                address: admin@brooter.com
+                sender_name: Admin
+    resetting:
+        email:
+            from_email:
+                address: reset@brooter.com
+                sender_name: reset admin
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: "KnpPaginatorBundle:Pagination:sliding.html.twig"     # sliding pagination controls template
+        sortable: "KnpPaginatorBundle:Pagination:sortable_link.html.twig" # sort link template
