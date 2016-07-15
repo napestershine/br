@@ -1,3 +1,7 @@
+brooter_admin_slider:
+    resource: "@BrooterAdminBundle/Resources/config/routing/slider.yml"
+    prefix:   /slider
+
 brooter_admin_homepage:
     path:     /
     defaults: { _controller: BrooterAdminBundle:Default:index }
