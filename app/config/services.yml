@@ -10,6 +10,6 @@ services:
             - %fos_user.model.user.class%
         tags:
             - { name: form.type, alias: brooter_user_registration }
-    brooter.admin.brochure_uploader:
+    brooter.admin.slider_uploader:
             class: Brooter\AdminBundle\FileUploader
             arguments: ['%sliders_directory%']
