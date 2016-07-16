@@ -3,6 +3,8 @@
 namespace Brooter\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Slider
@@ -21,6 +23,13 @@ class Slider
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the slider image in jpg or jpeg or png format.")
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
+     */
+    private $file;
 
     /**
      * Get id
@@ -31,5 +40,16 @@ class Slider
     {
         return $this->id;
     }
-}
 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+}
