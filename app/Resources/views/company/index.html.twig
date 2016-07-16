@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Company Details</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Sr. No.</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1.</td>
+            <td>Company Contact Details</td>
+            <td>
+                <a href="{{ path('company_show', { 'id': company[0].id }) }}">show</a>
+                <a href="{{ path('company_edit', { 'id': company[0].id }) }}">edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -91,6 +91,41 @@ class Company
      */
     private $field10;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field11", type="string", length=255, nullable=true)
+     */
+    private $field11;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field12", type="string", length=255, nullable=true)
+     */
+    private $field12;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field13", type="string", length=255, nullable=true)
+     */
+    private $field13;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field14", type="string", length=255, nullable=true)
+     */
+    private $field14;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="field15", type="string", length=255, nullable=true)
+     */
+    private $field15;
+
 
     /**
      * Get id
@@ -340,6 +375,86 @@ class Company
     public function getField10()
     {
         return $this->field10;
+    }
+
+    /**
+     * @return string
+     */
+    public function getField11()
+    {
+        return $this->field11;
+    }
+
+    /**
+     * @param string $field11
+     */
+    public function setField11($field11)
+    {
+        $this->field11 = $field11;
+    }
+
+    /**
+     * @return string
+     */
+    public function getField12()
+    {
+        return $this->field12;
+    }
+
+    /**
+     * @param string $field12
+     */
+    public function setField12($field12)
+    {
+        $this->field12 = $field12;
+    }
+
+    /**
+     * @return string
+     */
+    public function getField13()
+    {
+        return $this->field13;
+    }
+
+    /**
+     * @param string $field13
+     */
+    public function setField13($field13)
+    {
+        $this->field13 = $field13;
+    }
+
+    /**
+     * @return string
+     */
+    public function getField14()
+    {
+        return $this->field14;
+    }
+
+    /**
+     * @param string $field14
+     */
+    public function setField14($field14)
+    {
+        $this->field14 = $field14;
+    }
+
+    /**
+     * @return string
+     */
+    public function getField15()
+    {
+        return $this->field15;
+    }
+
+    /**
+     * @param string $field15
+     */
+    public function setField15($field15)
+    {
+        $this->field15 = $field15;
     }
 }
 

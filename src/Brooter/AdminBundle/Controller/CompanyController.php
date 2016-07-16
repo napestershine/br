@@ -2,129 +2,106 @@
 
 namespace Brooter\AdminBundle\Controller;
 
-use Brooter\AdminBundle\Entity\Slider;
+use Brooter\AdminBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Slider controller.
+ * Company controller.
  *
  */
-class SliderController extends Controller
+class CompanyController extends Controller
 {
     /**
-     * Lists all Slider entities.
+     * Lists all Company entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $sliders = $em->getRepository('BrooterAdminBundle:Slider')->findAll();
+        $companies = $em->getRepository('BrooterAdminBundle:Company')->findAll();
 
-        return $this->render('slider/index.html.twig', array(
-            'sliders' => $sliders,
+        return $this->render('company/index.html.twig', array(
+            'company' => $companies,
         ));
     }
 
     /**
-     * Creates a new Slider entity.
+     * Finds and displays a Company entity.
      *
      */
-    public function newAction(Request $request)
+    public function showAction(Company $company)
     {
-        $slider = new Slider();
-        $form = $this->createForm('Brooter\AdminBundle\Form\SliderType', $slider);
-        $form->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($company);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $file = $slider->getFile();
-            $fileName = $this->get('brooter.admin.slider_uploader')->upload($file);
-            $slider->setFile($fileName);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($slider);
-            $em->flush();
-
-            return $this->redirectToRoute('slider_show', array('id' => $slider->getId()));
-        }
-
-        return $this->render('slider/new.html.twig', array(
-            'slider' => $slider,
-            'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Slider entity.
-     *
-     */
-    public function showAction(Slider $slider)
-    {
-        $deleteForm = $this->createDeleteForm($slider);
-
-        return $this->render('slider/show.html.twig', array(
-            'slider' => $slider,
+        return $this->render('company/show.html.twig', array(
+            'company' => $company,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Slider entity.
+     * Displays a form to edit an existing Company entity.
      *
      */
-    public function editAction(Request $request, Slider $slider)
+    public function editAction(Request $request, Company $company)
     {
-        $deleteForm = $this->createDeleteForm($slider);
-        $editForm = $this->createForm('Brooter\AdminBundle\Form\SliderType', $slider);
+        $deleteForm = $this->createDeleteForm($company);
+        $editForm = $this->createForm('Brooter\AdminBundle\Form\CompanyType', $company);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $file = $slider->getFile();
-            $fileName = $this->get('brooter.admin.slider_uploader')->upload($file);
-            $slider->setFile($fileName);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($slider);
+            $em->persist($company);
             $em->flush();
 
-            return $this->redirectToRoute('slider_edit', array('id' => $slider->getId()));
+            return $this->redirectToRoute('company_edit', array('id' => $company->getId()));
         }
 
-        return $this->render('slider/edit.html.twig', array(
-            'slider' => $slider,
+        if ($company->getId() == 1) {
+            return $this->render('company/editCompanyContact.html.twig', array(
+                'company' => $company,
+                'edit_form' => $editForm->createView(),
+            ));
+        }
+
+        return $this->render('company/edit.html.twig', array(
+            'company' => $company,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Deletes a Slider entity.
+     * Deletes a Company entity.
      *
      */
-    public function deleteAction(Request $request, Slider $slider)
+    public function deleteAction(Request $request, Company $company)
     {
-        $form = $this->createDeleteForm($slider);
+        $form = $this->createDeleteForm($company);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($slider);
+            $em->remove($company);
             $em->flush();
         }
 
-        return $this->redirectToRoute('slider_index');
+        return $this->redirectToRoute('company_index');
     }
 
     /**
-     * Creates a form to delete a Slider entity.
+     * Creates a form to delete a Company entity.
      *
-     * @param Slider $slider The Slider entity
+     * @param Company $company The Company entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Slider $slider)
+    private function createDeleteForm(Company $company)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('slider_delete', array('id' => $slider->getId())))
+            ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
             ->setMethod('DELETE')
             ->getForm();
     }
