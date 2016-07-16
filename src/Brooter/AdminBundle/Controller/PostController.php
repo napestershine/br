@@ -40,6 +40,10 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $post->getFile();
+            $fileName = $this->get('brooter.admin.postimage_uploader')->upload($file);
+            $post->setFile($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -78,6 +82,7 @@ class PostController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();

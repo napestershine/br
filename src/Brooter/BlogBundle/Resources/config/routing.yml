@@ -1,3 +1,7 @@
 brooter_blog_homepage:
     path:     /
     defaults: { _controller: BrooterBlogBundle:Default:index }
+
+brooter_blog_showpage:
+    path:     /show/{id}
+    defaults: { _controller: BrooterBlogBundle:Default:show }

@@ -17,6 +17,16 @@
                 <th>Content</th>
                 <td>{{ post.content }}</td>
             </tr>
+            <tr>
+                <th>Post Image</th>
+                <td><img src="{{ asset('uploads/posts/' ~ post.file) }}" /></td>
+            </tr>
+            <tr>
+                <th>Posted On</th>
+                <td>{{ post.postedOn | date('d/m/Y') }}</td>
+            </tr>
+
+
         </tbody>
     </table>
 
