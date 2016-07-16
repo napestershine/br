@@ -16,7 +16,6 @@
 <div class="boxed_wrapper">
     {% block header %}
         <!-- Main Menu ____________________________________ -->
-
         <div class="main_menu menu_style_three menu_fixed_style_two" id="menu">
             <div class="container">
                 <div class="wrapper">
@@ -70,14 +69,18 @@
 
         <!-- End Main Banner______________________________ -->
     {% endblock %}
+    {% block blogheader %}
+    {% endblock %}
+    {% block content %}
+        <!-- Content Section -->
+        <section class="home4 container">
 
-    <!-- Content Section -->
-    {% block content %}{% endblock %}
-    <!-- End Content Section -->
+        </section>
+        <!-- End Content Section -->
+    {% endblock %}
     {% block footer %}
         <!-- Footer __________________________________________ -->
         <footer>
-
             <div class="main_footer">
                 <div class="container">
                     <div class="row">

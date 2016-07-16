@@ -1,34 +1,147 @@
 {% extends 'blog.html.twig' %}
-{% block pagetitle %}Blog List{% endblock %}
-{% block bodyclass %}blog_list{% endblock %}
-{% block pagecontentclass %}blog_list_view blog container{% endblock %}
+{% block pagetitle %}Blog Details{% endblock %}
+{% block bodyclass %}blog_details_sidebar{% endblock %}
+{% block pagecontentclass %}blog_details_sidebar blog container{% endblock %}
 {% block content %}
-    {% for post in posts %}
-    <!-- ______________single blog list________________ -->
-    <div class="blog_single_item_list">
-        <div class="blog_post_meta">
-            <div class="img_holder">
-                <img src="{{ asset('uploads/posts/'~ post.file) }}" alt="blogimage" class="img-responsive" style="width:270px;height: 244px;">
-            </div> <!-- End .img_holder -->
-            <div class="post">
-                <!-- Main_title2__________ -->
-                <div class="main_title2">
-                    <h6>{{ post.title }}</h6>
-                </div>
-                <!-- End Main_title2______ -->
-                <div class="date">
-                    <span>{{ post.postedOn|date('d') }}<br>{{ post.postedOn|date('M') }}</span>
-                </div>
-                <ul>
-                    <li><i class="fa fa-user"></i> Admin</li>
-                    <li><i class="fa fa-tags"></i> Real Estate, Sale, Villa</li>
-                </ul>
-                <p>{{ post.content|length > 30 ? post.content|slice(0, 30) ~ '...' : post.content  }}</p>
 
-                <a href="/blog/show?id={{ post.id }}" class="theme-btn tran3s">Read More</a>
-            </div> <!-- End .post -->
-            <div class="clear_fix"></div>
-        </div> <!-- End .blog_post_meta -->
-    </div> <!-- End .blog_single_item_list -->
-    {% endfor %}
+    <div class="blog_post_meta">
+        <div class="img_holder">
+            <img src="{{ asset('uploads/posts/'~ post.file) }}" alt="blogimage" class="img-responsive">
+        </div> <!-- End .img_holder -->
+        <div class="post">
+            <!-- Main_title2__________ -->
+            <div class="main_title2">
+                <h6>
+                    {{ post.title }}
+                </h6>
+            </div>
+            <!-- End Main_title2______ -->
+            <div class="date">
+                <span>{{ post.postedOn|date('d') }}<br>{{ post.postedOn|date('M') }}</span>
+            </div>
+            <ul>
+                <li><i class="fa fa-user"></i> Admin</li>
+                <li><i class="fa fa-tags"></i> Real Estate, Sale, Villa</li>
+            </ul>
+            <p>{{ post.content }}</p>
+        </div> <!-- End .post -->
+
+
+    </div> <!-- End .blog_post_meta -->
+
+    <!-- ____________________________________ Share content ___________________________ -->
+
+    <div class="share_box">
+        <div class="share_links">
+            <span>Share Post</span>
+            <ul>
+                <li class="border_round tran3s tooltip" title="Facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li class="border_round tran3s tooltip" title="Twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li class="border_round tran3s tooltip" title="Google Plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li class="border_round tran3s tooltip" title="Linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li class="border_round tran3s tooltip" title="Vimeo"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+            </ul>
+        </div> <!-- End .share_links -->
+        <div class="indicator">
+            <ul>
+                <li class="tran3s"><a href="#">Prev</a></li>
+                <li>/</li>
+                <li class="tran3s"><a href="#">Next</a></li>
+            </ul>
+        </div>
+        <div class="clear_fix"></div>
+    </div> <!-- End .share_box -->
+
+    <!-- ____________________________ About author ________________________ -->
+
+{#
+    <div class="blog_post_author">
+        <div class="img_holder">
+            <img src="images/blog/5.jpg" alt="image">
+        </div>
+        <div class="text">
+            <h6>About Author</h6>
+            <p>Encounter consequences that are extremely painful. Nor again is there anyone sed loves pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstancees occur in which toil and pain can procures him some great pleasure do not know pursue.</p>
+        </div>
+    </div>
+#}
+
+    <!-- _____________________ Recent Commnets _____________________ -->
+
+{#
+    <div class="commment_area">
+        <!-- Main_title2__________ -->
+        <div class="main_title2">
+            <h2>Recent Comments</h2>
+        </div>
+        <!-- End Main_title2______ -->
+        <div class="single_comment">
+            <div class="comment_img">
+                <img src="images/blog/6.jpg" alt="image" class="border_round">
+            </div> <!-- /comment_img -->
+            <div class="comment_text">
+                <h6>Michel Kong <span>18 Hrs Ago</span></h6>
+                <a class="share" href="#"><i class="fa fa-share"></i>Share</a>
+                <div class="clear_fix"></div>
+                <p>How to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself,</p>
+                <a class="reply tran3s" href="#">Reply</a>
+            </div> <!-- /comment_text -->
+        </div> <!-- /single_comment -->
+
+        <div class="single_comment">
+            <div class="comment_img">
+                <img src="images/blog/7.jpg" alt="image" class="border_round">
+            </div> <!-- /comment_img -->
+            <div class="comment_text">
+                <h6>Nancy Stuwart <span>46 Hrs Ago</span></h6>
+                <a class="share" href="#"><i class="fa fa-share"></i>Share</a>
+                <div class="clear_fix"></div>
+                <p>Encounter consequences that are extremely painful. Nor again is there anyone sed loves pursues or desires to obtain pain of itself, because it is pain, but because occasionally.</p>
+                <a class="reply tran3s" href="#">Reply</a>
+            </div> <!-- /comment_text -->
+        </div> <!-- /single_comment -->
+
+        <div class="single_comment">
+            <div class="comment_img">
+                <img src="images/blog/8.jpg" alt="image" class="border_round">
+            </div> <!-- /comment_img -->
+            <div class="comment_text">
+                <h6>William meckey <span>56 Hrs Ago</span></h6>
+                <a class="share" href="#"><i class="fa fa-share"></i>Share</a>
+                <div class="clear_fix"></div>
+                <p>Consequences that are extremely painful. Nor again is there anyone sed loves pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstancees.</p>
+                <a class="reply tran3s" href="#">Reply</a>
+            </div> <!-- /comment_text -->
+        </div> <!-- /single_comment -->
+    </div> <!-- /comment_area -->
+#}
+
+    <!-- _____________________________ Leave Reply ________________________ -->
+
+    <div class="leave_reply send_message">
+        <!-- Main_title__________ -->
+        <div class="main_title">
+            <h2>Leave a Reply</h2>
+        </div>
+        <!-- End Main_title______ -->
+
+        <form action="#">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" placeholder="Your Name">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" placeholder="Email Address">
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" placeholder="Website">
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <textarea placeholder="Message Here..."></textarea>
+                </div>
+            </div>
+            <button class="tran3s">Post Comment</button>
+        </form>
+    </div> <!-- /leave_reply -->
+
 {% endblock %}
