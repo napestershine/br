@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Slider controller.
  *
  */
-class SliderController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Lists all Slider entities.
