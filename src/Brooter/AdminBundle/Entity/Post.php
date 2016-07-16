@@ -1,6 +1,6 @@
 <?php
 
-namespace Brooter\BlogBundle\Entity;
+namespace Brooter\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Post
  *
  * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="Brooter\BlogBundle\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="Brooter\AdminBundle\Repository\PostRepository")
  */
 class Post
 {
@@ -31,10 +31,16 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="PostDescription", type="string", length=255)
+     * @ORM\Column(name="content", type="text")
      */
-    private $postDescription;
+    private $content;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
 
     /**
      * Get id
@@ -70,28 +76,35 @@ class Post
         return $this->title;
     }
 
+
+
     /**
-     * Set postDescription
+     * Set content
      *
-     * @param string $postDescription
+     * @param string $content
      *
      * @return Post
      */
-    public function setPostDescription($postDescription)
+    public function setContent($content)
     {
-        $this->postDescription = $postDescription;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get postDescription
+     * Get content
      *
      * @return string
      */
-    public function getPostDescription()
+    public function getContent()
     {
-        return $this->postDescription;
+        return $this->content;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
 

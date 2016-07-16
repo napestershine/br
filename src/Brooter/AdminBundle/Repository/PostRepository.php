@@ -1,6 +1,6 @@
 <?php
 
-namespace Brooter\BlogBundle\Repository;
+namespace Brooter\AdminBundle\Repository;
 
 /**
  * PostRepository
