@@ -73,12 +73,20 @@ class Category
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
      */
+
     private $children;
 
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
+     */
+    private $posts;
 
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->posts=new ArrayCollection();
     }
 
     public function __toString()
