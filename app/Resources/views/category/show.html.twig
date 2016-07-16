@@ -1,6 +1,6 @@
-{% extends '@Admin/Default/index.html.twig' %}
-{% block pageheader %}Category :: {{ category.title }} {% endblock %}
-{% block container %}
+{% extends 'admin.html.twig' %}
+{% block header %}Category :: {{ category.title }} {% endblock %}
+{% block content %}
     <div>
         <a class="btn btn-primary" href="{{ path('category_new') }}">Add New</a>
         <a class="btn btn-warning" href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>

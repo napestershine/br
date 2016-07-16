@@ -1,6 +1,8 @@
-{% extends '@Admin/Default/index.html.twig' %}
-    {% block pageheader %} Categories {% endblock %}
-{% block container %}
+{% extends 'admin.html.twig' %}
+
+{% block header %} Categories {% endblock %}
+
+{% block content %}
     <div>
         <a class="btn btn-primary" href="{{ path('category_new') }}">Add New</a>
     </div>

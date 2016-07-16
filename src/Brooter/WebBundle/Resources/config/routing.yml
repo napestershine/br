@@ -13,3 +13,7 @@ brooter_web_terms:
 brooter_web_dmca:
     path:     /dmca
     defaults: { _controller: BrooterWebBundle:Default:dmca }
+
+brooter_web_faq:
+    path:     /faq
+    defaults: { _controller: BrooterWebBundle:Default:faq }

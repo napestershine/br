@@ -36,4 +36,12 @@ class DefaultController extends Controller
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         return $this->render('BrooterWebBundle:Default:dmca.html.twig', ['company' => $company]);
     }
+
+    public function faqAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $faqs = $em->getRepository('BrooterAdminBundle:Faq')->findAll();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
+        return $this->render('BrooterWebBundle:Default:faq.html.twig', ['faqs' => $faqs, 'company' => $company]);
+    }
 }
