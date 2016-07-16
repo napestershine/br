@@ -1,4 +1,6 @@
 {% extends "web.html.twig" %}
 {% block content %}
-    hello my world
+    {% for slider in sliders %}
+        <img src="{{ asset('uploads/sliders/' ~ slider.file) }}"/>
+    {% endfor %}
 {% endblock %}

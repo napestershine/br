@@ -2,11 +2,9 @@
 
 namespace Brooter\AdminBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Brooter\AdminBundle\Entity\Slider;
-use Brooter\AdminBundle\Form\SliderType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Slider controller.
@@ -40,6 +38,9 @@ class SliderController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $slider->getFile();
+            $fileName = $this->get('brooter.admin.brochure_uploader')->upload($file);
+            $slider->setFile($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($slider);
             $em->flush();
@@ -78,6 +79,9 @@ class SliderController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $slider->getFile();
+            $fileName = $this->get('brooter.admin.brochure_uploader')->upload($file);
+            $slider->setFile($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($slider);
             $em->flush();
@@ -122,7 +126,6 @@ class SliderController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('slider_delete', array('id' => $slider->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
