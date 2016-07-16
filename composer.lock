@@ -885,16 +885,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.16",
+            "version": "v2.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "dc1c7a94811afaf493830a33c360156912848b2e"
+                "reference": "1a0824035a46be999b9a04a951c9366455bd2585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/dc1c7a94811afaf493830a33c360156912848b2e",
-                "reference": "dc1c7a94811afaf493830a33c360156912848b2e",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/1a0824035a46be999b9a04a951c9366455bd2585",
+                "reference": "1a0824035a46be999b9a04a951c9366455bd2585",
                 "shasum": ""
             },
             "require": {
@@ -960,7 +960,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2016-07-15 09:26:53"
+            "time": "2016-07-15 13:40:22"
         },
         {
             "name": "incenteev/composer-parameter-handler",
