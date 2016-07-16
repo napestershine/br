@@ -21,3 +21,7 @@ brooter_admin_slider:
 brooter_admin_homepage:
     path:     /
     defaults: { _controller: BrooterAdminBundle:Default:index }
+
+brooter_admin_company:
+    resource: "@BrooterAdminBundle/Resources/config/routing/company.yml"
+    prefix:   /company

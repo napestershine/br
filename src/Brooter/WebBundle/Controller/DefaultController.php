@@ -17,4 +17,19 @@ class DefaultController extends Controller
                 'sliders' => $sliders
             ));
     }
+
+    public function aboutUsAction()
+    {
+        return $this->render('BrooterWebBundle:Default:aboutus.html.twig');
+    }
+
+    public function termsAction()
+    {
+        return $this->render('BrooterWebBundle:Default:termsofservice.html.twig');
+    }
+
+    public function dmcaAction()
+    {
+        return $this->render('BrooterWebBundle:Default:dmca.html.twig');
+    }
 }
