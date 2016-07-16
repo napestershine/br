@@ -1,3 +1,7 @@
+brooter_admin_post:
+    resource: "@BrooterAdminBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
 brooter_admin_category:
     resource: "@BrooterAdminBundle/Resources/config/routing/category.yml"
     prefix:   /category
