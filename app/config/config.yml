@@ -13,7 +13,7 @@ imports:
 parameters:
     locale: en
     sliders_directory: '%kernel.root_dir%/../web/uploads/sliders'
-
+    posts_directory: '%kernel.root_dir%/../web/uploads/posts'
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }

@@ -13,3 +13,6 @@ services:
     brooter.admin.brochure_uploader:
             class: Brooter\AdminBundle\FileUploader
             arguments: ['%sliders_directory%']
+    brooter.admin.postimage_uploader:
+                class: Brooter\AdminBundle\FileUploader
+                arguments: ['%posts_directory%']

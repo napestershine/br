@@ -3,6 +3,7 @@
 namespace Brooter\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -41,6 +42,23 @@ class Post
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+
+
+
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the Post image in jpg or jpeg or png format.")
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
+     */
+    private $file;
+
+
+    /**
+     * @ORM\Column(type="date")
+     *
+     */
+    private $postedOn;
 
     /**
      * Get id
@@ -106,5 +124,29 @@ class Post
     {
         return $this->category;
     }
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    public function  getPostedOn()
+    {
+        return $this->postedOn;
+
+    }
+
+    public function setPostedOn($postedOn)
+    {
+        $this->postedOn=$postedOn;
+        return $this;
+    }
+
 }
 
