@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <!-- For IE -->
@@ -8,50 +8,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/bootstrap/bootstrap.css') }}"
-          media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/bootstrap/bootstrap.css') }}" media="screen">
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,600,700italic,600italic'
           rel='stylesheet' type='text/css'>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('RealEstateTheme/fonts/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('reweb/fonts/font-awesome/css/font-awesome.min.css') }}">
     <!-- Vendor css________________ -->
 
 
     <!-- ui css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/jquery-css/jquery-ui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/jquery-css/jquery-ui.css') }}">
     <!-- fancybox css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/fancy-box/jquery.fancybox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/fancy-box/jquery.fancybox.css') }}">
     <!-- Owl-carousel css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/owl.carousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/owl.theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/owl.theme.css') }}">
     <!-- Revolution Slider css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/revolution/settings.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/revolution/layers.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/revolution/navigation.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/revolution/settings.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/revolution/layers.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/revolution/navigation.css') }}">
 
 
     <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/custom/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/custom/style.css') }}">
     <!-- Color css -->
-    <link rel="stylesheet" id="jssDefault" href="{{ asset('RealEstateTheme/css/custom/theme-default.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('RealEstateTheme/css/responsive/responsive.css') }}">
-
-
+    <link rel="stylesheet" id="jssDefault" href="{{ asset('reweb/css/custom/theme-default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/responsive/responsive.css') }}">
     <!-- Fixing Internet Explorer ______________________________________-->
-
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="{{ asset('RealEstateTheme/js/html5shiv.js') }}"></script>
+    <script src="js/html5shiv.js"></script>
     <![endif]-->
-
-
 </head>
 <body class="login_register">
-
 <div class="boxed_wrapper">
 
+    {#<div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}#}
     <!-- Main Menu ____________________________________ -->
 
     <div class="main_menu fixed_menu" id="menu">
@@ -93,8 +106,6 @@
     </div> <!-- End .main_menu -->
 
     <!-- End Main Menu _______________________________ -->
-
-
     <!-- Call Us Anytime _____________________________ -->
     <div class="container">
         <div class="call_us">
@@ -102,12 +113,8 @@
             <a href="tel:1-880-002-0088">1-880-002-0088</a>
         </div>
     </div>
-
     <!-- End Call Us Anytime _________________________ -->
-
-
     <!-- Inner Banner ________________________________ -->
-
     <section id="inner_banner">
         <div class="overlay">
             <div class="container">
@@ -122,47 +129,12 @@
             </div> <!-- End .container -->
         </div> <!-- End .overlay -->
     </section> <!-- End .inner_banner -->
-
     <!-- End Inner Banner ____________________________ -->
 
-
-    <!-- Login / Register ___________________________ -->
-
-
-    <div class="register_page container">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 register_form">
-                <!-- Main_title__________ -->
-
-                <!-- Register form -->
-                <div class="register">
-                    <form action="#">
-                        <h6>Dont Have an Account? Register Now</h6>
-                        {% block content %}
-                            <div>
-                                {% block fos_user_content %}
-                                {% endblock fos_user_content %}
-                            </div>
-                        {% endblock %}
-                    </form>
-
-                   {# <div class="single_checkbox">
-                        <input type="checkbox" id="term">
-                        <label for="term">I Agree the terms & conditions</label>
-                    </div> <!-- End .single_checkbox -->#}
-                    <div class="clear_fix"></div>
-                </div> <!-- End .register -->
-
-            </div> <!-- End .register_form -->
-
-        </div> <!-- End .row -->
-    </div> <!-- End .register_page -->
-
-
-    <!-- End Login / Register _______________________ -->
-
-
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
     <!-- Footer __________________________________________ -->
     <footer>
         <div class="main_footer">
@@ -200,7 +172,8 @@
                                 <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
                                                 class="fa fa-angle-right"></i> Properties</a></li>
                                 <li><a href="about-us.html" class="tran3s"><i class="fa fa-angle-right"></i> About
-                                        Us</a></li>
+                                        Us</a>
+                                </li>
                                 <li><a href="property-listing-with-sidebar.html" class="tran3s"><i
                                                 class="fa fa-angle-right"></i> Find Homes</a></li>
                                 <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i
@@ -208,7 +181,8 @@
                                 <li><a href="blog-without-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i>
                                         News</a></li>
                                 <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct
-                                        Us</a></li>
+                                        Us</a>
+                                </li>
                             </ul>
 
                             <ul>
@@ -291,8 +265,8 @@
         <div class="bottom_footer">
             <div class="container">
                 <div class="text">
-                    <p>Copyright &copy; 2016 brooter | Developed by <a href="#" class="tran3s" target="_blank">webmoneycafe</a>
-                    </p>
+                    <p>Copyright &copy; 2016 brooter | Developed by <a href="#" class="tran3s"
+                                                                       target="_blank">webmoneycafe</a></p>
                 </div> <!-- End .text -->
 
                 <div class="footer_nav">
@@ -305,54 +279,52 @@
             </div>
         </div> <!-- End .bottom_footer -->
     </footer>
-
-
     <!-- End Footer ______________________________________ -->
+</div>
+<!-- Js File_________________________________ -->
+
+<!-- j Query -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/bootstrap.min.js') }}"></script>
+
+<!-- Vendor js _________ -->
+<!-- Style-switcher  -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jQuery.style.switcher.min.js') }}"></script>
+
+<!-- Google map js -->
+<script src="http://maps.google.com/maps/api/js"></script> <!-- Gmap Helper -->
+<script src="{{ asset('RealEstateTheme/js/gmap.js') }}"></script>
 
 
-    <!-- Js File_________________________________ -->
+<!-- Tooltip -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
 
-    <!-- j Query -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
+<!-- ui js -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
 
-    <!-- Bootstrap JS -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/bootstrap.min.js') }}"></script>
+<!-- Fancybox js -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
 
-    <!-- Vendor js _________ -->
-    <!-- Style-switcher  -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jQuery.style.switcher.min.js') }}"></script>
+<!-- owl.carousel -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
 
+<!-- Language Switcher -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.polyglot.language.switcher.js') }}"></script>
 
-    <!-- Tooltip -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
+<!-- revolution -->
+<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
 
-    <!-- ui js -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
-
-    <!-- Fancybox js -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
-
-    <!-- owl.carousel -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
-
-    <!-- Language Switcher -->
-    <script type="text/javascript"
-            src="{{ asset('RealEstateTheme/js/jquery.polyglot.language.switcher.js') }}"></script>
-
-    <!-- revolution -->
-    <script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
-    <script type="text/javascript"
-            src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
-
-    <!-- Main js -->
-    <script type="text/javascript" src="{{ asset('RealEstateTheme/js/main.js') }}"></script>
-
-</div> <!-- End .boxed_wrapper -->
+<!-- Main js -->
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/main.js') }}"></script>
 
 </body>
 </html>

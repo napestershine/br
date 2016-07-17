@@ -4,12 +4,15 @@ parameters:
 #    parameter_name: value
 
 services:
-    brooter.form.registration:
-        class: Brooter\UserBundle\Form\RegistrationType
-        arguments:
-            - %fos_user.model.user.class%
-        tags:
-            - { name: form.type, alias: brooter_user_registration }
+#    brooter.form.registration:
+#        class: Brooter\UserBundle\Form\RegistrationType
+#        arguments:
+#            - %fos_user.model.user.class%
+#        tags:
+#            - { name: form.type, alias: brooter_user_registration }
     brooter.admin.slider_uploader:
             class: Brooter\AdminBundle\FileUploader
             arguments: ['%sliders_directory%']
+    brooter.admin.postimage_uploader:
+                class: Brooter\AdminBundle\FileUploader
+                arguments: ['%posts_directory%']

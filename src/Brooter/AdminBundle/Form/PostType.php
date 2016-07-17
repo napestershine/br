@@ -5,6 +5,8 @@ namespace Brooter\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 class PostType extends AbstractType
 {
@@ -18,7 +20,9 @@ class PostType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('category')
-        ;
+            ->add('file', FileType::class, array('label' => 'Image (jpg/jpeg/png file)', 'data_class' => null))
+            ->add('postedOn');
+
     }
     
     /**
