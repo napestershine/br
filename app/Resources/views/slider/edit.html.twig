@@ -1,21 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Slider edit</h1>
+{% block header %}Home Sliders{% endblock %}
+{% block subheader %}New Homepage Image slider{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-    <img src="{{ asset('uploads/sliders/' ~ slider.file) }}" />
-    <ul>
-        <li>
-            <a href="{{ path('slider_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block content %}
+    <div class="panel-body">
+        {{ form_start(edit_form) }}
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="file" class="col-md-3">Edit Image (jpg/jpeg/png)</label>
+                <div class="col-md-6">
+                    <img src="{{ asset('uploads/sliders/' ~ slider.file) }}"/>
+                    {{ form_widget(edit_form.file) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a href="{{ path('slider_index') }}" class="btn btn-primary">Back</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 {% endblock %}
