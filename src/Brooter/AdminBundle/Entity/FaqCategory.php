@@ -3,6 +3,7 @@
 namespace Brooter\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * FaqCategory
@@ -28,6 +29,17 @@ class FaqCategory
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Faq", mappedBy="faqcategory")
+     */
+    private $faq;
+
+    /**
+     * FaqCategory constructor.
+     */
+    public function __construct() {
+        $this->faq = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -62,5 +74,22 @@ class FaqCategory
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFaq()
+    {
+        return $this->faq;
+    }
+
+    /**
+     * @param mixed $faq
+     */
+    public function setFaq($faq)
+    {
+        $this->faq = $faq;
+    }
+
 }
 

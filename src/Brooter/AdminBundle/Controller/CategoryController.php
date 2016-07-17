@@ -4,9 +4,7 @@ namespace Brooter\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Brooter\AdminBundle\Entity\Category;
-use Brooter\AdminBundle\Form\CategoryType;
 
 /**
  * Category controller.
@@ -22,7 +20,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('AdminBundle:Category')->findAll();
+        $categories = $em->getRepository('BrooterAdminBundle:Category')->findAll();
 
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
@@ -36,7 +34,7 @@ class CategoryController extends Controller
     public function newAction(Request $request)
     {
         $category = new Category();
-        $form = $this->createForm('AdminBundle\Form\CategoryType', $category);
+        $form = $this->createForm('Brooter\AdminBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +72,7 @@ class CategoryController extends Controller
     public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
-        $editForm = $this->createForm('AdminBundle\Form\CategoryType', $category);
+        $editForm = $this->createForm('Brooter\AdminBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

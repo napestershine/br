@@ -8,11 +8,6 @@ company_show:
     defaults: { _controller: "BrooterAdminBundle:Company:show" }
     methods:  GET
 
-company_new:
-    path:     /new
-    defaults: { _controller: "BrooterAdminBundle:Company:new" }
-    methods:  [GET, POST]
-
 company_edit:
     path:     /{id}/edit
     defaults: { _controller: "BrooterAdminBundle:Company:edit" }

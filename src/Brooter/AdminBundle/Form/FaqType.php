@@ -5,6 +5,7 @@ namespace Brooter\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class FaqType extends AbstractType
 {
@@ -17,7 +18,12 @@ class FaqType extends AbstractType
         $builder
             ->add('question')
             ->add('answer')
-            ->add('postedOn', 'date')
+            ->add('faqcategory', EntityType::class, array(
+                'class' => 'Brooter\AdminBundle\Entity\FaqCategory',
+                'choice_label' => 'name',
+                'placeholder' => '-- Select Category --',
+            ))
+            ->add('postedOn')
         ;
     }
     
