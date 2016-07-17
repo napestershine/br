@@ -10,7 +10,8 @@
  */
 
 namespace Brooter\UserBundle\Controller;
-
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\SecurityController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
