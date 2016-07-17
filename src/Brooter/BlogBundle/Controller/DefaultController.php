@@ -13,9 +13,10 @@ class DefaultController extends Controller
 
         $posts = $em->getRepository('BrooterAdminBundle:Post')->findAll();
         $categories = $em->getRepository('BrooterAdminBundle:Category')->findAll();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
 
         return $this->render('BrooterBlogBundle:Default:index.html.twig', array(
-            'posts' => $posts,
+            'posts' => $posts, 'company' => $company,
             'categories' => $categories,
         ));
     }
@@ -24,12 +25,11 @@ class DefaultController extends Controller
     {
         //$deleteForm = $this->createDeleteForm($post);
         $em = $this->getDoctrine()->getManager();
-
-
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         $post = $em->getRepository('BrooterAdminBundle:Post')->find($id);
         $categories = $em->getRepository('BrooterAdminBundle:Category')->findAll();
         return $this->render('BrooterBlogBundle:Default:show.html.twig', array(
-            'post' => $post,
+            'post' => $post, 'category' => $company,
             'categories' => $categories,
             //'delete_form' => $deleteForm->createView(),
         ));

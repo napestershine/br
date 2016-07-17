@@ -101,28 +101,28 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="field12", type="string", length=255, nullable=true)
+     * @ORM\Column(name="field12", type="text", nullable=true)
      */
     private $field12;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="field13", type="string", length=255, nullable=true)
+     * @ORM\Column(name="field13", type="text", nullable=true)
      */
     private $field13;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="field14", type="string", length=255, nullable=true)
+     * @ORM\Column(name="field14", type="text", nullable=true)
      */
     private $field14;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="field15", type="string", length=255, nullable=true)
+     * @ORM\Column(name="field15", type="text", nullable=true)
      */
     private $field15;
 
@@ -378,7 +378,7 @@ class Company
     }
 
     /**
-     * @return string
+     * @return text
      */
     public function getField11()
     {
@@ -386,7 +386,7 @@ class Company
     }
 
     /**
-     * @param string $field11
+     * @param text $field11
      */
     public function setField11($field11)
     {
@@ -394,7 +394,7 @@ class Company
     }
 
     /**
-     * @return string
+     * @return text
      */
     public function getField12()
     {
@@ -402,7 +402,7 @@ class Company
     }
 
     /**
-     * @param string $field12
+     * @param text $field12
      */
     public function setField12($field12)
     {
@@ -410,7 +410,7 @@ class Company
     }
 
     /**
-     * @return string
+     * @return text
      */
     public function getField13()
     {
@@ -418,7 +418,7 @@ class Company
     }
 
     /**
-     * @param string $field13
+     * @param text $field13
      */
     public function setField13($field13)
     {
@@ -426,7 +426,7 @@ class Company
     }
 
     /**
-     * @return string
+     * @return text
      */
     public function getField14()
     {
@@ -434,7 +434,7 @@ class Company
     }
 
     /**
-     * @param string $field14
+     * @param text $field14
      */
     public function setField14($field14)
     {
@@ -442,7 +442,7 @@ class Company
     }
 
     /**
-     * @return string
+     * @return text
      */
     public function getField15()
     {
@@ -450,7 +450,7 @@ class Company
     }
 
     /**
-     * @param string $field15
+     * @param text $field15
      */
     public function setField15($field15)
     {
