@@ -37,7 +37,7 @@ class CategoryType extends AbstractType
                     'for' => 'parent'
                 ),
                 'placeholder' => "-- Parent Category --",
-                'class' => 'AdminBundle\Entity\Category',
+                'class' => 'Brooter\AdminBundle\Entity\Category',
                 'choice_label' => 'title',
                 'required' => false,
                 'attr' => array(
