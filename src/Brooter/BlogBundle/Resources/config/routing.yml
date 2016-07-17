@@ -5,3 +5,8 @@ brooter_blog_homepage:
 brooter_blog_showpage:
     path:     /show/{id}
     defaults: { _controller: BrooterBlogBundle:Default:show }
+
+brooter_blog_editpage:
+    path:     /edit/{id}
+    defaults: { _controller: BrooterAdminBundle:Post:edit }
+
