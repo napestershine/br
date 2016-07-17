@@ -90,13 +90,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="tran3sL"><a href="index.html">Home</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
                             <li class="tran3sL"><a href="property-listing.html">Properties</a></li>
-                            <li class="tran3sL"><a href="faq.html">FAQs</a></li>
-                            <li class="tran3sL"><a href="blog.html">Blog</a></li>
-                            <li class="tran3sL"><a href="login.html">Login</a></li>
-                            <li class="tran3sL"><a href="register.html">Register</a></li>
-                            <li class="tran3sL"><a href="contact.html">Contact</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_blog_homepage') }}">Blog</a></li>
+                            <li class="tran3sL"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                            <li class="tran3sL"><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Contact</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav> <!-- End .navbar -->
@@ -130,201 +130,233 @@
         </div> <!-- End .overlay -->
     </section> <!-- End .inner_banner -->
     <!-- End Inner Banner ____________________________ -->
+    <div class="register_page container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 register_form">
+                <!-- Main_title__________ -->
 
-    <div>
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-    </div>
-    <!-- Footer __________________________________________ -->
-    <footer>
-        <div class="main_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="about_estate">
-                            <h2 style="color:#fff;">Brooter</h2>
-                            <p>As a property developers every project we offer quality Properties and Services for our
-                                trustable customers. <span></span>
-                                If you are interested in real estate do not wait and BUY IT NOW!</p>
-
-                            <ul class="icon_footer">
-                                <li class="border_round tran3s tooltip" title="Facebook"><a href="#"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Twitter"><a href="#"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Google Plus"><a href="#"><i
-                                                class="fa fa-google-plus"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Linkedin"><a href="#"><i
-                                                class="fa fa-linkedin"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Vimeo"><a href="#"><i
-                                                class="fa fa-vimeo"></i></a></li>
-                            </ul> <!-- End .icon_header -->
-
-                        </div> <!-- End .about_estate -->
+                <!-- Register form -->
+                <div class="register">
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
                     </div>
+                    <div class="clear_fix"></div>
+                </div> <!-- End .register -->
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="useful_link">
-                            <div class="footer_title">
-                                <h4>Usefull Links</h4>
-                            </div>
-                            <ul>
-                                <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
-                                                class="fa fa-angle-right"></i> Properties</a></li>
-                                <li><a href="about-us.html" class="tran3s"><i class="fa fa-angle-right"></i> About
-                                        Us</a>
-                                </li>
-                                <li><a href="property-listing-with-sidebar.html" class="tran3s"><i
-                                                class="fa fa-angle-right"></i> Find Homes</a></li>
-                                <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i
-                                                class="fa fa-angle-right"></i> Popular Agents</a></li>
-                                <li><a href="blog-without-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i>
-                                        News</a></li>
-                                <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct
-                                        Us</a>
-                                </li>
-                            </ul>
+            </div> <!-- End .register_form -->
 
-                            <ul>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Add Listing</a></li>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a></li>
-                                <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i>
-                                        Pricing</a></li>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
-                                <li><a href="login.html" class="tran3s"><i class="fa fa-angle-right"></i> Login /
-                                        Register</a></li>
-                            </ul>
-                        </div> <!-- End .useful_link -->
-                    </div>
+        </div> <!-- End .row -->
+    </div> <!-- End .register_page -->
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="featured_properties_footer">
-                            <div class="footer_title">
-                                <h4>Featured Properties</h4>
-                            </div>
 
-                            <div class="history">
-                                <div class="item">
-                                    <div class="image_holder">
-                                        <img src="{{ asset('reweb/images/home/22.jpg') }}" alt="images">
-                                    </div>
-                                    <div class="text">
-                                        <a href="property-details.html"><h6>High Rise Building</h6></a>
-                                        <span><i class="fa fa-map-marker"></i> California</span>
-                                        <h4>$ 25,500</h4>
-                                    </div> <!-- End .text -->
-                                </div> <!-- End .item -->
+    <!-- End Login / Register _______________________ -->
 
-                                <div class="item">
-                                    <div class="image_holder">
-                                        <img src="{{ asset('reweb/images/home/23.jpg') }}" alt="images">
-                                    </div>
-                                    <div class="text">
-                                        <a href="property-details.html"><h6>Low Rise Building</h6></a>
-                                        <span><i class="fa fa-map-marker"></i> Sanfransisco</span>
-                                        <h4>$ 35,500</h4>
-                                    </div> <!-- End .text -->
-                                </div> <!-- End .item -->
+    {% block footer %}
+        <!-- Footer __________________________________________ -->
+        <footer>
+            <div class="main_footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="about_estate">
+                                <h2 style="color:#fff;">Brooter</h2>
+                                <p>{{ company.field11 }}</p>
 
-                                <div class="item">
-                                    <div class="image_holder">
-                                        <img src="{{ asset('reweb/images/home/24.jpg') }}" alt="images">
-                                    </div>
-                                    <div class="text">
-                                        <a href="property-details.html"><h6>Jango Beach House</h6></a>
-                                        <span><i class="fa fa-map-marker"></i> Coloroda</span>
-                                        <h4>$ 45,500</h4>
-                                    </div> <!-- End .text -->
-                                </div> <!-- End .item -->
-                            </div> <!-- End .history -->
-                        </div> <!-- End .featured_properties_footer -->
-                    </div>
+                                <ul class="icon_footer">
+                                    <li class="border_round tran3s tooltip" title="Facebook"><a
+                                                href="{{ company.field6 }}"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                    <li class="border_round tran3s tooltip" title="Twitter"><a
+                                                href="{{ company.field7 }}"><i
+                                                    class="fa fa-twitter"></i></a></li>
+                                    <li class="border_round tran3s tooltip" title="Google Plus"><a
+                                                href="{{ company.field8 }}"><i
+                                                    class="fa fa-google-plus"></i></a></li>
+                                    <li class="border_round tran3s tooltip" title="Linkedin"><a
+                                                href="{{ company.field9 }}"><i
+                                                    class="fa fa-linkedin"></i></a></li>
+                                    <li class="border_round tran3s tooltip" title="Vimeo"><a
+                                                href="{{ company.field10 }}"><i
+                                                    class="fa fa-vimeo"></i></a></li>
+                                </ul> <!-- End .icon_header -->
 
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                        <div class="contact_info">
-                            <div class="footer_title">
-                                <h4>Contact Info</h4>
-                            </div>
+                            </div> <!-- End .about_estate -->
+                        </div>
 
-                            <ul>
-                                <li> Address: 203, Sagar plaza-2 Pitampura New delhi</li>
-                                <li><a href="tel:98941-84-604" class="tran3s">Phone: 98941-84-604</a></li>
-                                <li><a href="mailto:Support@abc.com" class="tran3s">Email: Support@abc.com</a></li>
-                                <li><a href="#" class="tran3s">Web: WWW.xxx.com</a></li>
-                                <li>Monday - Sunday 9.00 - 18.00 <br>
-                                    Saturday - Sunday Holiday
-                                </li>
-                            </ul>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="useful_link">
+                                <div class="footer_title">
+                                    <h4>Usefull Links</h4>
+                                </div>
+                                <ul>
+                                    <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Properties</a></li>
+                                    <li><a href="{{ path('brooter_web_aboutus') }}" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> About
+                                            Us</a></li>
+                                    <li><a href="property-listing-with-sidebar.html" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Find Homes</a></li>
+                                    <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Popular Agents</a></li>
+                                    <li><a href="blog-without-sidebar.html" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> News</a></li>
+                                    <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct
+                                            Us</a></li>
+                                </ul>
 
-                        </div> <!-- End .contact_info -->
-                    </div>
-                </div> <!-- End .row -->
-            </div> <!-- End .container -->
-        </div> <!-- End .main_footer -->
+                                <ul>
+                                    <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Add Listing</a>
+                                    </li>
+                                    <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a>
+                                    </li>
+                                    <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i>
+                                            Pricing</a></li>
+                                    <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
+                                    <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Terms</a></li>
+                                    <li><a href="{{ path('brooter_web_dmca') }}" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> DMCA</a></li>
+                                    {#<li><a href="login.html" class="tran3s"><i class="fa fa-angle-right"></i> Login /
+                                            Register</a></li>#}
+                                </ul>
+                            </div> <!-- End .useful_link -->
+                        </div>
 
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="text">
-                    <p>Copyright &copy; 2016 brooter | Developed by <a href="#" class="tran3s"
-                                                                       target="_blank">webmoneycafe</a></p>
-                </div> <!-- End .text -->
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="featured_properties_footer">
+                                <div class="footer_title">
+                                    <h4>Featured Properties</h4>
+                                </div>
 
-                <div class="footer_nav">
-                    <ul>
-                        <li><a href="#" class="tran3s">Home</a></li>
-                        <li><a href="#" class="tran3s">Properties</a></li>
-                        <li><a href="#" class="tran3s">Agents</a></li>
-                    </ul>
-                </div> <!-- End .footer_nav -->
-            </div>
-        </div> <!-- End .bottom_footer -->
-    </footer>
-    <!-- End Footer ______________________________________ -->
+                                <div class="history">
+                                    <div class="item">
+                                        <div class="image_holder">
+                                            <img src="{{ asset('RealEstateTheme/images/home/22.jpg') }}" alt="images">
+                                        </div>
+                                        <div class="text">
+                                            <a href="property-details.html"><h6>High Rise Building</h6></a>
+                                            <span><i class="fa fa-map-marker"></i> California</span>
+                                            <h4>$ 25,500</h4>
+                                        </div> <!-- End .text -->
+                                    </div> <!-- End .item -->
+
+                                    <div class="item">
+                                        <div class="image_holder">
+                                            <img src="{{ asset('RealEstateTheme/images/home/23.jpg') }}" alt="images">
+                                        </div>
+                                        <div class="text">
+                                            <a href="property-details.html"><h6>Low Rise Building</h6></a>
+                                            <span><i class="fa fa-map-marker"></i> Sanfransisco</span>
+                                            <h4>$ 35,500</h4>
+                                        </div> <!-- End .text -->
+                                    </div> <!-- End .item -->
+
+                                    <div class="item">
+                                        <div class="image_holder">
+                                            <img src="{{ asset('RealEstateTheme/images/home/24.jpg') }}" alt="images">
+                                        </div>
+                                        <div class="text">
+                                            <a href="property-details.html"><h6>Jango Beach House</h6></a>
+                                            <span><i class="fa fa-map-marker"></i> Coloroda</span>
+                                            <h4>$ 45,500</h4>
+                                        </div> <!-- End .text -->
+                                    </div> <!-- End .item -->
+                                </div> <!-- End .history -->
+                            </div> <!-- End .featured_properties_footer -->
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="contact_info">
+                                <div class="footer_title">
+                                    <h4>Contact Info</h4>
+                                </div>
+
+                                <ul>
+                                    <li>{{ company.field1 }}</li>
+                                    <li><a href="tel:{{ company.field2 }}"
+                                           class="tran3s">Phone: {{ company.field2 }}</a></li>
+                                    <li><a href="mailto:{{ company.field3 }}"
+                                           class="tran3s">Email: {{ company.field3 }}</a></li>
+                                    <li><a href="{{ company.field4 }}" class="tran3s">Web: {{ company.field4 }}</a></li>
+                                    <li>{{ company.field5 }}</li>
+                                </ul>
+
+                            </div> <!-- End .contact_info -->
+                        </div>
+                    </div> <!-- End .row -->
+                </div> <!-- End .container -->
+            </div> <!-- End .main_footer -->
+
+            <div class="bottom_footer">
+                <div class="container">
+                    <div class="text">
+                        <p>Copyright &copy; 2016 brooter | Developed by
+                            <a href="www.webmoneycafe.com" class="tran3s" target="_blank">
+                                <i class="fa fa-globe"></i> webmoneycafe</a>
+                        </p>
+                    </div> <!-- End .text -->
+
+                    <div class="footer_nav">
+                        <ul>
+                            <li><a href="#" class="tran3s">Home</a></li>
+                            <li><a href="#" class="tran3s">Properties</a></li>
+                            <li><a href="#" class="tran3s">Agents</a></li>
+                        </ul>
+                    </div> <!-- End .footer_nav -->
+                </div>
+            </div> <!-- End .bottom_footer -->
+        </footer>
+
+
+        <!-- End Footer ______________________________________ -->
+    {% endblock %}
 </div>
 <!-- Js File_________________________________ -->
 
 <!-- j Query -->
-<script type="text/javascript" src="{{ asset('reweb/js/jquery-2.1.4.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
 
 <!-- Bootstrap JS -->
-<script type="text/javascript" src="{{ asset('reweb/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/bootstrap.min.js') }}"></script>
 
 <!-- Vendor js _________ -->
 <!-- Style-switcher  -->
-<script type="text/javascript" src="{{ asset('reweb/js/jQuery.style.switcher.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jQuery.style.switcher.min.js') }}"></script>
 
 <!-- Google map js -->
 <script src="http://maps.google.com/maps/api/js"></script> <!-- Gmap Helper -->
-<script src="{{ asset('reweb/js/gmap.js') }}"></script>
+<script src="{{ asset('RealEstateTheme/js/gmap.js') }}"></script>
 
 
 <!-- Tooltip -->
-<script type="text/javascript" src="{{ asset('reweb/js/jquery.tooltipster.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
 
 <!-- ui js -->
-<script type="text/javascript" src="{{ asset('reweb/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
 
 <!-- Fancybox js -->
-<script type="text/javascript" src="{{ asset('reweb/js/jquery.fancybox.pack.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
 
 <!-- owl.carousel -->
-<script type="text/javascript" src="{{ asset('reweb/js/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
 
 <!-- Language Switcher -->
-<script type="text/javascript" src="{{ asset('reweb/js/jquery.polyglot.language.switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.polyglot.language.switcher.js') }}"></script>
 
 <!-- revolution -->
-<script src="{{ asset('reweb/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('reweb/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('reweb/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('reweb/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('reweb/js/revolution/revolution.extension.navigation.min.js') }}"></script>
+        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
 
 <!-- Main js -->
-<script type="text/javascript" src="{{ asset('reweb/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('RealEstateTheme/js/main.js') }}"></script>
 
 </body>
 </html>
