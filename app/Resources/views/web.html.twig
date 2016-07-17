@@ -41,7 +41,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
                                 <li class="tran3sL"><a href="">Properties</a></li>
-                                <li class="tran3sL"><a href="">FAQs</a></li>
+                                <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
                                 <li class="tran3sL"><a href="">Blog</a></li>
                                 {% if app.user %}
                                     <li class="tran3sL"><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
@@ -87,20 +87,23 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <div class="about_estate">
                                 <h2 style="color:#fff;">Brooter</h2>
-                                <p>As a property developers every project we offer quality Properties and Services for
-                                    our trustable customers. <span></span>
-                                    If you are interested in real estate do not wait and BUY IT NOW!</p>
+                                <p>{{ company.field11 }}</p>
 
                                 <ul class="icon_footer">
-                                    <li class="border_round tran3s tooltip" title="Facebook"><a href="#"><i
+                                    <li class="border_round tran3s tooltip" title="Facebook"><a
+                                                href="{{ company.field6 }}"><i
                                                     class="fa fa-facebook"></i></a></li>
-                                    <li class="border_round tran3s tooltip" title="Twitter"><a href="#"><i
+                                    <li class="border_round tran3s tooltip" title="Twitter"><a
+                                                href="{{ company.field7 }}"><i
                                                     class="fa fa-twitter"></i></a></li>
-                                    <li class="border_round tran3s tooltip" title="Google Plus"><a href="#"><i
+                                    <li class="border_round tran3s tooltip" title="Google Plus"><a
+                                                href="{{ company.field8 }}"><i
                                                     class="fa fa-google-plus"></i></a></li>
-                                    <li class="border_round tran3s tooltip" title="Linkedin"><a href="#"><i
+                                    <li class="border_round tran3s tooltip" title="Linkedin"><a
+                                                href="{{ company.field9 }}"><i
                                                     class="fa fa-linkedin"></i></a></li>
-                                    <li class="border_round tran3s tooltip" title="Vimeo"><a href="#"><i
+                                    <li class="border_round tran3s tooltip" title="Vimeo"><a
+                                                href="{{ company.field10 }}"><i
                                                     class="fa fa-vimeo"></i></a></li>
                                 </ul> <!-- End .icon_header -->
 
@@ -196,13 +199,13 @@
                                 </div>
 
                                 <ul>
-                                    <li> Address: 203, Sagar plaza-2 Pitampura New delhi</li>
-                                    <li><a href="tel:98941-84-604" class="tran3s">Phone: 98941-84-604</a></li>
-                                    <li><a href="mailto:Support@abc.com" class="tran3s">Email: Support@abc.com</a></li>
-                                    <li><a href="#" class="tran3s">Web: WWW.xxx.com</a></li>
-                                    <li>Monday - Sunday 9.00 - 18.00 <br>
-                                        Saturday - Sunday Holiday
-                                    </li>
+                                    <li>{{ company.field1 }}</li>
+                                    <li><a href="tel:{{ company.field2 }}"
+                                           class="tran3s">Phone: {{ company.field2 }}</a></li>
+                                    <li><a href="mailto:{{ company.field3 }}"
+                                           class="tran3s">Email: {{ company.field3 }}</a></li>
+                                    <li><a href="{{ company.field4 }}" class="tran3s">Web: {{ company.field4 }}</a></li>
+                                    <li>{{ company.field5 }}</li>
                                 </ul>
 
                             </div> <!-- End .contact_info -->
@@ -214,7 +217,9 @@
             <div class="bottom_footer">
                 <div class="container">
                     <div class="text">
-                        <p>Copyright &copy; 2016 brooter | Developed by <a href="#" class="tran3s" target="_blank">webmoneycafe</a>
+                        <p>Copyright &copy; 2016 brooter | Developed by
+                            <a href="www.webmoneycafe.com" class="tran3s" target="_blank">
+                                <i class="fa fa-globe"></i> webmoneycafe</a>
                         </p>
                     </div> <!-- End .text -->
 

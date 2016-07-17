@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 
+
 /**
  * Category
  *
@@ -227,11 +228,11 @@ class Category
     /**
      * Set parent
      *
-     * @param \Brooter\AdminBundle\Entity\Category $parent
+     * @param Category $parent
      *
      * @return Category
      */
-    public function setParent(\Brooter\AdminBundle\Entity\Category $parent = null)
+    public function setParent(Category $parent = null)
     {
         $this->parent = $parent;
 
@@ -241,7 +242,7 @@ class Category
     /**
      * Get parent
      *
-     * @return \Brooter\AdminBundle\Entity\Category
+     * @return Category
      */
     public function getParent()
     {
@@ -251,11 +252,11 @@ class Category
     /**
      * Add children
      *
-     * @param \Brooter\AdminBundle\Entity\Category $children
+     * @param Category $children
      * @return Category
      */
 
-    public function addChild(\Brooter\AdminBundle\Entity\Category $children)
+    public function addChild(Category $children)
     {
         $this->children[] = $children;
 
@@ -265,10 +266,10 @@ class Category
     /**
      * Remove children
      *
-     * @param \Brooter\AdminBundle\Entity\Category $children
+     * @param Category $children
      */
 
-    public function removeChild(\Brooter\AdminBundle\Entity\Category $children)
+    public function removeChild(Category $children)
     {
         $this->children->removeElement($children);
     }

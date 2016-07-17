@@ -42,6 +42,12 @@ class Faq
      */
     private $postedOn;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FaqCategory", inversedBy="faq")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $faqcategory;
+
 
     /**
      * Get id
@@ -124,5 +130,22 @@ class Faq
     {
         return $this->postedOn;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFaqcategory()
+    {
+        return $this->faqcategory;
+    }
+
+    /**
+     * @param mixed $faqcategory
+     */
+    public function setFaqcategory($faqcategory)
+    {
+        $this->faqcategory = $faqcategory;
+    }
+
 }
 
