@@ -1,0 +1,48 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+    <h1>CMS</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cM.id }}</td>
+            </tr>
+            <tr>
+                <th>Aboutus</th>
+                <td>{{ cM.aboutus }}</td>
+            </tr>
+            <tr>
+                <th>Dmca</th>
+                <td>{{ cM.dmca }}</td>
+            </tr>
+            <tr>
+                <th>Terms</th>
+                <td>{{ cM.terms }}</td>
+            </tr>
+            <tr>
+                <th>Privacypolicy</th>
+                <td>{{ cM.privacypolicy }}</td>
+            </tr>
+            <tr>
+                <th>Copyright</th>
+                <td>{{ cM.copyright }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cms_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cms_edit', { 'id': cM.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

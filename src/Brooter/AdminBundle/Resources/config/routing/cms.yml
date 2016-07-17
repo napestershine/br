@@ -1,0 +1,24 @@
+cms_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:CMS:index" }
+    methods:  GET
+
+cms_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:CMS:show" }
+    methods:  GET
+
+cms_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:CMS:new" }
+    methods:  [GET, POST]
+
+cms_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:CMS:edit" }
+    methods:  [GET, POST]
+
+cms_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:CMS:delete" }
+    methods:  DELETE

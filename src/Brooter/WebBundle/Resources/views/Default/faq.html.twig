@@ -1,78 +1,147 @@
 {% extends "web.html.twig" %}
-
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-                <div class="inner_section_title">
-                    <!-- Main_title__________ -->
-                    <div class="main_title">
-                        <h2>FAQs</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+            <div class="inner_section_title">
+                <!-- Main_title__________ -->
+                <div class="main_title">
+                    <h2>FAQs</h2>
+                </div>
+            </div> <!-- End .inner_section_title -->
+
+            <!-- _________________________ FAQ item _________________ -->
+            <div class="item">
+                <div class="row">
+                    <div class="col-md-12">
+                        Frequently Asked Questions
                     </div>
-                </div> <!-- End .inner_section_title -->
-
-                <!-- _________________________ FAQ item _________________ -->
-                <div class="item">
-                    Frequently Asked Questions
-                </div> <!-- End .faq_item -->
-            </div> <!-- End .col- -->
-
-            <!-- _______________________________________________ Sidebar ________________________________________________ -->
-            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-                <div class="sidebar_style_two">
-
-                    <!-- ___________________________Reduced Properties_______________________________ -->
-                    <div class="reduced_properties">
-                        <!-- Main_title2__________ -->
-                        <div class="main_title2">
-                            <h3>Reduced Properties</h3>
+                </div>
+                <br/>
+                <div class="row">
+                    {% for faq in faqs %}
+                        <div class="col-md-12">
+                            {{ faq.question }}
                         </div>
-                        <!-- End Main_title2______ -->
+                        <div class="col-md-12">
+                            {{ faq.answer }}
+                        </div>
+                    {% endfor %}
+                </div>
 
-                        <div class="item_wrapper">
-                            <div class="itme">
-                                <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/16.jpg') }}" alt="images">
-                                </div> <!-- End .img_holder -->
-                                <div class="text">
-                                    <a href="#">
-                                        <h6>Jungle golf Villas</h6>
-                                        <span><i class="fa fa-map-marker"></i> California</span>
-                                        <h5>$ 14,500 / Month</h5>
-                                    </a>
-                                </div> <!-- End .text -->
-                            </div> <!-- End .item -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Nav tabs category -->
+                        {#<ul class="nav nav-tabs faq-cat-tabs">
+                            <li class="active"><a href="#faq-cat-1" data-toggle="tab">Category #1</a></li>
+                            <li><a href="#faq-cat-2" data-toggle="tab">Category #2</a></li>
+                        </ul>#}
 
-                            <div class="itme">
-                                <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/17.jpg') }}" alt="images">
-                                </div> <!-- End .img_holder -->
-                                <div class="text">
-                                    <a href="#">
-                                        <h6>Office Apartment</h6>
-                                        <span><i class="fa fa-map-marker"></i> Sanfransisco</span>
-                                        <h5>$ 18,000 / Month</h5>
-                                    </a>
-                                </div> <!-- End .text -->
-                            </div> <!-- End .item -->
+                        <!-- Tab panes -->
+                        <div class="tab-content faq-cat-content">
+                            {% for faq in faqs %}
+                            <div class="tab-pane active in fade" id="faq-cat-{{ loop.index }}">
+                                <div class="panel-group" id="accordion-cat-{{ loop.index }}">
+                                    <div class="panel panel-default panel-faq">
+                                        <div class="panel-heading">
+                                            <a data-toggle="collapse" data-parent="#accordion-cat-{{ loop.index }}"
+                                               href="#faq-cat-{{ loop.index }}-sub-{{ loop.index }}">
+                                                <h4 class="panel-title">
+                                                    {{ faq.question }}
+                                                    <span class="pull-right"><i
+                                                                class="fa fa-plus"></i></span>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                        <div id="faq-cat-{{ loop.index }}-sub-{{ loop.index }}"
+                                             class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {{ faq.answer }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="itme">
-                                <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/18.jpg') }}" alt="images">
-                                </div> <!-- End .img_holder -->
-                                <div class="text">
-                                    <a href="#">
-                                        <h6>Rainbow Building</h6>
-                                        <span><i class="fa fa-map-marker"></i> California</span>
-                                        <h5>$ 15,000 / Month</h5>
-                                    </a>
-                                </div> <!-- End .text -->
-                            </div> <!-- End .item -->
+            </div> <!-- End .faq_item -->
+        </div> <!-- End .col- -->
 
-                        </div> <!-- End .item_wrapper -->
-                    </div> <!-- End .reduced_properties -->
-                </div> <!-- End .sidebar_style_two -->
-            </div>
-        </div> <!-- End .row -->
-    </div>
+        <!-- _______________________________________________ Sidebar ________________________________________________ -->
+        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+            <div class="sidebar_style_two">
+
+                <!-- ___________________________Reduced Properties_______________________________ -->
+                <div class="reduced_properties">
+                    <!-- Main_title2__________ -->
+                    <div class="main_title2">
+                        <h3>Reduced Properties</h3>
+                    </div>
+                    <!-- End Main_title2______ -->
+
+                    <div class="item_wrapper">
+                        <div class="itme">
+                            <div class="img_holder">
+                                <img src="{{ asset('reweb/images/home3/16.jpg') }}" alt="images">
+                            </div> <!-- End .img_holder -->
+                            <div class="text">
+                                <a href="#">
+                                    <h6>Jungle golf Villas</h6>
+                                    <span><i class="fa fa-map-marker"></i> California</span>
+                                    <h5>$ 14,500 / Month</h5>
+                                </a>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .item -->
+
+                        <div class="itme">
+                            <div class="img_holder">
+                                <img src="{{ asset('reweb/images/home3/17.jpg') }}" alt="images">
+                            </div> <!-- End .img_holder -->
+                            <div class="text">
+                                <a href="#">
+                                    <h6>Office Apartment</h6>
+                                    <span><i class="fa fa-map-marker"></i> Sanfransisco</span>
+                                    <h5>$ 18,000 / Month</h5>
+                                </a>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .item -->
+
+                        <div class="itme">
+                            <div class="img_holder">
+                                <img src="{{ asset('reweb/images/home3/18.jpg') }}" alt="images">
+                            </div> <!-- End .img_holder -->
+                            <div class="text">
+                                <a href="#">
+                                    <h6>Rainbow Building</h6>
+                                    <span><i class="fa fa-map-marker"></i> California</span>
+                                    <h5>$ 15,000 / Month</h5>
+                                </a>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .item -->
+
+                    </div> <!-- End .item_wrapper -->
+                </div> <!-- End .reduced_properties -->
+            </div> <!-- End .sidebar_style_two -->
+        </div>
+    </div> <!-- End .row -->
+</div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.collapse').on('show.bs.collapse', function () {
+                var id = $(this).attr('id');
+                $('a[href="#' + id + '"]').closest('.panel-heading').addClass('active-faq');
+                $('a[href="#' + id + '"] .panel-title span').html('<i class="glyphicon glyphicon-minus"></i>');
+            });
+            $('.collapse').on('hide.bs.collapse', function () {
+                var id = $(this).attr('id');
+                $('a[href="#' + id + '"]').closest('.panel-heading').removeClass('active-faq');
+                $('a[href="#' + id + '"] .panel-title span').html('<i class="glyphicon glyphicon-plus"></i>');
+            });
+        });
+    </script>
 {% endblock %}
