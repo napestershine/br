@@ -20,21 +20,24 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
-        return $this->render('BrooterWebBundle:Default:aboutus.html.twig', ['company' => $company]);
+        $aboutus = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getAboutus();
+        return $this->render('BrooterWebBundle:Default:aboutus.html.twig', ['company' => $company, 'aboutus' => $aboutus]);
     }
 
     public function termsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
-        return $this->render('BrooterWebBundle:Default:termsofservice.html.twig', ['company' => $company]);
+        $terms = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getTerms();
+        return $this->render('BrooterWebBundle:Default:termsofservice.html.twig', ['company' => $company, 'terms' => $terms]);
     }
 
     public function dmcaAction()
     {
         $em = $this->getDoctrine()->getManager();
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
-        return $this->render('BrooterWebBundle:Default:dmca.html.twig', ['company' => $company]);
+        $dmca = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getDmca();
+        return $this->render('BrooterWebBundle:Default:dmca.html.twig', ['company' => $company, 'dmca' => $dmca]);
     }
 
     public function faqAction()

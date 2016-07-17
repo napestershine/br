@@ -25,3 +25,7 @@ brooter_admin_homepage:
 brooter_admin_company:
     resource: "@BrooterAdminBundle/Resources/config/routing/company.yml"
     prefix:   /company
+
+brooter_admin_cms:
+    resource: "@BrooterAdminBundle/Resources/config/routing/cms.yml"
+    prefix:   /cms

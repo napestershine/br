@@ -1,5 +1,4 @@
 {% extends "web.html.twig" %}
-
 {% block content %}
     <div class="container">
         <div class="row">
@@ -7,13 +6,47 @@
                 <div class="inner_section_title">
                     <!-- Main_title__________ -->
                     <div class="main_title">
-                        <h2>FAQs</h2>
+                        <h2> Frequently Asked Questions</h2>
                     </div>
                 </div> <!-- End .inner_section_title -->
 
                 <!-- _________________________ FAQ item _________________ -->
                 <div class="item">
-                    Frequently Asked Questions
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="inner_section_title">
+                                <span class="left_side">{{ faqs|length }} Questions</span>
+                                <ul>
+                                    <li class="active"><a href="#">About Real Estate</a></li>
+                                    <li><a href="#">About Agent</a></li>
+                                    <li><a href="#">About Agencies</a></li>
+                                    <li><a href="#">About Properties</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- _________________________ FAQ item _________________ -->
+                    <div class="faq_item">
+                        {% for faq in faqs %}
+                            <!-- _____________ Single question _______________ -->
+                            <div class="single_question">
+                                <div class="icon_holder">
+                                    <div class="icon border_round">
+                                        <i class="fa fa-question-circle"></i>
+                                    </div> <!-- End .icon -->
+                                    <span>{{ faq.postedOn|date("jS M Y") }}</span>
+                                </div> <!-- End .icon_holder -->
+
+                                <!-- text -->
+                                <div class="text">
+                                    <a href="#" class="tran3s">{{ faq.question }}</a>
+                                    <p>{{ faq.answer }}</p>
+                                </div> <!-- End .text -->
+                            </div> <!-- End .single_question -->
+                        {% endfor %}
+                    </div> <!-- End .faq_item -->
+                    <br/>
                 </div> <!-- End .faq_item -->
             </div> <!-- End .col- -->
 
@@ -32,7 +65,7 @@
                         <div class="item_wrapper">
                             <div class="itme">
                                 <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/16.jpg') }}" alt="images">
+                                    <img src="{{ asset('reweb/images/home3/16.jpg') }}" alt="images">
                                 </div> <!-- End .img_holder -->
                                 <div class="text">
                                     <a href="#">
@@ -45,7 +78,7 @@
 
                             <div class="itme">
                                 <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/17.jpg') }}" alt="images">
+                                    <img src="{{ asset('reweb/images/home3/17.jpg') }}" alt="images">
                                 </div> <!-- End .img_holder -->
                                 <div class="text">
                                     <a href="#">
@@ -58,7 +91,7 @@
 
                             <div class="itme">
                                 <div class="img_holder">
-                                    <img src="{{ asset('RealEstateTheme/images/home3/18.jpg') }}" alt="images">
+                                    <img src="{{ asset('reweb/images/home3/18.jpg') }}" alt="images">
                                 </div> <!-- End .img_holder -->
                                 <div class="text">
                                     <a href="#">
@@ -75,4 +108,20 @@
             </div>
         </div> <!-- End .row -->
     </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('.collapse').on('show.bs.collapse', function () {
+                var id = $(this).attr('id');
+                $('a[href="#' + id + '"]').closest('.panel-heading').addClass('active-faq');
+                $('a[href="#' + id + '"] .panel-title span').html('<i class="glyphicon glyphicon-minus"></i>');
+            });
+            $('.collapse').on('hide.bs.collapse', function () {
+                var id = $(this).attr('id');
+                $('a[href="#' + id + '"]').closest('.panel-heading').removeClass('active-faq');
+                $('a[href="#' + id + '"] .panel-title span').html('<i class="glyphicon glyphicon-plus"></i>');
+            });
+        });
+    </script>
 {% endblock %}
