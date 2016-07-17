@@ -77,8 +77,6 @@ class Category
 
     private $children;
 
-
-
     /**
      * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
      */
@@ -87,7 +85,7 @@ class Category
     public function __construct()
     {
         $this->children = new ArrayCollection();
-        $this->posts=new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function __toString()
