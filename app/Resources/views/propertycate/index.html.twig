@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PropertyCate list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propcatename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyCate in propertyCates %}
+            <tr>
+                <td><a href="{{ path('propertycate_show', { 'id': propertyCate.id }) }}">{{ propertyCate.id }}</a></td>
+                <td>{{ propertyCate.propCateName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertycate_show', { 'id': propertyCate.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertycate_edit', { 'id': propertyCate.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertycate_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ListPropFor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Listpropforname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for listPropFor in listPropFors %}
+            <tr>
+                <td><a href="{{ path('listpropfor_show', { 'id': listPropFor.id }) }}">{{ listPropFor.id }}</a></td>
+                <td>{{ listPropFor.listPropForName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('listpropfor_show', { 'id': listPropFor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('listpropfor_edit', { 'id': listPropFor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('listpropfor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

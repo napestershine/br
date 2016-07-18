@@ -1,0 +1,24 @@
+furnished_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:furnished:index" }
+    methods:  GET
+
+furnished_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:furnished:show" }
+    methods:  GET
+
+furnished_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:furnished:new" }
+    methods:  [GET, POST]
+
+furnished_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:furnished:edit" }
+    methods:  [GET, POST]
+
+furnished_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:furnished:delete" }
+    methods:  DELETE

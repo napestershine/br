@@ -1,0 +1,24 @@
+overlooking_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:Overlooking:index" }
+    methods:  GET
+
+overlooking_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:Overlooking:show" }
+    methods:  GET
+
+overlooking_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:Overlooking:new" }
+    methods:  [GET, POST]
+
+overlooking_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:Overlooking:edit" }
+    methods:  [GET, POST]
+
+overlooking_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:Overlooking:delete" }
+    methods:  DELETE

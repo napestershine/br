@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PropSubCate list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propsubcatename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propSubCate in propSubCates %}
+            <tr>
+                <td><a href="{{ path('propsubcate_show', { 'id': propSubCate.id }) }}">{{ propSubCate.id }}</a></td>
+                <td>{{ propSubCate.propSubCateName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propsubcate_show', { 'id': propSubCate.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propsubcate_edit', { 'id': propSubCate.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propsubcate_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

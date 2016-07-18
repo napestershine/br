@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PowerBackup list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Powerbackupname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for powerBackup in powerBackups %}
+            <tr>
+                <td><a href="{{ path('powerbackup_show', { 'id': powerBackup.id }) }}">{{ powerBackup.id }}</a></td>
+                <td>{{ powerBackup.powerBackupName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('powerbackup_show', { 'id': powerBackup.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('powerbackup_edit', { 'id': powerBackup.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('powerbackup_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

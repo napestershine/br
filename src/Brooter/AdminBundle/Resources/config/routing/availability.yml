@@ -1,0 +1,24 @@
+availability_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:Availability:index" }
+    methods:  GET
+
+availability_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:Availability:show" }
+    methods:  GET
+
+availability_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:Availability:new" }
+    methods:  [GET, POST]
+
+availability_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:Availability:edit" }
+    methods:  [GET, POST]
+
+availability_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:Availability:delete" }
+    methods:  DELETE

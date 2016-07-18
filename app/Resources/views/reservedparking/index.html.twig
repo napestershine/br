@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ReservedParking list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reservedparkingtype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservedParking in reservedParkings %}
+            <tr>
+                <td><a href="{{ path('reservedparking_show', { 'id': reservedParking.id }) }}">{{ reservedParking.id }}</a></td>
+                <td>{{ reservedParking.reservedParkingType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservedparking_show', { 'id': reservedParking.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservedparking_edit', { 'id': reservedParking.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservedparking_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

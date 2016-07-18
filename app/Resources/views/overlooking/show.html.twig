@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Overlooking</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ overlooking.id }}</td>
+            </tr>
+            <tr>
+                <th>Overlookingtype</th>
+                <td>{{ overlooking.overLookingType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('overlooking_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('overlooking_edit', { 'id': overlooking.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
