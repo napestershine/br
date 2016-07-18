@@ -1,6 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
+{% extends 'admin.html.twig' %}
+{% block header %} Availability {% endblock %}
+{% block subheader %} New Availability{% endblock %}
+{% block content %}
     <h1>Availability creation</h1>
 
     {{ form_start(form) }}

@@ -142,5 +142,114 @@ class PostProperty
     {
         return $this->id;
     }
+    public function getPropType()
+    {
+        return $this->propType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvailability()
+    {
+        return $this->availability;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFurnished()
+    {
+        return $this->_furnished;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListPropFor()
+    {
+        return $this->listPropFor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOverLooking()
+    {
+        return $this->overLooking;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwnership()
+    {
+        return $this->ownership;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPowerBackup()
+    {
+        return $this->powerBackup;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropFeatureAmen()
+    {
+        return $this->propFeatureAmen;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropPossesion()
+    {
+        return $this->propPossesion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReservedParking()
+    {
+        return $this->reservedParking;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeOfFlooring()
+    {
+        return $this->typeOfFlooring;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWaterSource()
+    {
+        return $this->waterSource;
+    }
+    
 }
 

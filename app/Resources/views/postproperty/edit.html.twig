@@ -1,8 +1,7 @@
-{% extends 'admin.html.twig' %}
-{% block header %} Area In {% endblock %}
-{% block subheader %} Edit Area Units {% endblock %}
-{% block content %}
-    <h1>AreaIn edit</h1>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PostProperty edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -11,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('areain_index') }}">Back to the list</a>
+            <a href="{{ path('postproperty_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

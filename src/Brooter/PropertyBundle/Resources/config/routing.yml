@@ -1,3 +1,7 @@
+brooter_property_postproperty:
+    resource: "@BrooterPropertyBundle/Resources/config/routing/postproperty.yml"
+    prefix:   /postproperty
+
 brooter_property_homepage:
     path:     /
     defaults: { _controller: BrooterPropertyBundle:Default:index }
