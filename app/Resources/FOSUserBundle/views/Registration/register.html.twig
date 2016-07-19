@@ -1,6 +1,16 @@
-{{ dump() }}
-{#{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
 {% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}#}
+{% endblock fos_user_content %}
+
+{% block overlay %}
+    <div class="title">
+        <h2>Register</h2>
+        <ul>
+            <li><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+            <li><i class="fa fa-angle-double-right"></i></li>
+            <li>Register</li>
+        </ul>
+    </div> <!-- End .title -->
+{% endblock %}

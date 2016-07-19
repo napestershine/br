@@ -24,3 +24,14 @@
     </form>
     <a href="{{ path('fos_user_resetting_request') }}">Forgot Password</a>
 {% endblock fos_user_content %}
+
+{% block overlay %}
+    <div class="title">
+    <h2>Login</h2>
+    <ul>
+        <li><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+        <li><i class="fa fa-angle-double-right"></i></li>
+        <li>Login</li>
+    </ul>
+</div> <!-- End .title -->
+{% endblock %}

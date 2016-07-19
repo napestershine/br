@@ -32,3 +32,14 @@
     </div> <!-- End .blog_single_item_list -->
     {% endfor %}
 {% endblock %}
+
+{% block overlay %}
+    <div class="title">
+        <h2>Blog</h2>
+        <ul>
+            <li><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+            <li><i class="fa fa-angle-double-right"></i></li>
+            <li>Blog</li>
+        </ul>
+    </div> <!-- End .title -->
+{% endblock %}

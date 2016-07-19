@@ -47,4 +47,20 @@ class DefaultController extends Controller
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         return $this->render('BrooterWebBundle:Default:faq.html.twig', ['faqs' => $faqs, 'company' => $company]);
     }
+
+    public function privacyPolicyAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
+        $policy = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getPrivacypolicy();
+        return $this->render('BrooterWebBundle:Default:privacypolicy.html.twig', ['company' => $company, 'policy' => $policy]);
+    }
+
+    public function copyrightAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
+        $copyright = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getCopyright();
+        return $this->render('BrooterWebBundle:Default:copyright.html.twig', ['company' => $company, 'copyright' => $copyright]);
+    }
 }

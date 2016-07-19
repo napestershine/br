@@ -100,7 +100,7 @@
     <section id="inner_banner">
         <div class="overlay">
             <div class="container">
-
+                {% block overlay %}{% endblock %}
             </div> <!-- End .container -->
         </div> <!-- End .overlay -->
     </section> <!-- End .inner_banner -->
@@ -340,13 +340,14 @@
                                 </li>
                                 <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a>
                                 </li>
-                                <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i>
-                                        Pricing</a></li>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
                                 <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
                                                 class="fa fa-angle-right"></i> Terms</a></li>
                                 <li><a href="{{ path('brooter_web_dmca') }}" class="tran3s"><i
                                                 class="fa fa-angle-right"></i> DMCA</a></li>
+                                <li><a href="{{ path('brooter_web_privacypolicy') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Privacy Policy</a></li>
+                                <li><a href="{{ path('brooter_web_copyright') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Copyright</a></li>
                             </ul>
                         </div> <!-- End .useful_link -->
                     </div>

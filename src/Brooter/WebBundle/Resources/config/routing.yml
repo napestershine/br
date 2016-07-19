@@ -17,3 +17,11 @@ brooter_web_dmca:
 brooter_web_faq:
     path:     /faq
     defaults: { _controller: BrooterWebBundle:Default:faq }
+
+brooter_web_privacypolicy:
+    path:     /privacypolicy
+    defaults: { _controller: BrooterWebBundle:Default:privacyPolicy }
+
+brooter_web_copyright:
+    path:     /copyright
+    defaults: { _controller: BrooterWebBundle:Default:copyright }

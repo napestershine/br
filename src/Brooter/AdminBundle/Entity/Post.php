@@ -120,10 +120,23 @@ class Post
         return $this->content;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCategory()
     {
         return $this->category;
     }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+
     public function getFile()
     {
         return $this->file;

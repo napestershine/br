@@ -91,7 +91,7 @@
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
-                            <li class="tran3sL"><a href="property-listing.html">Properties</a></li>
+                            <li class="tran3sL"><a href="">Properties</a></li>
                             <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
                             <li class="tran3sL"><a href="{{ path('brooter_blog_homepage') }}">Blog</a></li>
                             <li class="tran3sL"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
@@ -109,8 +109,8 @@
     <!-- Call Us Anytime _____________________________ -->
     <div class="container">
         <div class="call_us">
-            <p><span><i class="fa fa-phone"></i></span>Call Us Anytime [at]</p>
-            <a href="tel:1-880-002-0088">1-880-002-0088</a>
+            <p><span><i class="fa fa-phone"></i></span>Call Us Anytime @</p>
+            <a href="tel:{{ company.field2 }}">{{ company.field2 }}</a>
         </div>
     </div>
     <!-- End Call Us Anytime _________________________ -->
@@ -118,14 +118,7 @@
     <section id="inner_banner">
         <div class="overlay">
             <div class="container">
-                <div class="title">
-                    <h2>Register</h2>
-                    <ul>
-                        <li><a href="index-1.html">Home</a></li>
-                        <li><i class="fa fa-angle-double-right"></i></li>
-                        <li>Register</li>
-                    </ul>
-                </div> <!-- End .title -->
+                {% block overlay %}{% endblock %}
             </div> <!-- End .container -->
         </div> <!-- End .overlay -->
     </section> <!-- End .inner_banner -->
@@ -233,7 +226,7 @@
                                 <div class="history">
                                     <div class="item">
                                         <div class="image_holder">
-                                            <img src="{{ asset('RealEstateTheme/images/home/22.jpg') }}" alt="images">
+                                            <img src="{{ asset('reweb/images/home/22.jpg') }}" alt="images">
                                         </div>
                                         <div class="text">
                                             <a href="property-details.html"><h6>High Rise Building</h6></a>
@@ -244,7 +237,7 @@
 
                                     <div class="item">
                                         <div class="image_holder">
-                                            <img src="{{ asset('RealEstateTheme/images/home/23.jpg') }}" alt="images">
+                                            <img src="{{ asset('reweb/images/home/23.jpg') }}" alt="images">
                                         </div>
                                         <div class="text">
                                             <a href="property-details.html"><h6>Low Rise Building</h6></a>
@@ -255,7 +248,7 @@
 
                                     <div class="item">
                                         <div class="image_holder">
-                                            <img src="{{ asset('RealEstateTheme/images/home/24.jpg') }}" alt="images">
+                                            <img src="{{ asset('reweb/images/home/24.jpg') }}" alt="images">
                                         </div>
                                         <div class="text">
                                             <a href="property-details.html"><h6>Jango Beach House</h6></a>
@@ -316,47 +309,47 @@
 <!-- Js File_________________________________ -->
 
 <!-- j Query -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-2.1.4.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jquery-2.1.4.js') }}"></script>
 
 <!-- Bootstrap JS -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/bootstrap.min.js') }}"></script>
 
 <!-- Vendor js _________ -->
 <!-- Style-switcher  -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jQuery.style.switcher.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jQuery.style.switcher.min.js') }}"></script>
 
 <!-- Google map js -->
 <script src="http://maps.google.com/maps/api/js"></script> <!-- Gmap Helper -->
-<script src="{{ asset('RealEstateTheme/js/gmap.js') }}"></script>
+<script src="{{ asset('reweb/js/gmap.js') }}"></script>
 
 
 <!-- Tooltip -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.tooltipster.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.tooltipster.min.js') }}"></script>
 
 <!-- ui js -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jquery-ui.min.js') }}"></script>
 
 <!-- Fancybox js -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.fancybox.pack.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.fancybox.pack.js') }}"></script>
 
 <!-- owl.carousel -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/owl.carousel.min.js') }}"></script>
 
 <!-- Language Switcher -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/jquery.polyglot.language.switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.polyglot.language.switcher.js') }}"></script>
 
 <!-- revolution -->
-<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ asset('RealEstateTheme/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('reweb/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('reweb/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
+        src="{{ asset('reweb/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+        src="{{ asset('reweb/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
 <script type="text/javascript"
-        src="{{ asset('RealEstateTheme/js/revolution/revolution.extension.navigation.min.js') }}"></script>
+        src="{{ asset('reweb/js/revolution/revolution.extension.navigation.min.js') }}"></script>
 
 <!-- Main js -->
-<script type="text/javascript" src="{{ asset('RealEstateTheme/js/main.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/main.js') }}"></script>
 
 </body>
 </html>

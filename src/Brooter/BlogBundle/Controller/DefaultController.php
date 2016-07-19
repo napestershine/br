@@ -28,9 +28,11 @@ class DefaultController extends Controller
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         $post = $em->getRepository('BrooterAdminBundle:Post')->find($id);
         $categories = $em->getRepository('BrooterAdminBundle:Category')->findAll();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
+
         return $this->render('BrooterBlogBundle:Default:show.html.twig', array(
             'post' => $post, 'category' => $company,
-            'categories' => $categories,
+            'categories' => $categories, 'company' => $company,
             //'delete_form' => $deleteForm->createView(),
         ));
     }
