@@ -73,5 +73,11 @@ class PropFeatureAmen
     {
         return $this->featureAmenName;
     }
+
+    public function __toString()
+    {
+        return $this->featureAmenName;
+    }
+
 }
 

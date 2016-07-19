@@ -29,3 +29,56 @@ brooter_admin_company:
 brooter_admin_cms:
     resource: "@BrooterAdminBundle/Resources/config/routing/cms.yml"
     prefix:   /cms
+
+brooter_admin_propertycate:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propertycate.yml"
+    prefix:   /propertycate
+
+brooter_admin_listpropfor:
+    resource: "@BrooterAdminBundle/Resources/config/routing/listpropfor.yml"
+    prefix:   /listpropfor
+
+brooter_admin_reservedparking:
+    resource: "@BrooterAdminBundle/Resources/config/routing/reservedparking.yml"
+    prefix:   /reservedparking
+
+brooter_admin_availability:
+    resource: "@BrooterAdminBundle/Resources/config/routing/availability.yml"
+    prefix:   /availability
+
+brooter_admin_ownership:
+    resource: "@BrooterAdminBundle/Resources/config/routing/ownership.yml"
+    prefix:   /ownership
+
+brooter_admin_overlooking:
+    resource: "@BrooterAdminBundle/Resources/config/routing/overlooking.yml"
+    prefix:   /overlooking
+
+
+brooter_admin_watersource:
+    resource: "@BrooterAdminBundle/Resources/config/routing/watersource.yml"
+    prefix:   /watersource
+
+
+brooter_admin_powerbackup:
+    resource: "@BrooterAdminBundle/Resources/config/routing/powerbackup.yml"
+    prefix:   /powerbackup
+
+
+brooter_admin_typeofflooring:
+    resource: "@BrooterAdminBundle/Resources/config/routing/typeofflooring.yml"
+    prefix:   /typeofflooring
+
+brooter_admin_furnished:
+    resource: "@BrooterAdminBundle/Resources/config/routing/furnished.yml"
+    prefix:   /furnished
+
+
+brooter_admin_propfeatureamen:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propfeatureamen.yml"
+    prefix:   /propfeatureamen
+
+
+brooter_admin_proppossesion:
+    resource: "@BrooterAdminBundle/Resources/config/routing/proppossesion.yml"
+    prefix:   /proppossesion

@@ -73,5 +73,10 @@ class Ownership
     {
         return $this->ownershipType;
     }
+
+    public function __toString()
+    {
+        return $this->ownershipType;
+    }
 }
 

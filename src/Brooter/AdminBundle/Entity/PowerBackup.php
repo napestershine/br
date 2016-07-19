@@ -74,5 +74,10 @@ class PowerBackup
     {
         return $this->powerBackupName;
     }
+
+    public function __toString()
+    {
+        return $this->powerBackupName;
+    }
 }
 

@@ -71,5 +71,10 @@ class Overlooking
     {
         return $this->overLookingType;
     }
+
+    public function __toString()
+    {
+        return $this->overLookingType;
+    }
 }
 

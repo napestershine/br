@@ -74,5 +74,11 @@ class furnished
     {
         return $this->furnishedTypeName;
     }
+
+    public function __toString()
+    {
+        return $this->furnishedTypeName;
+    }
+
 }
 

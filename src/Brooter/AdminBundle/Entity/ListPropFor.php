@@ -73,5 +73,10 @@ class ListPropFor
     {
         return $this->listPropForName;
     }
+
+    public function __toString()
+    {
+        return $this->listPropForName;
+    }
 }
 

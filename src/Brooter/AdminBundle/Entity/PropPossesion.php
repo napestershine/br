@@ -73,5 +73,11 @@ class PropPossesion
     {
         return $this->propPossesionOn;
     }
+
+    public function __toString()
+    {
+        return $this->propPossesionOn;
+    }
+
 }
 

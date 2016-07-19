@@ -24,6 +24,11 @@ class PostProperty
 
 
     /**
+     * @ORM\Column(name="title",type="text")
+     */
+    private $title;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropertyCate", inversedBy="postProperty")
      * @ORM\JoinColumn(name="PropCate_id", referencedColumnName="id")
      */

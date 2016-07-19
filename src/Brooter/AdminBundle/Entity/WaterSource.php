@@ -74,5 +74,10 @@ class WaterSource
     {
         return $this->waterSourceType;
     }
+
+    public function __toString()
+    {
+        return $this->waterSourceType;
+    }
 }
 

@@ -72,5 +72,10 @@ class ReservedParking
     {
         return $this->reservedParkingType;
     }
+
+    public function __toString()
+    {
+        return $this->reservedParkingType;
+    }
 }
 

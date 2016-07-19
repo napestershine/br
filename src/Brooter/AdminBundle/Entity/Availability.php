@@ -74,5 +74,11 @@ class Availability
     {
         return $this->availabilityType;
     }
+
+    public function __toString()
+    {
+
+        return $this->availabilityType;
+    }
 }
 

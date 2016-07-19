@@ -83,5 +83,9 @@ class PropertyCate
     }
 
 
+    public function __toString()
+    {
+        return $this->propCateName;
+    }
 }
 

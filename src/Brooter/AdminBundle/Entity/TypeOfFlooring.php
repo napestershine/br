@@ -72,5 +72,10 @@ class TypeOfFlooring
     {
         return $this->flooringTypeName;
     }
+
+    public function __toString()
+    {
+        return $this->flooringTypeName;
+    }
 }
 
