@@ -18,7 +18,7 @@ class PostPropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
+            ->add('title')
             ->add('propType', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\PropertyCate',
                 'multiple' => false,
@@ -31,16 +31,23 @@ class PostPropertyType extends AbstractType
             ))
             ->add('area')
             ->add('address')
+            ->add('noofbedroom')
+            ->add('noofbathroom')
+            ->add('noofbalcony')
+            ->add('totalfloor')
+            ->add('propOnFloor')
             ->add('reservedParking', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\ReservedParking',
                 'multiple' => false,
                 'expanded' => true,
             ))
+            ->add('expectedPrice')
             ->add('availability', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\Availability',
                 'multiple' => false,
                 'expanded' => true,
             ))
+            ->add('ageOfProp')
             ->add('ownership')
             ->add('overLooking', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\Overlooking',
@@ -73,6 +80,7 @@ class PostPropertyType extends AbstractType
                 'expanded' => true,
             ))
             ->add('propPossesion')
+            ->add('description')
         ;
     }
     

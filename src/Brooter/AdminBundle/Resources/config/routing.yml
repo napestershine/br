@@ -82,3 +82,13 @@ brooter_admin_propfeatureamen:
 brooter_admin_proppossesion:
     resource: "@BrooterAdminBundle/Resources/config/routing/proppossesion.yml"
     prefix:   /proppossesion
+
+
+brooter_admin_ageofproperty:
+    resource: "@BrooterAdminBundle/Resources/config/routing/ageofproperty.yml"
+    prefix:   /ageofproperty
+
+brooter_admin_propertyonfloor:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propertyonfloor.yml"
+    prefix:   /propertyonfloor
+
