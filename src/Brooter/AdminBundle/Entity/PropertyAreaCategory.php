@@ -5,12 +5,12 @@ namespace Brooter\AdminBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AreaIn
+ * PropertyAreaCategory
  *
- * @ORM\Table(name="area_in")
- * @ORM\Entity(repositoryClass="Brooter\AdminBundle\Repository\AreaInRepository")
+ * @ORM\Table(name="property_area_category")
+ * @ORM\Entity(repositoryClass="Brooter\AdminBundle\Repository\PropertyAreaCategoryRepository")
  */
-class AreaIn
+class PropertyAreaCategory
 {
     /**
      * @var int
@@ -24,13 +24,13 @@ class AreaIn
     /**
      * @var string
      *
-     * @ORM\Column(name="AreaInName", type="string", length=255)
+     * @ORM\Column(name="PropAreaCategoryName", type="string", length=255)
      */
-    private $areaInName;
+    private $propAreaCategoryName;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Area", mappedBy="areaIn")
+     * @ORM\OneToMany(targetEntity="Area", mappedBy="propAreaCategoryName")
      */
     private $area;
 
@@ -38,7 +38,9 @@ class AreaIn
     public function _construct()
     {
         $this->area=new \Doctrine\Common\Collections\ArrayCollection();
+
     }
+
     /**
      * Get id
      *
@@ -50,27 +52,27 @@ class AreaIn
     }
 
     /**
-     * Set areaInName
+     * Set propAreaCategoryName
      *
-     * @param string $areaInName
+     * @param string $propAreaCategoryName
      *
-     * @return AreaIn
+     * @return PropertyAreaCategory
      */
-    public function setAreaInName($areaInName)
+    public function setPropAreaCategoryName($propAreaCategoryName)
     {
-        $this->areaInName = $areaInName;
+        $this->propAreaCategoryName = $propAreaCategoryName;
 
         return $this;
     }
 
     /**
-     * Get areaInName
+     * Get propAreaCategoryName
      *
      * @return string
      */
-    public function getAreaInName()
+    public function getPropAreaCategoryName()
     {
-        return $this->areaInName;
+        return $this->propAreaCategoryName;
     }
 
     /**

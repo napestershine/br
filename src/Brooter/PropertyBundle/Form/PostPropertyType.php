@@ -2,6 +2,8 @@
 
 namespace Brooter\PropertyBundle\Form;
 
+use Brooter\AdminBundle\Form\AddressType;
+use Brooter\AdminBundle\Form\AreaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -29,8 +31,12 @@ class PostPropertyType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ))
-            ->add('area')
-            ->add('address')
+            ->add('area',AreaType::class,array(
+                'data_class' => 'Brooter\AdminBundle\Entity\Area'
+            ))
+            ->add('address', AddressType::class,array(
+                'data_class' => 'Brooter\AdminBundle\Entity\Address',
+            ))
             ->add('noofbedroom')
             ->add('noofbathroom')
             ->add('noofbalcony')
@@ -90,7 +96,8 @@ class PostPropertyType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Brooter\PropertyBundle\Entity\PostProperty'
+            'data_class' => 'Brooter\PropertyBundle\Entity\PostProperty',
+            'cascade_validation' => true,
         ));
     }
 }

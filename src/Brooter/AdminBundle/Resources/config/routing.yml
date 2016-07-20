@@ -92,3 +92,10 @@ brooter_admin_propertyonfloor:
     resource: "@BrooterAdminBundle/Resources/config/routing/propertyonfloor.yml"
     prefix:   /propertyonfloor
 
+brooter_admin_areain:
+    resource: "@BrooterAdminBundle/Resources/config/routing/areain.yml"
+    prefix:   /areain
+
+brooter_admin_propertyareacategory:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propertyareacategory.yml"
+    prefix:   /propertyareacategory

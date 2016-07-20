@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AreaType extends AbstractType
+class PropertyAreaCategoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,7 @@ class AreaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('calculatedArea')
             ->add('propAreaCategoryName')
-            ->add('areaIn')
         ;
     }
     
@@ -27,7 +25,7 @@ class AreaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Brooter\AdminBundle\Entity\Area'
+            'data_class' => 'Brooter\AdminBundle\Entity\PropertyAreaCategory'
         ));
     }
 }

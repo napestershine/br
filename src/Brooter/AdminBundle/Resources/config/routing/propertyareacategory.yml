@@ -1,0 +1,24 @@
+propertyareacategory_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropertyAreaCategory:index" }
+    methods:  GET
+
+propertyareacategory_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropertyAreaCategory:show" }
+    methods:  GET
+
+propertyareacategory_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropertyAreaCategory:new" }
+    methods:  [GET, POST]
+
+propertyareacategory_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropertyAreaCategory:edit" }
+    methods:  [GET, POST]
+
+propertyareacategory_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropertyAreaCategory:delete" }
+    methods:  DELETE
