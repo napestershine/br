@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PropertySpecification list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propspecificationtitle</th>
+                <th>Propspecdesc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertySpecification in propertySpecifications %}
+            <tr>
+                <td><a href="{{ path('propertyspecification_show', { 'id': propertySpecification.id }) }}">{{ propertySpecification.id }}</a></td>
+                <td>{{ propertySpecification.propSpecificationTitle }}</td>
+                <td>{{ propertySpecification.propSpecDesc }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertyspecification_show', { 'id': propertySpecification.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertyspecification_edit', { 'id': propertySpecification.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertyspecification_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>FloorPlans list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Imagefilepath</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for floorPlan in floorPlans %}
+            <tr>
+                <td><a href="{{ path('floorplans_show', { 'id': floorPlan.id }) }}">{{ floorPlan.id }}</a></td>
+                <td>{{ floorPlan.title }}</td>
+                <td>{{ floorPlan.imageFilePath }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('floorplans_show', { 'id': floorPlan.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('floorplans_edit', { 'id': floorPlan.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('floorplans_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

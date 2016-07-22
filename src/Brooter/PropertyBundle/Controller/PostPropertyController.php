@@ -44,6 +44,8 @@ class PostPropertyController extends Controller
             $em->persist($postProperty);
             $em->flush();
 
+            
+
             return $this->redirectToRoute('postproperty_show', array('id' => $postProperty->getId()));
         }
 

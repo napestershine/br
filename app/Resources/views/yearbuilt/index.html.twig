@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>YearBuilt list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Yearofbuilding</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for yearBuilt in yearBuilts %}
+            <tr>
+                <td><a href="{{ path('yearbuilt_show', { 'id': yearBuilt.id }) }}">{{ yearBuilt.id }}</a></td>
+                <td>{{ yearBuilt.yearOfBuilding }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('yearbuilt_show', { 'id': yearBuilt.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('yearbuilt_edit', { 'id': yearBuilt.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('yearbuilt_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

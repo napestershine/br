@@ -99,3 +99,12 @@ brooter_admin_areain:
 brooter_admin_propertyareacategory:
     resource: "@BrooterAdminBundle/Resources/config/routing/propertyareacategory.yml"
     prefix:   /propertyareacategory
+
+
+brooter_admin_propertyfacing:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propertyfacing.yml"
+    prefix:   /propertyfacing
+
+brooter_admin_materialused:
+    resource: "@BrooterAdminBundle/Resources/config/routing/materialused.yml"
+    prefix:   /materialused

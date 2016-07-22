@@ -172,6 +172,43 @@ class PostProperty
      */
     private $propPossesion;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropertyFacing", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="PropertyFacing_id", referencedColumnName="id")
+     */
+    private $propertyFacing;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\MaterialUsed", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="MaterialUsed_id", referencedColumnName="id")
+     */
+    private $materialUsed;
+
+
+
+    private $floorPlans;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PropertySpecification", mappedBy="postProperty",cascade={"persist"})
+     */
+    private $propertySpecification;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\YearBuilt", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="YearBuilt_id", referencedColumnName="id")
+     */
+    private $yearBuilt;
+
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="images", type="array", nullable=true)
+     */
+    private $images;
+
     /**
      * @ORM\Column(name="description",type="text")
      */
@@ -190,6 +227,9 @@ class PostProperty
         $this->powerBackup=new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeOfFlooring=new \Doctrine\Common\Collections\ArrayCollection();
         $this->propFeatureAmen=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->floorPlans=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->propertySpecification=new \Doctrine\Common\Collections\ArrayCollection();
+
     }
     public function getId()
     {
@@ -372,9 +412,66 @@ class PostProperty
     /**
      * @return mixed
      */
+    public function getFloorPlans()
+    {
+        return $this->floorPlans;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaterialUsed()
+    {
+        return $this->materialUsed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropertyFacing()
+    {
+        return $this->propertyFacing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropertySpecification()
+    {
+        return $this->propertySpecification;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYearBuilt()
+    {
+        return $this->yearBuilt;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getExpectedPrice()
     {
         return $this->expectedPrice;
+    }
+
+    public function addFloorPlans(FloorPlans $floorPlans)
+    {
+        $this->floorPlans->add($floorPlans);
+    }
+    public function removeFloorPlans(FloorPlans $floorPlans)
+    {
+        $this->floorPlans->remove($floorPlans);
     }
 }
 

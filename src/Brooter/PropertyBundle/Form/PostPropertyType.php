@@ -4,9 +4,11 @@ namespace Brooter\PropertyBundle\Form;
 
 use Brooter\AdminBundle\Form\AddressType;
 use Brooter\AdminBundle\Form\AreaType;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,14 +28,12 @@ class PostPropertyType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ))
-            ->add('listPropFor', EntityType::class, array(
-                'class' => 'Brooter\AdminBundle\Entity\ListPropFor',
-                'multiple' => false,
-                'expanded' => true,
-            ))
+
             ->add('area',AreaType::class,array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Area'
             ))
+
+           
             ->add('address', AddressType::class,array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Address',
             ))
@@ -85,6 +85,18 @@ class PostPropertyType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ))
+            ->add('propertyFacing')
+            ->add('materialUsed')
+            ->add('yearBuilt')
+            ->add('floorPlans', CollectionType::class, array(
+                'entry_type' => FloorPlansType::class,
+                'label' => 'Floor Plan',
+                'allow_add' =>  true,
+                'allow_delete' => true,
+                'by_reference'=>false,
+                'prototype' => true,
+            ))
+
             ->add('propPossesion')
             ->add('description')
         ;
