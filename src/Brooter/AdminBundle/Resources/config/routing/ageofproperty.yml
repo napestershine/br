@@ -1,0 +1,24 @@
+ageofproperty_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:AgeOfProperty:index" }
+    methods:  GET
+
+ageofproperty_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:AgeOfProperty:show" }
+    methods:  GET
+
+ageofproperty_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:AgeOfProperty:new" }
+    methods:  [GET, POST]
+
+ageofproperty_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:AgeOfProperty:edit" }
+    methods:  [GET, POST]
+
+ageofproperty_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:AgeOfProperty:delete" }
+    methods:  DELETE

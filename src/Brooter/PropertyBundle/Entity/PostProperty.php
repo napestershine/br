@@ -24,7 +24,7 @@ class PostProperty
 
 
     /**
-     * @ORM\Column(name="title",type="text")
+     * @ORM\Column(name="title",type="string",length=255)
      */
     private $title;
 
@@ -56,6 +56,43 @@ class PostProperty
     private $address;
 
 
+
+    /**
+     * @ORM\Column(name="noofbedroom",type="integer")
+     */
+    private $noofbedroom;
+
+
+    /**
+     * @ORM\Column(name="noofbathroom",type="integer")
+     */
+    private $noofbathroom;
+
+
+    /**
+     * @ORM\Column(name="noofbalcony",type="integer")
+     */
+    private $noofbalcony;
+
+
+    /**
+     * @ORM\Column(name="totalfloor",type="integer")
+     */
+    private $totalfloor;
+
+
+    /**
+     * @ORM\Column(name="expected_price",type="float")
+     */
+    private $expectedPrice;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropertyOnFloor", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="PropertyOnFloor_id", referencedColumnName="id")
+     */
+    private $propOnFloor;
+
     /**
      * @ORM\OneToOne(targetEntity="Brooter\AdminBundle\Entity\ReservedParking", inversedBy="postProperty")
      * @ORM\JoinColumn(name="ReservedParking_id", referencedColumnName="id")
@@ -71,6 +108,12 @@ class PostProperty
     private $availability;
 
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\AgeOfProperty", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="AgeOfProperty_id", referencedColumnName="id")
+     */
+    private $ageOfProp;
     /**
      * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\Ownership", inversedBy="postProperty")
      * @ORM\JoinColumn(name="Ownership_id", referencedColumnName="id")
@@ -129,6 +172,48 @@ class PostProperty
      */
     private $propPossesion;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropertyFacing", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="PropertyFacing_id", referencedColumnName="id")
+     */
+    private $propertyFacing;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\MaterialUsed", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="MaterialUsed_id", referencedColumnName="id")
+     */
+    private $materialUsed;
+
+
+
+    private $floorPlans;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PropertySpecification", mappedBy="postProperty",cascade={"persist"})
+     */
+    private $propertySpecification;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\YearBuilt", inversedBy="postProperty")
+     * @ORM\JoinColumn(name="YearBuilt_id", referencedColumnName="id")
+     */
+    private $yearBuilt;
+
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="images", type="array", nullable=true)
+     */
+    private $images;
+
+    /**
+     * @ORM\Column(name="description",type="text")
+     */
+    private $description;
+
     /**
      * Get id
      *
@@ -142,6 +227,9 @@ class PostProperty
         $this->powerBackup=new \Doctrine\Common\Collections\ArrayCollection();
         $this->typeOfFlooring=new \Doctrine\Common\Collections\ArrayCollection();
         $this->propFeatureAmen=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->floorPlans=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->propertySpecification=new \Doctrine\Common\Collections\ArrayCollection();
+
     }
     public function getId()
     {
@@ -255,6 +343,135 @@ class PostProperty
     {
         return $this->waterSource;
     }
-    
+
+
+    /**
+     * @return mixed
+     */
+    public function getAgeOfProp()
+    {
+        return $this->ageOfProp;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNoofbalcony()
+    {
+        return $this->noofbalcony;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNoofbathroom()
+    {
+        return $this->noofbathroom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNoofbedroom()
+    {
+        return $this->noofbedroom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropOnFloor()
+    {
+        return $this->propOnFloor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalfloor()
+    {
+        return $this->totalfloor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFloorPlans()
+    {
+        return $this->floorPlans;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaterialUsed()
+    {
+        return $this->materialUsed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropertyFacing()
+    {
+        return $this->propertyFacing;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropertySpecification()
+    {
+        return $this->propertySpecification;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYearBuilt()
+    {
+        return $this->yearBuilt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpectedPrice()
+    {
+        return $this->expectedPrice;
+    }
+
+    public function addFloorPlans(FloorPlans $floorPlans)
+    {
+        $this->floorPlans->add($floorPlans);
+    }
+    public function removeFloorPlans(FloorPlans $floorPlans)
+    {
+        $this->floorPlans->remove($floorPlans);
+    }
 }
 

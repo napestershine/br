@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'PostProperty.html.twig' %}
 
 {% block body %}
-    <h1>PostProperty creation</h1>
 
+    <h1>PostProperty creation</h1>
+    {{ dump() }}
     {{ form_start(form) }}
         {{ form_widget(form) }}
+            <ul class="floorplans" data-prototype="{{ form_row(form.floorPlans) }}">
+            </ul>
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

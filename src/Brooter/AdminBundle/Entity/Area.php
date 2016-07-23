@@ -21,12 +21,13 @@ class Area
      */
     private $id;
 
+
     /**
-     * @var string
-     *
-     * @ORM\Column(name="AreaType", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropertyAreaCategory", inversedBy="area" )
+     * @ORM\JoinColumn(name="PropertyAreaCategory_id", referencedColumnName="id")
      */
-    private $areaType;
+    private $propAreaCategoryName;
+
 
     /**
      * @var float
@@ -36,7 +37,8 @@ class Area
     private $calculatedArea;
 
     /**
-     * @ORM\OneToOne(targetEntity="AreaIn", mappedBy="area")
+     * @ORM\ManyToOne(targetEntity="AreaIn", inversedBy="area")
+     * @ORM\JoinColumn(name="AreaIn_id", referencedColumnName="id")
      */
     private $areaIn;
 
@@ -56,30 +58,9 @@ class Area
         return $this->id;
     }
 
-    /**
-     * Set areaType
-     *
-     * @param string $areaType
-     *
-     * @return Area
-     */
-    public function setAreaType($areaType)
-    {
-        $this->areaType = $areaType;
 
-        return $this;
-    }
 
-    /**
-     * Get areaType
-     *
-     * @return string
-     */
-    public function getAreaType()
-    {
-        return $this->areaType;
-    }
-
+    
     /**
      * Set calculatedArea
      *
@@ -103,5 +84,30 @@ class Area
     {
         return $this->calculatedArea;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAreaIn()
+    {
+        return $this->areaIn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPropAreaCategoryName()
+    {
+        return $this->propAreaCategoryName;
+    }
+
 }
 

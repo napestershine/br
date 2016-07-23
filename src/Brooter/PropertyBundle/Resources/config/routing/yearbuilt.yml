@@ -1,0 +1,24 @@
+yearbuilt_index:
+    path:     /
+    defaults: { _controller: "BrooterPropertyBundle:YearBuilt:index" }
+    methods:  GET
+
+yearbuilt_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterPropertyBundle:YearBuilt:show" }
+    methods:  GET
+
+yearbuilt_new:
+    path:     /new
+    defaults: { _controller: "BrooterPropertyBundle:YearBuilt:new" }
+    methods:  [GET, POST]
+
+yearbuilt_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterPropertyBundle:YearBuilt:edit" }
+    methods:  [GET, POST]
+
+yearbuilt_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterPropertyBundle:YearBuilt:delete" }
+    methods:  DELETE

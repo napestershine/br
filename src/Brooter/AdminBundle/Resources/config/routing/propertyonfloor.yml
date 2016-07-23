@@ -1,0 +1,24 @@
+propertyonfloor_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropertyOnFloor:index" }
+    methods:  GET
+
+propertyonfloor_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropertyOnFloor:show" }
+    methods:  GET
+
+propertyonfloor_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropertyOnFloor:new" }
+    methods:  [GET, POST]
+
+propertyonfloor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropertyOnFloor:edit" }
+    methods:  [GET, POST]
+
+propertyonfloor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropertyOnFloor:delete" }
+    methods:  DELETE

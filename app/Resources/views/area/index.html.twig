@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Areatype</th>
                 <th>Calculatedarea</th>
                 <th>Actions</th>
             </tr>
@@ -16,7 +15,6 @@
         {% for area in areas %}
             <tr>
                 <td><a href="{{ path('area_show', { 'id': area.id }) }}">{{ area.id }}</a></td>
-                <td>{{ area.areaType }}</td>
                 <td>{{ area.calculatedArea }}</td>
                 <td>
                     <ul>

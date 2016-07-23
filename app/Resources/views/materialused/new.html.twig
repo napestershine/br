@@ -1,0 +1,18 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Material Used{% endblock %}
+{% block subheader %}New Material Used{% endblock %}
+{% block content %}
+
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('materialused_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

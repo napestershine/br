@@ -1,0 +1,24 @@
+propertyspecification_index:
+    path:     /
+    defaults: { _controller: "BrooterPropertyBundle:PropertySpecification:index" }
+    methods:  GET
+
+propertyspecification_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterPropertyBundle:PropertySpecification:show" }
+    methods:  GET
+
+propertyspecification_new:
+    path:     /new
+    defaults: { _controller: "BrooterPropertyBundle:PropertySpecification:new" }
+    methods:  [GET, POST]
+
+propertyspecification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterPropertyBundle:PropertySpecification:edit" }
+    methods:  [GET, POST]
+
+propertyspecification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterPropertyBundle:PropertySpecification:delete" }
+    methods:  DELETE

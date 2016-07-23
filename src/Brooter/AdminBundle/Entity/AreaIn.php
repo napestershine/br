@@ -30,11 +30,15 @@ class AreaIn
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Area", inversedBy="areaIn")
-     * @ORM\JoinColumn(name="area_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Area", mappedBy="areaIn")
      */
     private $area;
 
+
+    public function _construct()
+    {
+        $this->area=new \Doctrine\Common\Collections\ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -67,6 +71,14 @@ class AreaIn
     public function getAreaInName()
     {
         return $this->areaInName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArea()
+    {
+        return $this->area;
     }
 }
 

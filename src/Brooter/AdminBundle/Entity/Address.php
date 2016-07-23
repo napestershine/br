@@ -52,7 +52,6 @@ class Address
 
     /**
      * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="address")
-     * @ORM\JoinColumn(name="PostProp_id", referencedColumnName="id")
      */
     private $postProperty;
 

@@ -15,8 +15,8 @@ class AreaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('areaType')
             ->add('calculatedArea')
+            ->add('propAreaCategoryName')
             ->add('areaIn')
         ;
     }
