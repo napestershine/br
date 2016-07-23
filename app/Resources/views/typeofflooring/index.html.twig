@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %}Types of Flooring  {% endblock %}
+{% block subheader %}Types of Flooring List {% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Flooringtypename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeOfFlooring in typeOfFloorings %}
+            <tr>
+                <td><a href="{{ path('typeofflooring_show', { 'id': typeOfFlooring.id }) }}">{{ typeOfFlooring.id }}</a></td>
+                <td>{{ typeOfFlooring.flooringTypeName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('typeofflooring_show', { 'id': typeOfFlooring.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('typeofflooring_edit', { 'id': typeOfFlooring.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typeofflooring_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

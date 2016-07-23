@@ -1,32 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Slider</h1>
+{% block header %}Home Slider{% endblock %}
+{% block subheader %}Homepage Image slider{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <th>Slider Image</th>
-                <td>{{ slider.id }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <img src="{{ asset('uploads/sliders/' ~ slider.file) }}" />
-        </li>
-        <li>
-            <a href="{{ path('slider_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('slider_edit', { 'id': slider.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('slider_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row">
+            <label for="image" class="col-md-2">Slider Image</label>
+            <div class="col-md-10">
+                <img src="{{ asset('uploads/sliders/' ~ slider.file) }}"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a href="{{ path('slider_index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ path('slider_edit', { 'id': slider.id }) }}" class="btn btn-info">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

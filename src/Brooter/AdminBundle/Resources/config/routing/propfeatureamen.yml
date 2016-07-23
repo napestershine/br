@@ -1,0 +1,24 @@
+propfeatureamen_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropFeatureAmen:index" }
+    methods:  GET
+
+propfeatureamen_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropFeatureAmen:show" }
+    methods:  GET
+
+propfeatureamen_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropFeatureAmen:new" }
+    methods:  [GET, POST]
+
+propfeatureamen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropFeatureAmen:edit" }
+    methods:  [GET, POST]
+
+propfeatureamen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropFeatureAmen:delete" }
+    methods:  DELETE

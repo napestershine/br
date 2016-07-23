@@ -43,8 +43,11 @@
                                 <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
                                 <li class="tran3sL"><a href="">Properties</a></li>
                                 <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
-                                <li class="tran3sL"><a href="">Blog</a></li>
+                                <li class="tran3sL"><a href="{{ path('brooter_blog_homepage') }}">Blog</a></li>
                                 {% if app.user %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li class="tran3sL"><a href="{{ path('brooter_admin_homepage') }}">Admin</a></li>
+                                    {% endif %}
                                     <li class="tran3sL"><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
                                     <li class="tran3sL"><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                                 {% else %}
@@ -60,7 +63,6 @@
                 </div>  <!-- End .wrapper -->
             </div> <!-- End .container -->
         </div> <!-- End .main_menu -->
-
         <!-- End Main Menu _______________________________ -->
 
 
@@ -113,7 +115,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <div class="useful_link">
                                 <div class="footer_title">
-                                    <h4>Usefull Links</h4>
+                                    <h4>Useful Links</h4>
                                 </div>
                                 <ul>
                                     <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
@@ -136,13 +138,14 @@
                                     </li>
                                     <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a>
                                     </li>
-                                    <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i>
-                                            Pricing</a></li>
-                                    <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
-                                    <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
+                                   <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
                                                     class="fa fa-angle-right"></i> Terms</a></li>
                                     <li><a href="{{ path('brooter_web_dmca') }}" class="tran3s"><i
                                                     class="fa fa-angle-right"></i> DMCA</a></li>
+                                    <li><a href="{{ path('brooter_web_privacypolicy') }}" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Privacy Policy</a></li>
+                                    <li><a href="{{ path('brooter_web_copyright') }}" class="tran3s"><i
+                                                    class="fa fa-angle-right"></i> Copyright</a></li>
                                     {#<li><a href="login.html" class="tran3s"><i class="fa fa-angle-right"></i> Login /
                                             Register</a></li>#}
                                 </ul>
@@ -225,9 +228,9 @@
 
                     <div class="footer_nav">
                         <ul>
-                            <li><a href="#" class="tran3s">Home</a></li>
-                            <li><a href="#" class="tran3s">Properties</a></li>
-                            <li><a href="#" class="tran3s">Agents</a></li>
+                            <li><a href="{{ path('brooter_web_homepage') }}" class="tran3s">Home</a></li>
+                            <li><a href="" class="tran3s">Properties</a></li>
+                            <li><a href="" class="tran3s">Agents</a></li>
                         </ul>
                     </div> <!-- End .footer_nav -->
                 </div>

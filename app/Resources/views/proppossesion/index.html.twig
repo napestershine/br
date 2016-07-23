@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Possesion On {% endblock %}
+{% block subheader %} Property Possesion List {% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Proppossesionon</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propPossesion in propPossesions %}
+            <tr>
+                <td><a href="{{ path('proppossesion_show', { 'id': propPossesion.id }) }}">{{ propPossesion.id }}</a></td>
+                <td>{{ propPossesion.propPossesionOn }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('proppossesion_show', { 'id': propPossesion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('proppossesion_edit', { 'id': propPossesion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('proppossesion_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Availability {% endblock %}
+{% block subheader %} Availability List {% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Availabilitytype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for availability in availabilities %}
+            <tr>
+                <td><a href="{{ path('availability_show', { 'id': availability.id }) }}">{{ availability.id }}</a></td>
+                <td>{{ availability.availabilityType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('availability_show', { 'id': availability.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('availability_edit', { 'id': availability.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('availability_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

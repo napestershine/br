@@ -1,0 +1,24 @@
+areain_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:AreaIn:index" }
+    methods:  GET
+
+areain_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:AreaIn:show" }
+    methods:  GET
+
+areain_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:AreaIn:new" }
+    methods:  [GET, POST]
+
+areain_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:AreaIn:edit" }
+    methods:  [GET, POST]
+
+areain_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:AreaIn:delete" }
+    methods:  DELETE

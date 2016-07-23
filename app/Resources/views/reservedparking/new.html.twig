@@ -1,0 +1,17 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Reserved Parking Facilities  {% endblock %}
+{% block subheader %} New Reserved Parking Facility{% endblock %}
+{% block content %}
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reservedparking_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

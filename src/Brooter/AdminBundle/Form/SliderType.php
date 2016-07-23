@@ -12,7 +12,8 @@ class SliderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class, array('label' => 'Image (jpg/jpeg/png file)', 'data_class' => null));
+            ->add('file', FileType::class, array('label' => 'Image (jpg/jpeg/png file)', 'data_class' => null,
+                'attr'=>['class' => 'form-control']));
     }
 
     public function configureOptions(OptionsResolver $resolver)

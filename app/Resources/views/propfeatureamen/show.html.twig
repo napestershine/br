@@ -1,0 +1,33 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Features and Amenities {% endblock %}
+{% block subheader %} Property Features and Amenities Details {% endblock %}
+{% block content %}
+
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ propFeatureAman.id }}</td>
+            </tr>
+            <tr>
+                <th>Featureamenname</th>
+                <td>{{ propFeatureAman.featureAmenName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propfeatureamen_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('propfeatureamen_edit', { 'id': propFeatureAman.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

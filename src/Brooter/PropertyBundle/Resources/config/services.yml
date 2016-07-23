@@ -1,0 +1,4 @@
+services:
+#    brooter_property.example:
+#        class: Brooter\PropertyBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

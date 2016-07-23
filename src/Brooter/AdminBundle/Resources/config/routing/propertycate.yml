@@ -1,0 +1,24 @@
+propertycate_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropertyCate:index" }
+    methods:  GET
+
+propertycate_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropertyCate:show" }
+    methods:  GET
+
+propertycate_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropertyCate:new" }
+    methods:  [GET, POST]
+
+propertycate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropertyCate:edit" }
+    methods:  [GET, POST]
+
+propertycate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropertyCate:delete" }
+    methods:  DELETE

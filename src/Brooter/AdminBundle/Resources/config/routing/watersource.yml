@@ -1,0 +1,24 @@
+watersource_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:WaterSource:index" }
+    methods:  GET
+
+watersource_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:WaterSource:show" }
+    methods:  GET
+
+watersource_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:WaterSource:new" }
+    methods:  [GET, POST]
+
+watersource_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:WaterSource:edit" }
+    methods:  [GET, POST]
+
+watersource_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:WaterSource:delete" }
+    methods:  DELETE

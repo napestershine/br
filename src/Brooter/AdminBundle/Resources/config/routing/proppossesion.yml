@@ -1,0 +1,24 @@
+proppossesion_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropPossesion:index" }
+    methods:  GET
+
+proppossesion_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropPossesion:show" }
+    methods:  GET
+
+proppossesion_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropPossesion:new" }
+    methods:  [GET, POST]
+
+proppossesion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropPossesion:edit" }
+    methods:  [GET, POST]
+
+proppossesion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropPossesion:delete" }
+    methods:  DELETE

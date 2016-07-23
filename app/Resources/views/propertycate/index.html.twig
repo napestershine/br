@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Type{% endblock %}
+{% block subheader %} Property Type List{% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Property Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyCate in propertyCates %}
+            <tr>
+                <td><a href="{{ path('propertycate_show', { 'id': propertyCate.id }) }}">{{ propertyCate.id }}</a></td>
+                <td>{{ propertyCate.propCateName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertycate_show', { 'id': propertyCate.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertycate_edit', { 'id': propertyCate.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertycate_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

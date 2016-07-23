@@ -1,0 +1,33 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Type{% endblock %}
+{% block subheader %} Property Type Details{% endblock %}
+{% block content %}
+    <h1>PropertyCate</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ propertyCate.id }}</td>
+            </tr>
+            <tr>
+                <th>Propcatename</th>
+                <td>{{ propertyCate.propCateName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertycate_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('propertycate_edit', { 'id': propertyCate.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

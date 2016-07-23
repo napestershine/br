@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Overlooking Facilities {% endblock %}
+{% block subheader %} Overlooking Facilities List {% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Overlookingtype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for overlooking in overlookings %}
+            <tr>
+                <td><a href="{{ path('overlooking_show', { 'id': overlooking.id }) }}">{{ overlooking.id }}</a></td>
+                <td>{{ overlooking.overLookingType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('overlooking_show', { 'id': overlooking.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('overlooking_edit', { 'id': overlooking.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('overlooking_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'admin.html.twig' %}
+{% block header %}Water Source Facilities {% endblock %}
+{% block subheader %}Water Source Facilities  Details {% endblock %}
+{% block content %}
+
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ waterSource.id }}</td>
+            </tr>
+            <tr>
+                <th>Watersourcetype</th>
+                <td>{{ waterSource.waterSourceType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('watersource_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('watersource_edit', { 'id': waterSource.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

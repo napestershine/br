@@ -1,0 +1,17 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Features and Amenities {% endblock %}
+{% block subheader %} New Property Features and Amenities{% endblock %}
+{% block content %}
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('propfeatureamen_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

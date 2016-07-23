@@ -1,16 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Slider creation</h1>
+{% block header %}Home Sliders{% endblock %}
+{% block subheader %}New Homepage Image slider{% endblock %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+{% block content %}
 
-    <ul>
-        <li>
-            <a href="{{ path('slider_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="panel-body">
+        {{ form_start(form) }}
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="file" class="col-md-3">Add Image (jpg/jpeg/png)</label>
+                <div class="col-md-6">
+                    {{ form_widget(form.file) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Add" class="btn btn-success"/>
+                    <a href="{{ path('slider_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

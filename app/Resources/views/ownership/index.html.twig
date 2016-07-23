@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Ownership{% endblock %}
+{% block subheader %} Ownership List{% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ownershiptype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ownership in ownerships %}
+            <tr>
+                <td><a href="{{ path('ownership_show', { 'id': ownership.id }) }}">{{ ownership.id }}</a></td>
+                <td>{{ ownership.ownershipType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ownership_show', { 'id': ownership.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ownership_edit', { 'id': ownership.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ownership_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

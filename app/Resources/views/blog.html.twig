@@ -59,13 +59,19 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="tran3sL"><a href="index.html">Home</a></li>
-                            <li class="tran3sL"><a href="property-listing.html">Properties</a></li>
-                            <li class="tran3sL"><a href="faq.html">FAQs</a></li>
-                            <li class="tran3sL"><a href="blog.html">Blog</a></li>
-                            <li class="tran3sL"><a href="login.html">Login</a></li>
-                            <li class="tran3sL"><a href="register.html">Register</a></li>
-                            <li class="tran3sL"><a href="contact.html">Contact</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Properties</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_blog_homepage') }}">Blog</a></li>
+                            {% if app.user %}
+                                <li class="tran3sL"><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                                <li class="tran3sL"><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                            {% else %}
+                                <li class="tran3sL"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                <li class="tran3sL"><a
+                                            href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                            {% endif %}
+                            <li class="tran3sL"><a href="">Contact</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav> <!-- End .navbar -->
@@ -80,8 +86,8 @@
     <!-- Call Us Anytime _____________________________ -->
     <div class="container">
         <div class="call_us">
-            <p><span><i class="fa fa-phone"></i></span>Call Us Anytime [at]</p>
-            <a href="tel:1-880-002-0088">1-880-002-0088</a>
+            <p><span><i class="fa fa-phone"></i></span>Call Us Anytime &#64;</p>
+            <a href="tel:{{ company.field2 }}">{{ company.field2 }}</a>
         </div>
     </div>
 
@@ -94,7 +100,7 @@
     <section id="inner_banner">
         <div class="overlay">
             <div class="container">
-
+                {% block overlay %}{% endblock %}
             </div> <!-- End .container -->
         </div> <!-- End .overlay -->
     </section> <!-- End .inner_banner -->
@@ -285,15 +291,24 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="about_estate">
                             <h2 style="color:#fff;">Brooter</h2>
-                            <p>As a property developers every project  we offer quality Properties and Services for our trustable customers. <span></span>
-                                If you are interested in real estate do not wait and BUY IT NOW!</p>
+                            <p>{{ company.field11 }}</p>
 
                             <ul class="icon_footer">
-                                <li class="border_round tran3s tooltip" title="Facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Google Plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="border_round tran3s tooltip" title="Vimeo"><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Facebook"><a
+                                            href="{{ company.field6 }}"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Twitter"><a
+                                            href="{{ company.field7 }}"><i
+                                                class="fa fa-twitter"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Google Plus"><a
+                                            href="{{ company.field8 }}"><i
+                                                class="fa fa-google-plus"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Linkedin"><a
+                                            href="{{ company.field9 }}"><i
+                                                class="fa fa-linkedin"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Vimeo"><a
+                                            href="{{ company.field10 }}"><i
+                                                class="fa fa-vimeo"></i></a></li>
                             </ul> <!-- End .icon_header -->
 
                         </div> <!-- End .about_estate -->
@@ -302,23 +317,37 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="useful_link">
                             <div class="footer_title">
-                                <h4>Usefull Links</h4>
+                                <h4>Useful Links</h4>
                             </div>
                             <ul>
-                                <li><a href="property-listing-without-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i> Properties</a></li>
-                                <li><a href="about-us.html" class="tran3s"><i class="fa fa-angle-right"></i> About Us</a></li>
-                                <li><a href="property-listing-with-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i> Find Homes</a></li>
-                                <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i> Popular Agents</a></li>
-                                <li><a href="blog-without-sidebar.html" class="tran3s"><i class="fa fa-angle-right"></i> News</a></li>
-                                <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct Us</a></li>
+                                <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Properties</a></li>
+                                <li><a href="{{ path('brooter_web_aboutus') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> About
+                                        Us</a></li>
+                                <li><a href="property-listing-with-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Find Homes</a></li>
+                                <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Popular Agents</a></li>
+                                <li><a href="blog-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> News</a></li>
+                                <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct
+                                        Us</a></li>
                             </ul>
 
                             <ul>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Add Listing</a></li>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a></li>
-                                <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i> Pricing</a></li>
-                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
-                                <li><a href="login.html" class="tran3s"><i class="fa fa-angle-right"></i> Login / Register</a></li>
+                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Add Listing</a>
+                                </li>
+                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a>
+                                </li>
+                                <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Terms</a></li>
+                                <li><a href="{{ path('brooter_web_dmca') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> DMCA</a></li>
+                                <li><a href="{{ path('brooter_web_privacypolicy') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Privacy Policy</a></li>
+                                <li><a href="{{ path('brooter_web_copyright') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Copyright</a></li>
                             </ul>
                         </div> <!-- End .useful_link -->
                     </div>
@@ -373,12 +402,13 @@
                             </div>
 
                             <ul>
-                                <li> Address: 203, Sagar plaza-2 Pitampura New delhi</li>
-                                <li><a href="tel:98941-84-604" class="tran3s">Phone: 98941-84-604</a></li>
-                                <li><a href="mailto:Support@abc.com" class="tran3s">Email: Support@abc.com</a></li>
-                                <li><a href="#" class="tran3s">Web: WWW.xxx.com</a></li>
-                                <li>Monday - Sunday 9.00 - 18.00 <br>
-                                    Saturday - Sunday Holiday</li>
+                                <li>{{ company.field1 }}</li>
+                                <li><a href="tel:{{ company.field2 }}"
+                                       class="tran3s">Phone: {{ company.field2 }}</a></li>
+                                <li><a href="mailto:{{ company.field3 }}"
+                                       class="tran3s">Email: {{ company.field3 }}</a></li>
+                                <li><a href="{{ company.field4 }}" class="tran3s">Web: {{ company.field4 }}</a></li>
+                                <li>{{ company.field5 }}</li>
                             </ul>
 
                         </div> <!-- End .contact_info -->
@@ -390,14 +420,16 @@
         <div class="bottom_footer">
             <div class="container">
                 <div class="text">
-                    <p>Copyright &copy; 2016 brooter  |  Developed by  <a href="#" class="tran3s" target="_blank">webmoneycafe</a> </p>
+                    <p>Copyright &copy; 2016 brooter  |  Developed by
+                        <a href="www.webmoneycafe.com" class="tran3s" target="_blank">
+                            <i class="fa fa-globe"></i> webmoneycafe</a>
                 </div> <!-- End .text -->
 
                 <div class="footer_nav">
                     <ul>
-                        <li><a href="#" class="tran3s">Home</a></li>
-                        <li><a href="#" class="tran3s">Properties</a></li>
-                        <li><a href="#" class="tran3s">Agents</a></li>
+                        <li><a href="{{ path('brooter_web_homepage') }}" class="tran3s">Home</a></li>
+                        <li><a href="" class="tran3s">Properties</a></li>
+                        <li><a href="" class="tran3s">Agents</a></li>
                     </ul>
                 </div> <!-- End .footer_nav -->
             </div>
