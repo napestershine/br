@@ -1,0 +1,39 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+    <h1>FaqCategory list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for faqCategory in faqCategories %}
+            <tr>
+                <td><a href="{{ path('faqcategory_show', { 'id': faqCategory.id }) }}">{{ faqCategory.id }}</a></td>
+                <td>{{ faqCategory.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('faqcategory_show', { 'id': faqCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('faqcategory_edit', { 'id': faqCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('faqcategory_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

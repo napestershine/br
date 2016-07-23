@@ -1,3 +1,22 @@
+brooter_web:
+    resource: "@BrooterWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+brooter_blog:
+    resource: "@BrooterBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+brooter_user:
+    resource: "@BrooterUserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+brooter_admin:
+    resource: "@BrooterAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

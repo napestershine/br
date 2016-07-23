@@ -1,0 +1,31 @@
+brooter_admin_faq:
+    resource: "@BrooterAdminBundle/Resources/config/routing/faq.yml"
+    prefix:   /faq
+
+brooter_admin_faqcategory:
+    resource: "@BrooterAdminBundle/Resources/config/routing/faqcategory.yml"
+    prefix:   /faqcategory
+
+brooter_admin_post:
+    resource: "@BrooterAdminBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+brooter_admin_category:
+    resource: "@BrooterAdminBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+brooter_admin_slider:
+    resource: "@BrooterAdminBundle/Resources/config/routing/slider.yml"
+    prefix:   /slider
+
+brooter_admin_homepage:
+    path:     /
+    defaults: { _controller: BrooterAdminBundle:Default:index }
+
+brooter_admin_company:
+    resource: "@BrooterAdminBundle/Resources/config/routing/company.yml"
+    prefix:   /company
+
+brooter_admin_cms:
+    resource: "@BrooterAdminBundle/Resources/config/routing/cms.yml"
+    prefix:   /cms

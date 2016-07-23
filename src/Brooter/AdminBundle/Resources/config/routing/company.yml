@@ -1,0 +1,19 @@
+company_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:Company:index" }
+    methods:  GET
+
+company_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:Company:show" }
+    methods:  GET
+
+company_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:Company:edit" }
+    methods:  [GET, POST]
+
+company_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:Company:delete" }
+    methods:  DELETE
