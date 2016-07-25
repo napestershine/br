@@ -75,6 +75,10 @@ class PropertyAreaCategory
         return $this->propAreaCategoryName;
     }
 
+    public function __toString()
+    {
+        return $this->propAreaCategoryName;
+    }
     /**
      * @return mixed
      */

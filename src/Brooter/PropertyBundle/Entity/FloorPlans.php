@@ -36,8 +36,12 @@ class FloorPlans
     private $imageFilePath;
 
 
-    
 
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", inversedBy="postProperty")
+//     * @ORM\JoinColumn(name="PostProperty_id", referencedColumnName="id")
+//     */
+//    private $postProperty;
     /**
      * Get id
      *

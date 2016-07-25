@@ -17,7 +17,7 @@ class AreaType extends AbstractType
         $builder
             ->add('calculatedArea')
             ->add('propAreaCategoryName')
-            ->add('areaIn')
+       
         ;
     }
     

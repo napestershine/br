@@ -24,6 +24,11 @@
         {% block javascripts %}
             <script>
 
+                var $addPropertySpecLink=$('<a href="#" class="add_property_specification_link">Add a Property Specification</a>');
+                var $newLinkLiPropSpec=$('<li></li>').append($addPropertySpecLink);
+                var $collectionHolderPropSpec;
+
+
                 var $addFloorPlanLink = $('<a href="#" class="add_floor_plan_link">Add a Floor Plan</a>');
                 var $newLinkLi = $('<li></li>').append($addFloorPlanLink);
 
@@ -34,16 +39,39 @@
 
                 $(document).ready(function () {
 
-                    // Get the ul that holds the collection of tags
+                    // Get the ul that holds the collection of property specification
+                    $collectionHolderPropSpec=$('#post_property_propertySpecification');
+
+
+
+
+                    // Get the ul that holds the collection of floor plans
                     $collectionHolder = $('#post_property_floorPlans');
 
 
 
 
                     // add the "add a tag" anchor and li to the tags ul
+                    $collectionHolderPropSpec.append($newLinkLiPropSpec);
+
+
+                    // add the "add a tag" anchor and li to the tags ul
                     $collectionHolder.append($newLinkLi);
+
+
+                    // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
+                    $collectionHolderPropSpec.data('index', $collectionHolderPropSpec.find(':input').length);
+
+
                     // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
                     $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+
+
+                    $addPropertySpecLink.on('click',function (e) {
+                        e.preventDefault();
+                        addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec);
+                    });
 
 
 
@@ -60,6 +88,48 @@
 
 
                 });
+
+                function addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec)
+                {
+                    var index = $collectionHolderPropSpec.data('index');
+
+
+
+                    // Get the data-prototype explained earlier
+                    var prototype = $collectionHolderPropSpec.data('prototype');
+
+
+
+
+                    // Replace '$$name$$' in the prototype's HTML to
+                    // instead be a number based on how many items we have
+                    var newForm = prototype.replace(/__name__/g, index);
+                    newForm=newForm.replace(/label__/g,'');
+
+
+
+                    // increase the index with one for the next item
+                    $collectionHolderPropSpec.data('index', index + 1);
+
+                    // Display the form in the page in an li, before the "Add a tag" link li
+                    var $newFormLi = $('<li></li>').append(newForm);
+
+
+
+                    // also add a remove button, just for this example
+                    $newFormLi.append('<a href="#" class="remove-tag">x</a>');
+
+                    $newLinkLiPropSpec.before($newFormLi);
+
+                    // handle the removal, just for this example
+                    $('.remove-tag').click(function(e) {
+                        e.preventDefault();
+
+                        $(this).parent().remove();
+
+                        return false;
+                    });
+                }
                 function addFloorPlanForm($collectionHolder, $newLinkLi) {
 
                     var index = $collectionHolder.data('index');

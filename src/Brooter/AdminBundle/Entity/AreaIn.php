@@ -30,16 +30,6 @@ class AreaIn
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Area", mappedBy="areaIn")
-     */
-    private $area;
-
-
-    public function _construct()
-    {
-        $this->area=new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
      * Get id
      *
      * @return int
@@ -73,12 +63,10 @@ class AreaIn
         return $this->areaInName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getArea()
+    public function __toString()
     {
-        return $this->area;
+        return $this->areaInName;
     }
+
 }
 

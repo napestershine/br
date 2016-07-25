@@ -16,7 +16,7 @@ class AreaInType extends AbstractType
     {
         $builder
             ->add('areaInName')
-            ->add('area')
+            
         ;
     }
     

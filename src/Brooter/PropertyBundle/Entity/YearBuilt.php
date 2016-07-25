@@ -73,5 +73,10 @@ class YearBuilt
     {
         return $this->yearOfBuilding;
     }
+
+    public function __toString()
+    {
+        return $this->yearOfBuilding;
+    }
 }
 
