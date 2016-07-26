@@ -245,7 +245,7 @@ class PostProperty
     /**
      * @var array
      *
-     * @ORM\Column(name="images", type="string", nullable=true)
+     * @ORM\Column(name="images", type="array", nullable=true)
      * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
      */
     private $images;
