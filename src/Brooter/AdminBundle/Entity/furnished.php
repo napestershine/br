@@ -33,7 +33,7 @@ class furnished
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="_furnished", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="_furnished", cascade={"persist"})
      */
     private $postProperty;
 
