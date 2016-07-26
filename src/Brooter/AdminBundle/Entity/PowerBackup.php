@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,12 +31,12 @@ class PowerBackup
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="powerBackup")
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="powerBackup", cascade={"persist"})
      */
     private $postProperty;
 
 
-    public function _construct()
+    public function __construct()
     {
         $this->postProperty=new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -78,6 +79,23 @@ class PowerBackup
     public function __toString()
     {
         return $this->powerBackupName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addPowerBackup($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 }
 

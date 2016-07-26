@@ -9,3 +9,8 @@ brooter_property_homepage:
 brooter_property_floorplans:
     resource: "@BrooterPropertyBundle/Resources/config/routing/floorplans.yml"
     prefix:   /floorplans
+
+brooter_property_propertyspecification:
+    resource: "@BrooterPropertyBundle/Resources/config/routing/propertyspecification.yml"
+    prefix:   /propertyspecification
+

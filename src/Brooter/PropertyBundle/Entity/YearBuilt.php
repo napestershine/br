@@ -32,11 +32,11 @@ class YearBuilt
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="postProperty")
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="postProperty", cascade={"persist"})
      */
     private $postProperty;
 
-    public function _construct()
+    public function __construct()
     {
         $this->postProperty=new ArrayCollection();
     }
@@ -77,6 +77,23 @@ class YearBuilt
     public function __toString()
     {
         return $this->yearOfBuilding;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addYearBuilt($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 }
 

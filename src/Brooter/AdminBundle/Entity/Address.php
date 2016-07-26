@@ -51,7 +51,7 @@ class Address
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="address")
+     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="address", cascade={"persist"})
      */
     private $postProperty;
 
@@ -159,6 +159,23 @@ class Address
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+
+
+    /**
+     * @param mixed $postProperty
+     */
+    public function setPostProperty($postProperty)
+    {
+        $this->postProperty = $postProperty;
     }
 }
 

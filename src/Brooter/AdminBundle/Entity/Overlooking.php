@@ -2,6 +2,8 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,13 +32,13 @@ class Overlooking
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="overLooking")
+     * @ORM\ManyToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="overLooking", cascade={"persist"})
      */
     private $postProperty;
     
-    public function _construct()
+    public function __construct()
     {
-        $this->postProperty=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postProperty=new ArrayCollection();
     }
     /**
      * Get id
@@ -75,6 +77,23 @@ class Overlooking
     public function __toString()
     {
         return $this->overLookingType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addOverlooking($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 }
 

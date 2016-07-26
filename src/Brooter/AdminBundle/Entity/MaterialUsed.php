@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,9 +34,9 @@ class MaterialUsed
      */
     private $postProperty;
 
-    public function _construct()
+    public function __construct()
     {
-        $this->postProperty=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postProperty=new ArrayCollection();
     }
     /**
      * Get id
@@ -74,6 +75,24 @@ class MaterialUsed
     public function __toString()
     {
         return $this->materialName;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addMaterialUsed($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 }
 
