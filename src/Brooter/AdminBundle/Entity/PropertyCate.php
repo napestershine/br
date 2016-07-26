@@ -38,7 +38,7 @@ class PropertyCate
     private $propSubCate;
 
     /**
-     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="propType")
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="propType",cascade={"persist"})
      */
     private $postProperty;
 

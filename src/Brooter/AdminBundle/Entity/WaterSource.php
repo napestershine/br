@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,7 +36,7 @@ class WaterSource
     private $postProperty;
 
 
-    public function _construct()
+    public function __construct()
     {
         $this->postProperty=new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -78,6 +79,23 @@ class WaterSource
     public function __toString()
     {
         return $this->waterSourceType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addWaterSource($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 }
 

@@ -39,7 +39,7 @@ class Area
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="area")
+     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="area", cascade={"persist"})
      */
     private $postProperty;
 
@@ -90,6 +90,13 @@ class Area
         return $this->postProperty;
     }
 
+    /**
+     * @param mixed $postProperty
+     */
+    public function setPostProperty($postProperty)
+    {
+        $this->postProperty = $postProperty;
+    }
     /**
      * @return mixed
      */

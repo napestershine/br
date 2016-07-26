@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,11 +33,11 @@ class PropPossesion
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="propPossesion")
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="propPossesion", cascade={"persist"})
      */
     private $postProperty;
 
-    public function _construct()
+    public function __construct()
     {
         $this->postProperty=new ArrayCollection();
     }
@@ -77,6 +78,23 @@ class PropPossesion
     public function __toString()
     {
         return $this->propPossesionOn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addPropPossession($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 
 }

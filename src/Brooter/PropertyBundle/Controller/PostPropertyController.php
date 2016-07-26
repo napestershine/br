@@ -2,6 +2,7 @@
 
 namespace Brooter\PropertyBundle\Controller;
 
+use Brooter\PropertyBundle\Entity\FloorPlans;
 use Brooter\PropertyBundle\Entity\YearBuilt;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,20 +31,10 @@ class PostPropertyController extends Controller
         ));
     }
 
-    /**
-     * Creates a new PostProperty entity.
-     *
-     */
-    public function newAction(Request $request)
+
+    public function fillYears()
     {
-        $postProperty = new PostProperty();
-        $form = $this->createForm('Brooter\PropertyBundle\Form\PostPropertyType', $postProperty);
-        $form->handleRequest($request);
-
         $yearBuiltEM = $this->getDoctrine()->getManager()->getRepository('BrooterPropertyBundle:YearBuilt');
-
-
-
         if(!($yearBuiltEM->findAll()))
         {
             $j=20;
@@ -95,13 +86,23 @@ class PostPropertyController extends Controller
 
         }
 
+    }
+    /**
+     * Creates a new PostProperty entity.
+     *
+     */
+    public function newAction(Request $request)
+    {
+        $postProperty = new PostProperty();
+
+        $form = $this->createForm('Brooter\PropertyBundle\Form\PostPropertyType', $postProperty);
+        $form->handleRequest($request);
+
+        $this->fillYears();
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-
-           
-
             $em->persist($postProperty);
             $em->flush();
 

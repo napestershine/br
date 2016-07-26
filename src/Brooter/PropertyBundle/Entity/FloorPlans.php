@@ -3,7 +3,7 @@
 namespace Brooter\PropertyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Brooter\PropertyBundle\Entity\PostProperty;
 /**
  * FloorPlans
  *
@@ -36,12 +36,11 @@ class FloorPlans
     private $imageFilePath;
 
 
-
-//    /**
-//     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", inversedBy="postProperty")
-//     * @ORM\JoinColumn(name="PostProperty_id", referencedColumnName="id")
-//     */
-//    private $postProperty;
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty",  cascade={"persist"}, inversedBy="floorPlans")
+     * @ORM\JoinColumn(name="PostProperty_id", referencedColumnName="id")
+     */
+    private $postProperty;
     /**
      * Get id
      *
@@ -57,13 +56,11 @@ class FloorPlans
      *
      * @param string $title
      *
-     * @return FloorPlans
      */
     public function setTitle($title)
     {
         $this->title = $title;
 
-        return $this;
     }
 
     /**
@@ -81,13 +78,10 @@ class FloorPlans
      *
      * @param string $imageFilePath
      *
-     * @return FloorPlans
      */
     public function setImageFilePath($imageFilePath)
     {
         $this->imageFilePath = $imageFilePath;
-
-        return $this;
     }
 
     /**
@@ -99,10 +93,21 @@ class FloorPlans
     {
         return $this->imageFilePath;
     }
+
     
-    public function __toString()
+
+    /**
+     * @param mixed $postProperty
+     */
+    public function setPostProperty($postProperty)
     {
-        return $this->title;
+        $this->postProperty = $postProperty;
     }
+
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $this->setPostProperty($postProperty);
+    }
+
 }
 

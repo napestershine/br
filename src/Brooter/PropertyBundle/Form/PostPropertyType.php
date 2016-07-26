@@ -2,8 +2,11 @@
 
 namespace Brooter\PropertyBundle\Form;
 
+use Brooter\AdminBundle\Entity\Area;
 use Brooter\AdminBundle\Form\AddressType;
 use Brooter\AdminBundle\Form\AreaType;
+use Brooter\AdminBundle\Form\PropertyCateType;
+use Brooter\AdminBundle\Form\PropertyOnFloorType;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -30,18 +33,19 @@ class PostPropertyType extends AbstractType
                 'expanded' => true,
             ))
 
+
             ->add('area',AreaType::class,array(
-                'data_class' => 'Brooter\AdminBundle\Entity\Area'
+                'data_class' => 'Brooter\AdminBundle\Entity\Area',
             ))
 
-           
-            ->add('address', AddressType::class,array(
+            ->add('address',AddressType::class,array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Address',
             ))
             ->add('noofbedroom')
             ->add('noofbathroom')
             ->add('noofbalcony')
             ->add('totalfloor')
+
             ->add('propOnFloor')
             ->add('reservedParking', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\ReservedParking',

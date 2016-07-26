@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,11 +33,11 @@ class furnished
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="_furnished")
+     * @ORM\OneToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="_furnished", cascade={"persist"})
      */
     private $postProperty;
 
-    public function _construct()
+    public function __construct()
     {
         $this->postProperty=new ArrayCollection();
     }
@@ -78,6 +79,23 @@ class furnished
     public function __toString()
     {
         return $this->furnishedTypeName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addFurnished($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 
 }

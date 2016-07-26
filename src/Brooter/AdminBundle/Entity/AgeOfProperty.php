@@ -2,6 +2,8 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,13 +32,13 @@ class AgeOfProperty
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="ageOfProp")
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", mappedBy="ageOfProp",cascade={"persist"})
      */
     private $postProperty;
 
-    public function _construct()
+    public function __construct()
     {
-        $this->postProperty=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postProperty=new ArrayCollection();
     }
 
     /**
@@ -73,6 +75,13 @@ class AgeOfProperty
         return $this->propAge;
     }
 
+
+
+    public function __toString()
+    {
+        return $this->propAge;
+    }
+
     /**
      * @return mixed
      */
@@ -80,10 +89,14 @@ class AgeOfProperty
     {
         return $this->postProperty;
     }
-
-    public function __toString()
+    public function addPostProperty(PostProperty $postProperty)
     {
-        return $this->propAge;
+        $postProperty->addAgeOfProperty($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
     }
 
 }

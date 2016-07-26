@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * PropertySpecification
  *
  * @ORM\Table(name="property_specification")
- * @ORM\Entity(repositoryClass="Brooter\PropertyBundle\Repository\PropertyFacingRepository")
+ * @ORM\Entity(repositoryClass="Brooter\PropertyBundle\Repository\PropertySpecificationRepository")
  */
 class PropertySpecification
 {
@@ -36,7 +36,7 @@ class PropertySpecification
     private $propSpecDesc;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", inversedBy="postProperty")
+     * @ORM\ManyToOne(targetEntity="Brooter\PropertyBundle\Entity\PostProperty", inversedBy="postProperty", cascade={"persist"})
      * @ORM\JoinColumn(name="PostProperty_id", referencedColumnName="id")
      */
     private $postProperty;
@@ -57,7 +57,7 @@ class PropertySpecification
      *
      * @param string $propSpecificationTitle
      *
-     * @return PropertyFacing
+     * @return PropertySpecification
      */
     public function setPropSpecificationTitle($propSpecificationTitle)
     {
@@ -81,7 +81,7 @@ class PropertySpecification
      *
      * @param string $propSpecDesc
      *
-     * @return PropertyFacing
+     * @return PropertySpecification
      */
     public function setPropSpecDesc($propSpecDesc)
     {
@@ -106,6 +106,19 @@ class PropertySpecification
     public function setPostProperty($postProperty)
     {
         $this->postProperty = $postProperty;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $this->setPostProperty($postProperty);
     }
     
 }
