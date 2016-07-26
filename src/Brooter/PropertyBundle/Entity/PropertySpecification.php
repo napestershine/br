@@ -99,5 +99,14 @@ class PropertySpecification
     {
         return $this->propSpecDesc;
     }
+
+    /**
+     * @param mixed $postProperty
+     */
+    public function setPostProperty($postProperty)
+    {
+        $this->postProperty = $postProperty;
+    }
+    
 }
 

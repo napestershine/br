@@ -36,11 +36,6 @@ class Area
      */
     private $calculatedArea;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AreaIn", inversedBy="area")
-     * @ORM\JoinColumn(name="AreaIn_id", referencedColumnName="id")
-     */
-    private $areaIn;
 
 
     /**
@@ -85,13 +80,7 @@ class Area
         return $this->calculatedArea;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAreaIn()
-    {
-        return $this->areaIn;
-    }
+
 
     /**
      * @return mixed
@@ -109,5 +98,15 @@ class Area
         return $this->propAreaCategoryName;
     }
 
+
+    public function setPropAreaCategoryName($propAreaCategoryName)
+    {
+        $this->propAreaCategoryName = $propAreaCategoryName;
+    }
+
+    public function __toString()
+    {
+        return $this->propAreaCategoryName;
+    }
 }
 

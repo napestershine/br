@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -96,7 +97,18 @@ class PostPropertyType extends AbstractType
                 'by_reference'=>false,
                 'prototype' => true,
             ))
-
+            ->add('propertySpecification',CollectionType::class,array(
+                'entry_type' => PropertySpecificationType::class,
+                'label'=>'Property Specifucation',
+                'allow_add'=>true,
+                'allow_delete'=>true,
+                'by_reference'=>false,
+                'prototype'=>true,
+            ))
+            ->add('images', FileType::class, array(
+                'label' => 'Image (jpg/jpeg/png file)', 'data_class' => null,
+                'attr'=>['class' => 'form-control', 'multiple' => 'multiple']
+            ))
             ->add('propPossesion')
             ->add('description')
         ;

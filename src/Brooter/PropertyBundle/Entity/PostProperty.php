@@ -4,7 +4,7 @@ namespace Brooter\PropertyBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * PostProperty
  *
@@ -187,7 +187,9 @@ class PostProperty
     private $materialUsed;
 
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\FloorPlans", mappedBy="postProperty",cascade={"persist"})
+     */
     private $floorPlans;
 
     /**
@@ -205,7 +207,8 @@ class PostProperty
     /**
      * @var array
      *
-     * @ORM\Column(name="images", type="array", nullable=true)
+     * @ORM\Column(name="images", type="string", nullable=true)
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
      */
     private $images;
 
@@ -222,13 +225,16 @@ class PostProperty
     public function _construct()
     {
 
-        $this->overLooking=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->waterSource=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->powerBackup=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->typeOfFlooring=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->propFeatureAmen=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->floorPlans=new \Doctrine\Common\Collections\ArrayCollection();
-        $this->propertySpecification=new \Doctrine\Common\Collections\ArrayCollection();
+        $this->overLooking=new ArrayCollection();
+        $this->waterSource=new ArrayCollection();
+        $this->powerBackup=new ArrayCollection();
+        $this->typeOfFlooring=new ArrayCollection();
+        $this->propFeatureAmen=new ArrayCollection();
+        $this->floorPlans=new ArrayCollection();
+        $this->propertySpecification=new ArrayCollection();
+        $this->images=new ArrayCollection();
+
+
 
     }
     public function getId()
@@ -241,12 +247,29 @@ class PostProperty
     }
 
     /**
+     * @param mixed $propType
+     */
+    public function setPropType($propType)
+    {
+        $this->propType = $propType;
+    }
+
+    /**
      * @return mixed
      */
     public function getAddress()
     {
         return $this->address;
     }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
 
     /**
      * @return mixed
@@ -257,6 +280,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $area
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
+    }
+    /**
      * @return mixed
      */
     public function getAvailability()
@@ -264,6 +294,13 @@ class PostProperty
         return $this->availability;
     }
 
+    /**
+     * @param mixed $availability
+     */
+    public function setAvailability($availability)
+    {
+        $this->availability = $availability;
+    }
     /**
      * @return mixed
      */
@@ -273,11 +310,26 @@ class PostProperty
     }
 
     /**
+     * @param mixed $furnished
+     */
+    public function setFurnished($furnished)
+    {
+        $this->_furnished = $furnished;
+    }
+    /**
      * @return mixed
      */
     public function getListPropFor()
     {
         return $this->listPropFor;
+    }
+
+    /**
+     * @param mixed $listPropFor
+     */
+    public function setListPropFor($listPropFor)
+    {
+        $this->listPropFor = $listPropFor;
     }
 
     /**
@@ -289,6 +341,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $overLooking
+     */
+    public function setOverLooking($overLooking)
+    {
+        $this->overLooking = $overLooking;
+    }
+    /**
      * @return mixed
      */
     public function getOwnership()
@@ -296,6 +355,13 @@ class PostProperty
         return $this->ownership;
     }
 
+    /**
+     * @param mixed $ownership
+     */
+    public function setOwnership($ownership)
+    {
+        $this->ownership = $ownership;
+    }
     /**
      * @return mixed
      */
@@ -305,6 +371,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $powerBackup
+     */
+    public function setPowerBackup($powerBackup)
+    {
+        $this->powerBackup = $powerBackup;
+    }
+    /**
      * @return mixed
      */
     public function getPropFeatureAmen()
@@ -312,6 +385,13 @@ class PostProperty
         return $this->propFeatureAmen;
     }
 
+    /**
+     * @param mixed $propFeatureAmen
+     */
+    public function setPropFeatureAmen($propFeatureAmen)
+    {
+        $this->propFeatureAmen = $propFeatureAmen;
+    }
     /**
      * @return mixed
      */
@@ -321,12 +401,28 @@ class PostProperty
     }
 
     /**
+     * @param mixed $propPossesion
+     */
+    public function setPropPossesion($propPossesion)
+    {
+        $this->propPossesion = $propPossesion;
+    }
+    /**
      * @return mixed
      */
     public function getReservedParking()
     {
         return $this->reservedParking;
     }
+
+    /**
+     * @param mixed $reservedParking
+     */
+    public function setReservedParking($reservedParking)
+    {
+        $this->reservedParking = $reservedParking;
+    }
+
 
     /**
      * @return mixed
@@ -337,6 +433,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $typeOfFlooring
+     */
+    public function setTypeOfFlooring($typeOfFlooring)
+    {
+        $this->typeOfFlooring = $typeOfFlooring;
+    }
+    /**
      * @return mixed
      */
     public function getWaterSource()
@@ -344,6 +447,13 @@ class PostProperty
         return $this->waterSource;
     }
 
+    /**
+     * @param mixed $waterSource
+     */
+    public function setWaterSource($waterSource)
+    {
+        $this->waterSource = $waterSource;
+    }
 
     /**
      * @return mixed
@@ -351,6 +461,14 @@ class PostProperty
     public function getAgeOfProp()
     {
         return $this->ageOfProp;
+    }
+
+    /**
+     * @param mixed $ageOfProp
+     */
+    public function setAgeOfProp($ageOfProp)
+    {
+        $this->ageOfProp = $ageOfProp;
     }
 
     /**
@@ -362,11 +480,26 @@ class PostProperty
     }
 
     /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+    /**
      * @return mixed
      */
     public function getNoofbalcony()
     {
         return $this->noofbalcony;
+    }
+
+    /**
+     * @param mixed $noofbalcony
+     */
+    public function setNoofbalcony($noofbalcony)
+    {
+        $this->noofbalcony = $noofbalcony;
     }
 
     /**
@@ -378,11 +511,27 @@ class PostProperty
     }
 
     /**
+     * @param mixed $noofbathroom
+     */
+    public function setNoofbathroom($noofbathroom)
+    {
+        $this->noofbathroom = $noofbathroom;
+    }
+
+    /**
      * @return mixed
      */
     public function getNoofbedroom()
     {
         return $this->noofbedroom;
+    }
+
+    /**
+     * @param mixed $noofbedroom
+     */
+    public function setNoofbedroom($noofbedroom)
+    {
+        $this->noofbedroom = $noofbedroom;
     }
 
     /**
@@ -394,12 +543,27 @@ class PostProperty
     }
 
     /**
+     * @param mixed $propOnFloor
+     */
+    public function setPropOnFloor($propOnFloor)
+    {
+        $this->propOnFloor = $propOnFloor;
+    }
+    /**
      * @return mixed
      */
     public function getTitle()
     {
         return $this->title;
     }
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
 
     /**
      * @return mixed
@@ -407,6 +571,14 @@ class PostProperty
     public function getTotalfloor()
     {
         return $this->totalfloor;
+    }
+
+    /**
+     * @param mixed $totalfloor
+     */
+    public function setTotalfloor($totalfloor)
+    {
+        $this->totalfloor = $totalfloor;
     }
 
     /**
@@ -418,6 +590,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $floorPlans
+     */
+    public function setFloorPlans($floorPlans)
+    {
+        $this->floorPlans = $floorPlans;
+    }
+    /**
      * @return array
      */
     public function getImages()
@@ -426,11 +605,26 @@ class PostProperty
     }
 
     /**
+     * @param array $images
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+    }
+    /**
      * @return mixed
      */
     public function getMaterialUsed()
     {
         return $this->materialUsed;
+    }
+
+    /**
+     * @param mixed $materialUsed
+     */
+    public function setMaterialUsed($materialUsed)
+    {
+        $this->materialUsed = $materialUsed;
     }
 
     /**
@@ -442,6 +636,13 @@ class PostProperty
     }
 
     /**
+     * @param mixed $propertyFacing
+     */
+    public function setPropertyFacing($propertyFacing)
+    {
+        $this->propertyFacing = $propertyFacing;
+    }
+    /**
      * @return mixed
      */
     public function getPropertySpecification()
@@ -449,6 +650,13 @@ class PostProperty
         return $this->propertySpecification;
     }
 
+    /**
+     * @param mixed $propertySpecification
+     */
+    public function setPropertySpecification($propertySpecification)
+    {
+        $this->propertySpecification = $propertySpecification;
+    }
     /**
      * @return mixed
      */
@@ -458,12 +666,28 @@ class PostProperty
     }
 
     /**
+     * @param mixed $yearBuilt
+     */
+    public function setYearBuilt($yearBuilt)
+    {
+        $this->yearBuilt = $yearBuilt;
+    }
+    /**
      * @return mixed
      */
     public function getExpectedPrice()
     {
         return $this->expectedPrice;
     }
+
+    /**
+     * @param mixed $expectedPrice
+     */
+    public function setExpectedPrice($expectedPrice)
+    {
+        $this->expectedPrice = $expectedPrice;
+    }
+
 
     public function addFloorPlans(FloorPlans $floorPlans)
     {
@@ -473,5 +697,22 @@ class PostProperty
     {
         $this->floorPlans->remove($floorPlans);
     }
+
+    public function addPropertySpecification(PropertySpecification $propertySpecification)
+    {
+        $propertySpecification->setPostProperty($this);
+
+
+        $this->propertySpecification->add($propertySpecification);
+    }
+    public function removePropertySpecification(PropertySpecification $propertySpecification)
+    {
+        $this->propertySpecification->removeElement($propertySpecification);
+    }
+
+
+
+
+
 }
 

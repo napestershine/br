@@ -2,6 +2,7 @@
 
 namespace Brooter\PropertyBundle\Controller;
 
+use Brooter\PropertyBundle\Entity\YearBuilt;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -39,12 +40,71 @@ class PostPropertyController extends Controller
         $form = $this->createForm('Brooter\PropertyBundle\Form\PostPropertyType', $postProperty);
         $form->handleRequest($request);
 
+        $yearBuiltEM = $this->getDoctrine()->getManager()->getRepository('BrooterPropertyBundle:YearBuilt');
+
+
+
+        if(!($yearBuiltEM->findAll()))
+        {
+            $j=20;
+            $k=0;
+            $l=0;
+            for($i=20;;$i--)
+            {
+
+                if($i==45)
+                {
+                    break;
+                }
+                if($i<0)
+                {
+                    $i=99;
+                    $j--;
+                }
+                if($i!=0)
+                {
+                    $k=$i;
+                    $l=$k-1;
+
+
+                    if(strlen($k)<2)
+                    {
+
+                        $k='0'.$k;
+                    }
+
+                    if(strlen($l)<2)
+                    {
+
+                        $l='0'.$l;
+                    }
+                    $years=$j.$k.'-'.$l;
+                }
+                elseif($i==0)
+                {
+                    $years="2000-99";
+                }
+
+                $yearbuilt=new YearBuilt();
+                $yearbuilt->setYearOfBuilding($years);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($yearbuilt);
+                $em->flush();
+
+            }
+
+        }
+
+
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
+
+           
+
             $em->persist($postProperty);
             $em->flush();
 
-            
 
             return $this->redirectToRoute('postproperty_show', array('id' => $postProperty->getId()));
         }
