@@ -7,6 +7,7 @@ use Brooter\AdminBundle\Form\AddressType;
 use Brooter\AdminBundle\Form\AreaType;
 use Brooter\AdminBundle\Form\PropertyCateType;
 use Brooter\AdminBundle\Form\PropertyOnFloorType;
+use Brooter\PropertyBundle\Entity\PropertyImage;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -103,16 +104,21 @@ class PostPropertyType extends AbstractType
             ))
             ->add('propertySpecification',CollectionType::class,array(
                 'entry_type' => PropertySpecificationType::class,
-                'label'=>'Property Specifucation',
+                'label'=>'Property Specification',
                 'allow_add'=>true,
                 'allow_delete'=>true,
                 'by_reference'=>false,
                 'prototype'=>true,
             ))
-            ->add('images', FileType::class, array(
-                'label' => 'Image (jpg/jpeg/png file)', 'data_class' => null,
-                'attr'=>['class' => 'form-control', 'multiple' => 'multiple']
+            ->add('propertyImage', CollectionType::class, array(
+                'entry_type' => PropertyImageType::class,
+                'label' => 'Property Image',
+                'allow_add' =>  true,
+                'allow_delete' => true,
+                'by_reference'=>false,
+                'prototype' => true,
             ))
+
             ->add('propPossesion')
             ->add('description')
         ;

@@ -24,6 +24,12 @@
         {% block javascripts %}
             <script type="text/javascript">
 
+                var $addPropertyImgLink=$('<a href="#" class="add_property_img_link">Add Property Image</a>');
+                var $newLinkLiPropImg=$('<li></li>').append($addPropertyImgLink);
+                var $collectionHolderPropImg;
+
+
+
                 var $addPropertySpecLink=$('<a href="#" class="add_property_specification_link">Add a Property Specification</a>');
                 var $newLinkLiPropSpec=$('<li></li>').append($addPropertySpecLink);
                 var $collectionHolderPropSpec;
@@ -31,27 +37,29 @@
 
                 var $addFloorPlanLink = $('<a href="#" class="add_floor_plan_link">Add a Floor Plan</a>');
                 var $newLinkLi = $('<li></li>').append($addFloorPlanLink);
-
+                var $collectionHolder;
 
 
                 // setup an "add a floor plan" link
 
-                var $collectionHolder;
+
 
                 $(document).ready(function () {
 
+                    // Get the ul that holds the collection of property image
+                    $collectionHolderPropImg=$('#post_property_propertyImage');
+
                     // Get the ul that holds the collection of property specification
                     $collectionHolderPropSpec=$('#post_property_propertySpecification');
-
-
-
 
                     // Get the ul that holds the collection of floor plans
                     $collectionHolder = $('#post_property_floorPlans');
 
 
-                    //alert($collectionHolder);
 
+                    //alert($collectionHolder);
+                    // add the "add property image" anchor and li to the tags ul
+                    $collectionHolderPropImg.append($newLinkLiPropImg);
 
                     // add the "add property specification" anchor and li to the tags ul
                     $collectionHolderPropSpec.append($newLinkLiPropSpec);
@@ -62,24 +70,22 @@
 
 
                     // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
+                    $collectionHolderPropImg.data('index', $collectionHolderPropImg.find(':input').length);
+                    // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
                     $collectionHolderPropSpec.data('index', $collectionHolderPropSpec.find(':input').length);
-
-
                     // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
                     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
 
-
+                    $addPropertyImgLink.on('click',function (e) {
+                        e.preventDefault();
+                        addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg);
+                    });
                     $addPropertySpecLink.on('click',function (e) {
                         e.preventDefault();
                         addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec);
                     });
-
-
-
-
-                    $addFloorPlanLink.on('click', function(e) {
-
+                   $addFloorPlanLink.on('click', function(e) {
                         // prevent the link from creating a "#" on the URL
                         e.preventDefault();
                         // add a new tag form (see next code block)
@@ -90,6 +96,66 @@
 
 
                 });
+
+                function addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg)
+                {
+                    var index = $collectionHolderPropImg.data('index');
+
+                    // Get the data-prototype explained earlier
+                    var prototype = $collectionHolderPropImg.data('prototype');
+
+                    //alert(prototype);
+                    prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_propertyImage_PI__name__"/>'+'</div>';
+
+                    // Replace '$$name$$' in the prototype's HTML to
+                    // instead be a number based on how many items we have
+                    var newForm = prototype.replace(/__name__/g, index);
+                    newForm=newForm.replace(/label__/g,'');
+
+                    // increase the index with one for the next item
+                    $collectionHolderPropImg.data('index', index + 1);
+
+                    // Display the form in the page in an li, before the "Add a tag" link li
+                    var $newFormLi = $('<li></li>').append(newForm);
+
+
+
+                    // also add a remove button, just for this example
+                    $newFormLi.append('<a href="#" class="remove-tag">x</a>');
+
+                    $newLinkLiPropImg.before($newFormLi);
+
+                    // handle the removal, just for this example
+                    $('.remove-tag').click(function(e) {
+                        e.preventDefault();
+
+                        $(this).parent().remove();
+
+                        return false;
+                    });
+                    $('input[type="file"]').change(function(){
+
+                        var reader = new FileReader();
+                        var fileID=$(this).attr('id');
+                        reader.onload = function (e) {
+                            // get loaded data and render thumbnail.
+
+                            fileID=fileID.substr(0,fileID.length-9);
+                            fileID=fileID.substr(28,fileID.length-27);
+
+                            var imgTagID='post_property_propertyImage_PI'+fileID;
+
+                            document.getElementById(imgTagID).setAttribute('src',e.target.result);
+
+                        };
+
+                        // read the image file as a data URL.
+                        reader.readAsDataURL(this.files[0]);
+
+                    });
+                }
+
+
 
                 function addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec)
                 {
@@ -144,7 +210,7 @@
 
 
 
-                    prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_floor_plans_FP__name__"/>'+'</div>';
+                    prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_floor_plans_FP__name__" />'+'</div>';
 
 
                     // Replace '$$name$$' in the prototype's HTML to

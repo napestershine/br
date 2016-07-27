@@ -243,12 +243,10 @@ class PostProperty
 
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="images", type="array", nullable=true)
-     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
+     * @ORM\OneToMany(targetEntity="Brooter\PropertyBundle\Entity\PropertyImage" , mappedBy="postProperty", cascade={"persist"})
      */
-    private $images;
+    protected $propertyImage;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropPossesion", inversedBy="postProperty", cascade={"persist"})
@@ -274,7 +272,8 @@ class PostProperty
         $this->propFeatureAmen=new ArrayCollection();
         $this->floorPlans=new ArrayCollection();
         $this->propertySpecification=new ArrayCollection();
-        $this->images=new ArrayCollection();
+        $this->propertyImage=new ArrayCollection();
+
 
 
 
@@ -450,29 +449,6 @@ class PostProperty
     {
         $this->totalfloor = $totalfloor;
     }
-
-
-
-    /**
-     * @return array
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * @param array $images
-     */
-    public function setImages($images)
-    {
-        //$this->images = $images;
-        $this->images->add($images);
-    }
-
-
-
-
 
 
 
@@ -853,6 +829,27 @@ class PostProperty
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+
+
+    public function addPropertyImage(PropertyImage $propertyImage)
+    {
+
+        $propertyImage->addPostProperty($this);
+        $this->propertyImage->add($propertyImage);
+
+    }
+    public function removePropertyImage(FloorPlans $propertyImage)
+    {
+        $this->propertyImage->removeElement($propertyImage);
+    }
+    /**
+     * @return mixed
+     */
+    public function getPropertyImage()
+    {
+        return $this->propertyImage;
     }
 }
 
