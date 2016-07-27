@@ -14,5 +14,11 @@ services:
             class: Brooter\AdminBundle\FileUploader
             arguments: ['%sliders_directory%']
     brooter.admin.postimage_uploader:
-                class: Brooter\AdminBundle\FileUploader
-                arguments: ['%posts_directory%']
+            class: Brooter\AdminBundle\FileUploader
+            arguments: ['%posts_directory%']
+    brooter.property.prop_post_uploader:
+            class: Brooter\AdminBundle\FileUploader
+            arguments: ['%propImgs_directory%']
+    brooter.property.floor_plan_uploader:
+            class: Brooter\AdminBundle\FileUploader
+            arguments: ['%floorImgs_directory%']

@@ -18,6 +18,8 @@ parameters:
     sliders_directory: '%kernel.root_dir%/../web/uploads/sliders'
     posts_directory: '%kernel.root_dir%/../web/uploads/posts'
     propImgs_directory: '%kernel.root_dir%/../web/uploads/propImgs'
+    floorImgs_directory: '%kernel.root_dir%/../web/uploads/floorplansImgs'
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
