@@ -14,3 +14,7 @@ brooter_property_propertyspecification:
     resource: "@BrooterPropertyBundle/Resources/config/routing/propertyspecification.yml"
     prefix:   /propertyspecification
 
+brooter_property_propertyimage:
+    resource: "@BrooterPropertyBundle/Resources/config/routing/propertyimage.yml"
+    prefix:   /propertyimage
+

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PropertyImage list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Filepath</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyImage in propertyImages %}
+            <tr>
+                <td><a href="{{ path('propertyimage_show', { 'id': propertyImage.id }) }}">{{ propertyImage.id }}</a></td>
+                <td>{{ propertyImage.filePath }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertyimage_show', { 'id': propertyImage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertyimage_edit', { 'id': propertyImage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertyimage_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

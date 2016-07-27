@@ -102,10 +102,18 @@ class PostPropertyController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            echo "<pre>";
-            var_dump($postProperty);
-            echo "</pre>";
-            die;
+//            $files = $postProperty->getImages();
+//            foreach ($files as $f)
+//            {
+//                $f = $this->get('brooter.admin.slider_uploader')->upload($file);
+//                $postProperty->setImages($fileName);
+//
+//            }
+//
+//            echo "<pre>";
+//            var_dump($postProperty);
+//            echo "</pre>";
+//            die;
             $em = $this->getDoctrine()->getManager();
             $em->persist($postProperty);
             $em->flush();
