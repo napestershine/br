@@ -3,19 +3,21 @@ brooter_payment_homepage:
     defaults: { _controller: BrooterPaymentBundle:Default:index }
 
 brooter_payment_done:
-    path:     /done
+    path:     /payment/done
     defaults: { _controller: BrooterPaymentBundle:Payment:captureDone }
 
 brooter_payment_successful:
-    path:     /success
+    path:     /payment/success
     defaults: { _controller: BrooterPaymentBundle:Payment:successful }
 
 brooter_payment_cancel:
-    path:     /cancel
+    path:     /payment/cancel
     defaults: { _controller: BrooterPaymentBundle:Payment:cancel}
 
 
-prepare:
-    path:     /prepare
+brooter_payment_prepare:
+    path:     /payment/prepare/
     defaults: { _controller: BrooterPaymentBundle:Payment:preparePaypalExpressCheckoutPayment }
+
+
 
