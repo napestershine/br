@@ -3,6 +3,11 @@ postproperty_index:
     defaults: { _controller: "BrooterPropertyBundle:PostProperty:index" }
     methods:  GET
 
+postproperty_index2:
+    path:     /index2
+    defaults: { _controller: "BrooterPropertyBundle:PostProperty:index" }
+    methods:  GET
+
 postproperty_show:
     path:     /{id}/show
     defaults: { _controller: "BrooterPropertyBundle:PostProperty:show" }

@@ -8,15 +8,17 @@ use Brooter\AdminBundle\Form\AreaType;
 use Brooter\AdminBundle\Form\PropertyCateType;
 use Brooter\AdminBundle\Form\PropertyOnFloorType;
 use Brooter\PropertyBundle\Entity\PropertyImage;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PostPropertyType extends AbstractType
 {
@@ -27,26 +29,51 @@ class PostPropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, array(
+                'label' => "Titlte",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter title ...'),
+                'label_attr' => array('class' => 'col-sm-3')
+            ))
             ->add('propType', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\PropertyCate',
                 'multiple' => false,
                 'expanded' => true,
+                'label' => "Type Of Property",
+                'attr' => array('class' => 'col-sm-9 '),
+                'label_attr' => array('class' => 'col-sm-3')
             ))
-
-
-            ->add('area',AreaType::class,array(
+            ->add('area', AreaType::class, array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Area',
+                'label' => "Area",
+                'attr' => array('class' => 'col-sm-9 ', 'placeholder' => 'Enter area ...'),
+                'label_attr' => array('class' => 'col-sm-3')
             ))
-
-            ->add('address',AddressType::class,array(
+            ->add('address', AddressType::class, array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Address',
+                'label' => "Address",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter address ...'),
+                'label_attr' => array('class' => 'col-sm-3')
             ))
-            ->add('noofbedroom')
-            ->add('noofbathroom')
-            ->add('noofbalcony')
-            ->add('totalfloor')
-
+            ->add('noofbedroom', IntegerType::class, array(
+                'label' => "No. Of Bedrooom",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter No. Of Bedrooom ...', 'min' => '0'),
+                'label_attr' => array('class' => 'col-sm-3')
+            ))
+            ->add('noofbathroom', IntegerType::class, array(
+                'label' => "No. Of Bathrooms",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter No. Of Bathrooms ...', 'min' => '0'),
+                'label_attr' => array('class' => 'col-sm-3')
+            ))
+            ->add('noofbalcony', IntegerType::class, array(
+                'label' => "No. Of Balcony",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter No. Of Balcony ...', 'min' => '0'),
+                'label_attr' => array('class' => 'col-sm-3')
+            ))
+            ->add('totalfloor', IntegerType::class, array(
+                'label' => "No. Of Floors",
+                'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter No. Of Floors ...', 'min' => '0'),
+                'label_attr' => array('class' => 'col-sm-3')
+            ))
             ->add('propOnFloor')
             ->add('reservedParking', EntityType::class, array(
                 'class' => 'Brooter\AdminBundle\Entity\ReservedParking',
@@ -97,33 +124,31 @@ class PostPropertyType extends AbstractType
             ->add('floorPlans', CollectionType::class, array(
                 'entry_type' => FloorPlansType::class,
                 'label' => 'Floor Plan',
-                'allow_add' =>  true,
+                'allow_add' => true,
                 'allow_delete' => true,
-                'by_reference'=>false,
+                'by_reference' => false,
                 'prototype' => true,
             ))
-            ->add('propertySpecification',CollectionType::class,array(
+            ->add('propertySpecification', CollectionType::class, array(
                 'entry_type' => PropertySpecificationType::class,
-                'label'=>'Property Specification',
-                'allow_add'=>true,
-                'allow_delete'=>true,
-                'by_reference'=>false,
-                'prototype'=>true,
+                'label' => 'Property Specification',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
             ))
             ->add('propertyImage', CollectionType::class, array(
                 'entry_type' => PropertyImageType::class,
                 'label' => 'Property Image',
-                'allow_add' =>  true,
+                'allow_add' => true,
                 'allow_delete' => true,
-                'by_reference'=>false,
+                'by_reference' => false,
                 'prototype' => true,
             ))
-
             ->add('propPossesion')
-            ->add('description')
-        ;
+            ->add('description');
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

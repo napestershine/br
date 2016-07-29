@@ -4,6 +4,7 @@ namespace Brooter\PropertyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Brooter\PropertyBundle\Entity\PostProperty;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * FloorPlans
  *
@@ -29,9 +30,10 @@ class FloorPlans
     private $title;
 
     /**
-     * @var string
+     * @ORM\Column(type="string")
      *
-     * @ORM\Column(name="ImageFilePath", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the slider image in jpg or jpeg or png format.")
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
      */
     private $imageFilePath;
 
@@ -82,6 +84,7 @@ class FloorPlans
     public function setImageFilePath($imageFilePath)
     {
         $this->imageFilePath = $imageFilePath;
+        return $this;
     }
 
     /**

@@ -1,37 +1,358 @@
-{% extends 'base.html.twig' %}
+{% extends 'PostProperty.html.twig' %}
+{% block PostPropertyBlock %}
 
-{% block body %}
-    <h1>PostProperty list</h1>
+    <!-- Property listing with sidebar page content ____ -->
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for postProperty in postProperties %}
-            <tr>
-                <td><a href="{{ path('postproperty_show', { 'id': postProperty.id }) }}">{{ postProperty.id }}</a></td>
-                <td>
+    <div class="container property_listing">
+        <div class="row">
+            <!-- _______________________________________________ Sidebar ________________________________________________ -->
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                <div class="sidebar_style_two">
+                    <!-- _______________________Property Search option________________________ -->
+                    <div class="preperty_search">
+                        <h4>Property Search</h4>
+                        <form action="#">
+                            <div class="selectmenu_type_1 price_range">
+                                <h6 class="headList">Budget</h6>
+                                <input type="text" placeholder="Min. Price" onfocus="this.placeholder=''" onblur="this.placeholder='Min. Price'">
+                                <input type="text" placeholder="Max. Price" onfocus="this.placeholder=''" onblur="this.placeholder='Max. Price'">
+                            </div> <!-- End .single_form -->
+
+                            <div>
+                                <h6 class="headList">Bedroom</h6>
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">1 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">2 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">3 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">4 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">5 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">6 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">7 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">8 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">9 BHK</label>
+                                </div> <!-- End .single_checkbox -->
+                                <div class="single_checkbox">
+                                    <input type="checkbox" id="">
+                                    <label for="">9+ BHK</label>
+                                </div> <!-- End .single_checkbox -->
+
+
+                                <h6 class="headList">Locality</h6>
+
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">New Delhi</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Noida</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Gurgaon</label>
+                                </div>
+
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Ghaziabad</label>
+                                </div>
+
+                                <h6 class="headList">Amenities</h6>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Lift</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Park</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Gym</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Swimming pool</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Security Personnel</label>
+                                </div>
+
+
+                                <h6 class="headList">Posted By</h6>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Owner</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Builder</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Dealer</label>
+                                </div>
+
+                                <h6 class="headList">Furnishing</h6>
+
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Furnished</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Unfurnished</label>
+                                </div>
+                                <div class="single_checkbox-full">
+                                    <input type="checkbox" id="">
+                                    <label for="">Semifurnished</label>
+                                </div>
+
+
+                            </div> <!-- End .input_checker -->
+                            <div class="selectmenu_type_1 price_range">
+                                <h6 class="headList">Area</h6>
+                                <input type="text" placeholder="Min" onfocus="this.placeholder=''" onblur="this.placeholder='Min'">
+                                <input type="text" placeholder="Max" onfocus="this.placeholder=''" onblur="this.placeholder='Max'">
+                            </div> <!-- End .single_form -->
+
+
+                            <button class="search">Search Properties</button>
+                        </form>
+                    </div> <!-- End .preperty_search -->
+
+
+
+
+
+                </div> <!-- End .sidebar_style_two -->
+            </div> <!-- End of column -->
+
+
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <div class="inner_section_title style_two">
+                    <!-- Main_title__________ -->
+                    <div class="main_title">
+                        <h2 style="margin-top:0;">Properties For Sale/Rent/Lease/Paying Guest</h2>
+                    </div>
+
+                    <span class="left_side">{{ postProperties|length }}Listing</span>
                     <ul>
-                        <li>
-                            <a href="{{ path('postproperty_show', { 'id': postProperty.id }) }}">show</a>
+                        <li class="border-right">
+                            <div class="dropdown">
+                                <button class="btn-dropdown dropdown-toggle" type="button" id="dropdownMenu11" data-toggle="dropdown" aria-haspopup="true">
+                                    Sort By Price
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu11">
+                                    <li>Sort By Area</li>
+                                    <li>Sort By Size</li>
+                                    <li>Sort By Price</li>
+                                </ul>
+                            </div> <!-- End .dropdown -->
                         </li>
+                        <li class="border-right">
+                            <div class="dropdown">
+                                <button class="btn-dropdown dropdown-toggle" type="button" id="dropdownMenu22" data-toggle="dropdown" aria-haspopup="true">
+                                    Ascending to Decending
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu22">
+                                    <li>Ascending to Decending</li>
+                                    <li>Ascending to Decending</li>
+                                    <li>Ascending to Decending</li>
+                                </ul>
+                            </div> <!-- End .dropdown -->
+                        </li>
+                        <li class="back_home"><a href="index-1.html">Back to Home</a></li>
                         <li>
-                            <a href="{{ path('postproperty_edit', { 'id': postProperty.id }) }}">edit</a>
+                            <a href="#"><i class="fa fa-th"></i></a>
+                            <a href="#" class="active"><i class="fa fa-th-list"></i></a>
                         </li>
                     </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </div> <!-- End .inner_section_title -->
 
-    <ul>
-        <li>
-            <a href="{{ path('postproperty_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+                <!-- ________________ Single Propery type __________________ -->
+
+                {% for postProp in postProperties %}
+
+                <div class="owl-carousel owl-theme properties-slider-two property_type">
+                    <div class="single_properties item">
+                        <span>Featured</span>
+                        <div class="properties_details">
+                            <div class="img_holder" >
+                                <img src="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" alt="images" style="width:200px; height: 200px;">
+                                <div class="overlay tran3s">
+                                    <a href="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" class="fancybox"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                            </div> <!-- End .img_holder -->
+
+                            <div class="text">
+                                <div class="properties_info">
+                                    <div class="properties_title">
+                                        <a href="property-details.html"><h6>{{ postProp.getTitle() }}</h6></a>
+                                        <span><i class="fa fa-map-marker"></i>{{ postProp.getAddress().getLocality() }}</span>
+                                    </div> <!-- End .properties_title -->
+                                </div>
+                                <span>{{ postProp.getExpectedPrice() }}</span>
+
+                                <p>{{ postProp.getDescription() }}</p>
+
+                                <ul class="properties_history">
+                                    <li class="tooltip" title="{{ postProp.getPropertyFacing() }} View"><i class="fa fa-trello"></i>{{ postProp.getPropertyFacing() }} View</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbedroom()  }} Bedroom"><i class="fa fa-bed"></i>{{ postProp.getNoofbedroom()  }} Br</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbathroom()  }} Bathroom"><i class="fa fa-wheelchair"></i>{{ postProp.getNoofbathroom()  }} Ba</li>
+                                    <li class="tooltip" title="{{ postProp.getArea().getCalculatedArea() }} Sq Feet"><i class="fa fa-compress"></i>{{ postProp.getArea().getCalculatedArea() }} Sq Feet</li>
+                                </ul>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .properties_details -->
+
+                    </div> <!-- End .single_properties -->
+
+                    <div class="single_properties item">
+                        <span>Featured</span>
+                        <div class="properties_details">
+                            <div class="img_holder">
+                                <img src="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" alt="images" style="width:200px; height: 200px;">
+                                <div class="overlay tran3s">
+                                    <a href="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" class="fancybox"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                            </div> <!-- End .img_holder -->
+
+                            <div class="text">
+                                <div class="properties_info">
+                                    <div class="properties_title">
+                                        <a href="property-details.html"><h6>{{ postProp.getTitle() }}</h6></a>
+                                        <span><i class="fa fa-map-marker"></i>{{ postProp.getAddress().getLocality() }}</span>
+                                    </div> <!-- End .properties_title -->
+                                </div>
+                                <span>{{ postProp.getExpectedPrice() }}</span>
+
+                                <p>{{ postProp.getDescription() }}</p>
+
+                                <ul class="properties_history">
+                                    <li class="tooltip" title="{{ postProp.getPropertyFacing() }} View"><i class="fa fa-trello"></i>{{ postProp.getPropertyFacing() }} View</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbedroom()  }} Bedroom"><i class="fa fa-bed"></i>{{ postProp.getNoofbedroom()  }} Br</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbathroom()  }} Bathroom"><i class="fa fa-wheelchair"></i>{{ postProp.getNoofbathroom()  }} Ba</li>
+                                    <li class="tooltip" title="{{ postProp.getArea().getCalculatedArea() }} Sq Feet"><i class="fa fa-compress"></i>{{ postProp.getArea().getCalculatedArea() }} Sq Feet</li>
+                                </ul>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .properties_details -->
+
+                    </div> <!-- End .single_properties -->
+
+                    <div class="single_properties item">
+                        <span>Featured</span>
+                        <div class="properties_details">
+                            <div class="img_holder">
+                                <img src="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" alt="images" style="width:200px; height: 200px;">
+                                <div class="overlay tran3s">
+                                    <a href="{{ asset('uploads/propImgs/'~postProp.getPropertyImage()[0].getFilePath()) }}" class="fancybox"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                            </div> <!-- End .img_holder -->
+
+                            <div class="text">
+                                <div class="properties_info">
+                                    <div class="properties_title">
+                                        <a href="#"><h6{{ postProp.getTitle() }}</h6></a>
+                                        <span><i class="fa fa-map-marker"></i> {{ postProp.getAddress().getLocality() }}</span>
+                                    </div> <!-- End .properties_title -->
+                                </div>
+                                <span>{{ postProp.getExpectedPrice() }}</span>
+
+                                <p>{{ postProp.getDescription() }}</p>
+
+                                <ul class="properties_history">
+                                    <li class="tooltip" title="{{ postProp.getPropertyFacing() }} View"><i class="fa fa-trello"></i>{{ postProp.getPropertyFacing() }} View</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbedroom()  }} Bedroom"><i class="fa fa-bed"></i>{{ postProp.getNoofbedroom()  }} Br</li>
+                                    <li class="tooltip" title="{{ postProp.getNoofbathroom()  }} Bathroom"><i class="fa fa-wheelchair"></i>{{ postProp.getNoofbathroom()  }} Ba</li>
+                                    <li class="tooltip" title="{{ postProp.getArea().getCalculatedArea() }} Sq Feet"><i class="fa fa-compress"></i>{{ postProp.getArea().getCalculatedArea() }} Sq Feet</li>
+                                </ul>
+                            </div> <!-- End .text -->
+                        </div> <!-- End .properties_details -->
+
+                    </div> <!-- End .single_properties -->
+                </div> <!-- End .property_type -->
+                {% endfor %}
+
+
+
+                <div class="page_indicator">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div> <!-- End .page_indicator -->
+            </div> <!-- End of column -->
+
+
+        </div> <!-- End .row -->
+    </div> <!-- End .property_listing -->
+
+
+    <!-- End Property listing with sidebar page content  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
