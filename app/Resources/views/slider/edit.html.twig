@@ -10,7 +10,7 @@
             <div class="form-group">
                 <label for="file" class="col-md-3">Edit Image (jpg/jpeg/png)</label>
                 <div class="col-md-6">
-                    <img src="{{ asset('uploads/sliders/' ~ slider.file) }}"/>
+                    <img src="{{ asset('uploads/sliders/' ~ slider.file) }}" width="50%"/>
                     {{ form_widget(edit_form.file) }}
                 </div>
             </div>
