@@ -840,7 +840,7 @@ class PostProperty
         $this->propertyImage->add($propertyImage);
 
     }
-    public function removePropertyImage(FloorPlans $propertyImage)
+    public function removePropertyImage(PropertyImage $propertyImage)
     {
         $this->propertyImage->removeElement($propertyImage);
     }

@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Advertisements {% endblock %}
+{% block subheader %}Advertisements List{% endblock %}
+{% block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adname</th>
+                <th>Cost</th>
+                <th>Totalcreditperyear</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for advertisementPackage in advertisementPackages %}
+
+            <tr>
+                <td><a href="{{ path('advertisementpackage_show', { 'id': advertisementPackage.id }) }}">{{ advertisementPackage.id }}</a></td>
+                <td>{{ advertisementPackage.adname }}</td>
+                <td>{{ advertisementPackage.cost }}</td>
+                <td>{{ advertisementPackage.totalcreditperyear }}</td>
+                <td>{% if advertisementPackage.active %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('advertisementpackage_show', { 'id': advertisementPackage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('advertisementpackage_edit', { 'id': advertisementPackage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('advertisementpackage_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

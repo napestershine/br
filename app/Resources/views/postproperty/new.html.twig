@@ -1,25 +1,36 @@
 {% extends 'PostProperty.html.twig' %}
+{% block PostPropertyBlock %}
 
-{% block body %}
+    <div class="register_page container">
 
-    <h1>PostProperty creation</h1>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 register_form">
+                <!-- Main_title__________ -->
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-            <ul class="floorplans" data-prototype="{{ form_row(form.floorPlans) }}">
-            </ul>
+                <!-- Register form -->
+                <div class="register">
+                    <h6>Post Your Property Now</h6>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <ul class="floorplans" data-prototype="{{ form_row(form.floorPlans) }}">
+                    </ul>
 
-            <ul class="propertyspecification" data-prototype="{{ form_row(form.propertySpecification) }}">
-            </ul>
+                    <ul class="propertyspecification" data-prototype="{{ form_row(form.propertySpecification) }}">
+                    </ul>
 
-            <ul class="propertyimage" data-prototype="{{ form_row(form.propertyImage) }}">
-            </ul>
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                    <ul class="propertyimage" data-prototype="{{ form_row(form.propertyImage) }}">
+                    </ul>
+                    <input class="btn btn-info" type="submit" value="Create"/>
+                    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('postproperty_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    {#<ul>
+                        <li>
+                            <a href="{{ path('postproperty_index') }}">Back to the list</a>
+                        </li>
+                    </ul>#}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

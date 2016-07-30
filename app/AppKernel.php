@@ -24,6 +24,9 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Brooter\PropertyBundle\BrooterPropertyBundle(),
+            new Brooter\AdvertisementBundle\BrooterAdvertisementBundle(),
+            new Brooter\PaymentBundle\BrooterPaymentBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
         ];
 

@@ -1,282 +1,585 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <style type="text/css">
-                li *{
-                    display:inline-block;
-                    margin:0 10px;
-                }
-            </style>
-        {% endblock %}
-        <script src="{{ asset('admin/dist/js/jquery-3.1.0.min.js') }}"></script>
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- For Resposive Device -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Post Property!{% endblock %}</title>
+    {% block stylesheets %}
+        <style type="text/css">
+            li * {
+                display: inline-block;
+                margin: 0 10px;
+            }
+        </style>
+    {% endblock %}
+    <script src="{{ asset('admin/dist/js/jquery-3.1.0.min.js') }}"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/custom/style.css') }}">
+    <!-- Color css -->
+    <link rel="stylesheet" id="jssDefault" href="{{ asset('reweb/css/custom/theme-default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('reweb/css/responsive/responsive.css') }}">
+
+    <!-- Fixing Internet Explorer ______________________________________-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="{{ asset('reweb/js/html5shiv.js') }}"></script>
+    <![endif]-->
+
+
+</head>
+<body class="{% block bodyclass %}blog_list{% endblock %}">
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="boxed_wrapper">
+
+    <!-- Main Menu ____________________________________ -->
+
+    <div class="main_menu fixed_menu" id="menu">
+        <div class="container">
+            <div class="wrapper">
+                <div class="logo_holder"><h2 style="color:#000;">Brooter</h2></div>
+                <!-- End .logo_holder -->
+
+                <a href="#" class="amenities tran3s">Add Property</a>
+
+                <!-- Menu ______________ -->
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div> <!-- End .navbar-header -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_homepage') }}">Properties</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_web_faq') }}">FAQs</a></li>
+                            <li class="tran3sL"><a href="{{ path('brooter_blog_homepage') }}">Blog</a></li>
+                            {% if app.user %}
+                                <li class="tran3sL"><a href="{{ path('fos_user_profile_show') }}">Profile</a></li>
+                                <li class="tran3sL"><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                            {% else %}
+                                <li class="tran3sL"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                <li class="tran3sL"><a
+                                            href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                            {% endif %}
+                            <li class="tran3sL"><a href="">Contact</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav> <!-- End .navbar -->
+                <!-- End Menu __________ -->
+            </div>  <!-- End .wrapper -->
+        </div> <!-- End .container -->
+    </div> <!-- End .main_menu -->
+
+    <!-- End Main Menu _______________________________ -->
+
+
+    <!-- Call Us Anytime _____________________________ -->
+    <div class="container">
+        <div class="call_us">
+            <p><span><i class="fa fa-phone"></i></span>Call Us Anytime &#64;</p>
+            <a href="tel:{{ company.field2 }}">{{ company.field2 }}</a>
+        </div>
+    </div>
+
+    <!-- End Call Us Anytime _________________________ -->
+
+
+    <!-- Inner Banner ________________________________ -->
+
+    <section id="inner_banner">
+        <div class="overlay">
+            <div class="container">
+
+            </div> <!-- End .container -->
+        </div> <!-- End .overlay -->
+    </section> <!-- End .inner_banner -->
+
+    <!-- End Inner Banner ____________________________ -->
+
+    {% block PostPropertyBlock %}
+
+    {% endblock %}
+
+
+    <!-- Footer __________________________________________ -->
+    <footer>
+        <div class="main_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="about_estate">
+                            <h2 style="color:#fff;">Brooter</h2>
+                            <p>{{ company.field11 }}</p>
+
+                            <ul class="icon_footer">
+                                <li class="border_round tran3s tooltip" title="Facebook"><a
+                                            href="{{ company.field6 }}"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Twitter"><a
+                                            href="{{ company.field7 }}"><i
+                                                class="fa fa-twitter"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Google Plus"><a
+                                            href="{{ company.field8 }}"><i
+                                                class="fa fa-google-plus"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Linkedin"><a
+                                            href="{{ company.field9 }}"><i
+                                                class="fa fa-linkedin"></i></a></li>
+                                <li class="border_round tran3s tooltip" title="Vimeo"><a
+                                            href="{{ company.field10 }}"><i
+                                                class="fa fa-vimeo"></i></a></li>
+                            </ul> <!-- End .icon_header -->
+
+                        </div> <!-- End .about_estate -->
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="useful_link">
+                            <div class="footer_title">
+                                <h4>Useful Links</h4>
+                            </div>
+                            <ul>
+                                <li><a href="property-listing-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Properties</a></li>
+                                <li><a href="{{ path('brooter_web_aboutus') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> About
+                                        Us</a></li>
+                                <li><a href="property-listing-with-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Find Homes</a></li>
+                                <li><a href="agent-listing-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Popular Agents</a></li>
+                                <li><a href="blog-without-sidebar.html" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> News</a></li>
+                                <li><a href="contact.html" class="tran3s"><i class="fa fa-angle-right"></i> Conatct
+                                        Us</a></li>
+                            </ul>
+
+                            <ul>
+                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Add Listing</a>
+                                </li>
+                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Become Agent</a>
+                                </li>
+                                <li><a href="pricing-plans.html" class="tran3s"><i class="fa fa-angle-right"></i>
+                                        Pricing</a></li>
+                                <li><a href="#" class="tran3s"><i class="fa fa-angle-right"></i> Features</a></li>
+                                <li><a href="{{ path('brooter_web_terms') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> Terms</a></li>
+                                <li><a href="{{ path('brooter_web_dmca') }}" class="tran3s"><i
+                                                class="fa fa-angle-right"></i> DMCA</a></li>
+                            </ul>
+                        </div> <!-- End .useful_link -->
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="featured_properties_footer">
+                            <div class="footer_title">
+                                <h4>Featured Properties</h4>
+                            </div>
+
+                            <div class="history">
+                                <div class="item">
+                                    <div class="image_holder">
+                                        <img src="{{ asset('reweb/images/home/22.jpg') }}" alt="images">
+                                    </div>
+                                    <div class="text">
+                                        <a href="property-details.html"><h6>High Rise Building</h6></a>
+                                        <span><i class="fa fa-map-marker"></i> California</span>
+                                        <h4>$ 25,500</h4>
+                                    </div> <!-- End .text -->
+                                </div> <!-- End .item -->
+
+                                <div class="item">
+                                    <div class="image_holder">
+                                        <img src="{{ asset('reweb/images/home/23.jpg') }}" alt="images">
+                                    </div>
+                                    <div class="text">
+                                        <a href="property-details.html"><h6>Low Rise Building</h6></a>
+                                        <span><i class="fa fa-map-marker"></i> Sanfransisco</span>
+                                        <h4>$ 35,500</h4>
+                                    </div> <!-- End .text -->
+                                </div> <!-- End .item -->
+
+                                <div class="item">
+                                    <div class="image_holder">
+                                        <img src="{{ asset('reweb/images/home/24.jpg') }}" alt="images">
+                                    </div>
+                                    <div class="text">
+                                        <a href="property-details.html"><h6>Jango Beach House</h6></a>
+                                        <span><i class="fa fa-map-marker"></i> Coloroda</span>
+                                        <h4>$ 45,500</h4>
+                                    </div> <!-- End .text -->
+                                </div> <!-- End .item -->
+                            </div> <!-- End .history -->
+                        </div> <!-- End .featured_properties_footer -->
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                        <div class="contact_info">
+                            <div class="footer_title">
+                                <h4>Contact Info</h4>
+                            </div>
+
+                            <ul>
+                                <li>{{ company.field1 }}</li>
+                                <li><a href="tel:{{ company.field2 }}"
+                                       class="tran3s">Phone: {{ company.field2 }}</a></li>
+                                <li><a href="mailto:{{ company.field3 }}"
+                                       class="tran3s">Email: {{ company.field3 }}</a></li>
+                                <li><a href="{{ company.field4 }}" class="tran3s">Web: {{ company.field4 }}</a></li>
+                                <li>{{ company.field5 }}</li>
+                            </ul>
+
+                        </div> <!-- End .contact_info -->
+                    </div>
+                </div> <!-- End .row -->
+            </div> <!-- End .container -->
+        </div> <!-- End .main_footer -->
+
+        <div class="bottom_footer">
+            <div class="container">
+                <div class="text">
+                    <p>Copyright &copy; 2016 brooter | Developed by
+                        <a href="http://webmoneycafe.com" class="tran3s" target="_blank">
+                            <i class="fa fa-globe"></i> webmoneycafe</a>
+                </div> <!-- End .text -->
+
+                <div class="footer_nav">
+                    <ul>
+                        <li><a href="{{ path('brooter_web_homepage') }}" class="tran3s">Home</a></li>
+                        <li><a href="" class="tran3s">Properties</a></li>
+                        <li><a href="" class="tran3s">Agents</a></li>
+                    </ul>
+                </div> <!-- End .footer_nav -->
+            </div>
+        </div> <!-- End .bottom_footer -->
+    </footer>
+    <!-- End Footer ______________________________________ -->
+
+</div> <!-- End .boxed_wrapper -->
+
+<!-- Js File_________________________________ -->
+
+<!-- j Query -->
+<script type="text/javascript" src="{{ asset('reweb/js/jquery-2.1.4.js') }}"></script>
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="{{ asset('reweb/js/bootstrap.min.js') }}"></script>
+
+<!-- Vendor js _________ -->
+<!-- Style-switcher  -->
+<script type="text/javascript" src="{{ asset('reweb/js/jQuery.style.switcher.min.js') }}"></script>
+
+<!-- Google map js -->
+<script src="http://maps.google.com/maps/api/js"></script> <!-- Gmap Helper -->
+<script src="{{ asset('reweb/js/gmap.js') }}"></script>
+
+
+<!-- Tooltip -->
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.tooltipster.min.js') }}"></script>
+
+<!-- ui js -->
+<script type="text/javascript" src="{{ asset('reweb/js/jquery-ui.min.js') }}"></script>
+
+<!-- Fancybox js -->
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.fancybox.pack.js') }}"></script>
+
+<!-- owl.carousel -->
+<script type="text/javascript" src="{{ asset('reweb/js/owl.carousel.min.js') }}"></script>
+
+<!-- Language Switcher -->
+<script type="text/javascript" src="{{ asset('reweb/js/jquery.polyglot.language.switcher.js') }}"></script>
+
+<!-- revolution -->
+<script src="{{ asset('reweb/js/revolution/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ asset('reweb/js/revolution/jquery.themepunch.revolution.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/revolution/revolution.extension.slideanims.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ asset('reweb/js/revolution/revolution.extension.layeranimation.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('reweb/js/revolution/revolution.extension.navigation.min.js') }}"></script>
+
+<!-- Main js -->
+<script type="text/javascript" src="{{ asset('reweb/js/main.js') }}"></script>
+
+
+
+{% block javascripts %}
+    <script type="text/javascript">
+
+        var $addPropertyImgLink=$('<a href="#" class="add_property_img_link">Add Property Image</a>');
+        var $newLinkLiPropImg=$('<li></li>').append($addPropertyImgLink);
+        var $collectionHolderPropImg;
+
+
+
+        var $addPropertySpecLink=$('<a href="#" class="add_property_specification_link">Add a Property Specification</a>');
+        var $newLinkLiPropSpec=$('<li></li>').append($addPropertySpecLink);
+        var $collectionHolderPropSpec;
+
+
+        var $addFloorPlanLink = $('<a href="#" class="add_floor_plan_link">Add a Floor Plan</a>');
+        var $newLinkLi = $('<li></li>').append($addFloorPlanLink);
+        var $collectionHolder;
+
+
+        // setup an "add a floor plan" link
+
+
+
+        $(document).ready(function () {
+
+            // Get the ul that holds the collection of property image
+            $collectionHolderPropImg=$('#post_property_propertyImage');
+
+            // Get the ul that holds the collection of property specification
+            $collectionHolderPropSpec=$('#post_property_propertySpecification');
+
+            // Get the ul that holds the collection of floor plans
+            $collectionHolder = $('#post_property_floorPlans');
+
+
 
+            //alert($collectionHolder);
+            // add the "add property image" anchor and li to the tags ul
+            $collectionHolderPropImg.append($newLinkLiPropImg);
 
+            // add the "add property specification" anchor and li to the tags ul
+            $collectionHolderPropSpec.append($newLinkLiPropSpec);
 
 
-        {% endblock %}
-        {% block javascripts %}
-            <script type="text/javascript">
+            // add the "add a floor plan" anchor and li to the tags ul
+            $collectionHolder.append($newLinkLi);
 
-                var $addPropertyImgLink=$('<a href="#" class="add_property_img_link">Add Property Image</a>');
-                var $newLinkLiPropImg=$('<li></li>').append($addPropertyImgLink);
-                var $collectionHolderPropImg;
 
+            // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
+            $collectionHolderPropImg.data('index', $collectionHolderPropImg.find(':input').length);
+            // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
+            $collectionHolderPropSpec.data('index', $collectionHolderPropSpec.find(':input').length);
+            // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
 
-                var $addPropertySpecLink=$('<a href="#" class="add_property_specification_link">Add a Property Specification</a>');
-                var $newLinkLiPropSpec=$('<li></li>').append($addPropertySpecLink);
-                var $collectionHolderPropSpec;
+            $addPropertyImgLink.on('click',function (e) {
+                e.preventDefault();
+                addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg);
+            });
+            $addPropertySpecLink.on('click',function (e) {
+                e.preventDefault();
+                addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec);
+            });
+            $addFloorPlanLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+                // add a new tag form (see next code block)
+                addFloorPlanForm($collectionHolder, $newLinkLi);
+            });
 
 
-                var $addFloorPlanLink = $('<a href="#" class="add_floor_plan_link">Add a Floor Plan</a>');
-                var $newLinkLi = $('<li></li>').append($addFloorPlanLink);
-                var $collectionHolder;
 
 
-                // setup an "add a floor plan" link
+        });
 
+        function addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg)
+        {
+            var index = $collectionHolderPropImg.data('index');
 
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolderPropImg.data('prototype');
 
-                $(document).ready(function () {
+            //alert(prototype);
+            prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_propertyImage_PI__name__"/>'+'</div>';
 
-                    // Get the ul that holds the collection of property image
-                    $collectionHolderPropImg=$('#post_property_propertyImage');
+            // Replace '$$name$$' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+            newForm=newForm.replace(/label__/g,'');
 
-                    // Get the ul that holds the collection of property specification
-                    $collectionHolderPropSpec=$('#post_property_propertySpecification');
+            // increase the index with one for the next item
+            $collectionHolderPropImg.data('index', index + 1);
 
-                    // Get the ul that holds the collection of floor plans
-                    $collectionHolder = $('#post_property_floorPlans');
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
 
 
 
-                    //alert($collectionHolder);
-                    // add the "add property image" anchor and li to the tags ul
-                    $collectionHolderPropImg.append($newLinkLiPropImg);
+            // also add a remove button, just for this example
+            $newFormLi.append('<a href="#" class="remove-tag">x</a>');
 
-                    // add the "add property specification" anchor and li to the tags ul
-                    $collectionHolderPropSpec.append($newLinkLiPropSpec);
+            $newLinkLiPropImg.before($newFormLi);
 
+            // handle the removal, just for this example
+            $('.remove-tag').click(function(e) {
+                e.preventDefault();
 
-                    // add the "add a floor plan" anchor and li to the tags ul
-                    $collectionHolder.append($newLinkLi);
+                $(this).parent().remove();
 
+                return false;
+            });
+            $('input[type="file"]').change(function(){
 
-                    // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
-                    $collectionHolderPropImg.data('index', $collectionHolderPropImg.find(':input').length);
-                    // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
-                    $collectionHolderPropSpec.data('index', $collectionHolderPropSpec.find(':input').length);
-                    // count the current form inputs we have (e.g. 2), use that as the new // index when inserting a new item (e.g. 2)
-                    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+                var reader = new FileReader();
+                var fileID=$(this).attr('id');
+                reader.onload = function (e) {
+                    // get loaded data and render thumbnail.
 
+                    fileID=fileID.substr(0,fileID.length-9);
+                    fileID=fileID.substr(28,fileID.length-27);
 
-                    $addPropertyImgLink.on('click',function (e) {
-                        e.preventDefault();
-                        addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg);
-                    });
-                    $addPropertySpecLink.on('click',function (e) {
-                        e.preventDefault();
-                        addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec);
-                    });
-                   $addFloorPlanLink.on('click', function(e) {
-                        // prevent the link from creating a "#" on the URL
-                        e.preventDefault();
-                        // add a new tag form (see next code block)
-                        addFloorPlanForm($collectionHolder, $newLinkLi);
-                    });
+                    var imgTagID='post_property_propertyImage_PI'+fileID;
 
+                    document.getElementById(imgTagID).setAttribute('src',e.target.result);
 
+                };
 
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
 
-                });
+            });
+        }
 
-                function addPropertyImgForm($collectionHolderPropImg,$newLinkLiPropImg)
-                {
-                    var index = $collectionHolderPropImg.data('index');
 
-                    // Get the data-prototype explained earlier
-                    var prototype = $collectionHolderPropImg.data('prototype');
 
-                    //alert(prototype);
-                    prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_propertyImage_PI__name__"/>'+'</div>';
+        function addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec)
+        {
+            var index = $collectionHolderPropSpec.data('index');
 
-                    // Replace '$$name$$' in the prototype's HTML to
-                    // instead be a number based on how many items we have
-                    var newForm = prototype.replace(/__name__/g, index);
-                    newForm=newForm.replace(/label__/g,'');
 
-                    // increase the index with one for the next item
-                    $collectionHolderPropImg.data('index', index + 1);
 
-                    // Display the form in the page in an li, before the "Add a tag" link li
-                    var $newFormLi = $('<li></li>').append(newForm);
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolderPropSpec.data('prototype');
 
 
 
-                    // also add a remove button, just for this example
-                    $newFormLi.append('<a href="#" class="remove-tag">x</a>');
 
-                    $newLinkLiPropImg.before($newFormLi);
+            // Replace '$$name$$' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+            newForm=newForm.replace(/label__/g,'');
 
-                    // handle the removal, just for this example
-                    $('.remove-tag').click(function(e) {
-                        e.preventDefault();
 
-                        $(this).parent().remove();
 
-                        return false;
-                    });
-                    $('input[type="file"]').change(function(){
+            // increase the index with one for the next item
+            $collectionHolderPropSpec.data('index', index + 1);
 
-                        var reader = new FileReader();
-                        var fileID=$(this).attr('id');
-                        reader.onload = function (e) {
-                            // get loaded data and render thumbnail.
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
 
-                            fileID=fileID.substr(0,fileID.length-9);
-                            fileID=fileID.substr(28,fileID.length-27);
 
-                            var imgTagID='post_property_propertyImage_PI'+fileID;
 
-                            document.getElementById(imgTagID).setAttribute('src',e.target.result);
+            // also add a remove button, just for this example
+            $newFormLi.append('<a href="#" class="remove-tag">x</a>');
 
-                        };
+            $newLinkLiPropSpec.before($newFormLi);
 
-                        // read the image file as a data URL.
-                        reader.readAsDataURL(this.files[0]);
+            // handle the removal, just for this example
+            $('.remove-tag').click(function(e) {
+                e.preventDefault();
 
-                    });
-                }
+                $(this).parent().remove();
 
+                return false;
+            });
+        }
+        function addFloorPlanForm($collectionHolder, $newLinkLi) {
 
+            var index = $collectionHolder.data('index');
 
-                function addPropertySpecForm($collectionHolderPropSpec,$newLinkLiPropSpec)
-                {
-                    var index = $collectionHolderPropSpec.data('index');
 
 
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
 
-                    // Get the data-prototype explained earlier
-                    var prototype = $collectionHolderPropSpec.data('prototype');
 
 
 
+            prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_floor_plans_FP__name__" />'+'</div>';
 
-                    // Replace '$$name$$' in the prototype's HTML to
-                    // instead be a number based on how many items we have
-                    var newForm = prototype.replace(/__name__/g, index);
-                    newForm=newForm.replace(/label__/g,'');
 
+            // Replace '$$name$$' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+            newForm=newForm.replace(/label__/g,'');
 
 
-                    // increase the index with one for the next item
-                    $collectionHolderPropSpec.data('index', index + 1);
 
-                    // Display the form in the page in an li, before the "Add a tag" link li
-                    var $newFormLi = $('<li></li>').append(newForm);
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
 
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
 
 
-                    // also add a remove button, just for this example
-                    $newFormLi.append('<a href="#" class="remove-tag">x</a>');
 
-                    $newLinkLiPropSpec.before($newFormLi);
+            // also add a remove button, just for this example
+            $newFormLi.append('<a href="#" class="remove-tag">x</a>');
 
-                    // handle the removal, just for this example
-                    $('.remove-tag').click(function(e) {
-                        e.preventDefault();
+            $newLinkLi.before($newFormLi);
 
-                        $(this).parent().remove();
+            // handle the removal, just for this example
+            $('.remove-tag').click(function(e) {
+                e.preventDefault();
 
-                        return false;
-                    });
-                }
-                function addFloorPlanForm($collectionHolder, $newLinkLi) {
+                $(this).parent().remove();
 
-                    var index = $collectionHolder.data('index');
+                return false;
+            });
+            $('input[type="file"]').change(function(){
 
-                    
+                var reader = new FileReader();
+                var fileID=$(this).attr('id');
+                reader.onload = function (e) {
+                    // get loaded data and render thumbnail.
 
-                    // Get the data-prototype explained earlier
-                    var prototype = $collectionHolder.data('prototype');
+                    fileID=fileID.substr(0,fileID.length-14);
+                    fileID=fileID.substr(25,fileID.length-25);
 
+                    var imgTagID='post_property_floor_plans_FP'+fileID;
 
+                    document.getElementById(imgTagID).setAttribute('src',e.target.result);
 
+                };
 
-                    prototype=prototype.substring(0,prototype.length-6)+'<img src="#" alt="Selected Img" height="100" width="100" id="post_property_floor_plans_FP__name__" />'+'</div>';
+                // read the image file as a data URL.
+                reader.readAsDataURL(this.files[0]);
 
+            });
 
-                    // Replace '$$name$$' in the prototype's HTML to
-                    // instead be a number based on how many items we have
-                    var newForm = prototype.replace(/__name__/g, index);
-                    newForm=newForm.replace(/label__/g,'');
 
+        }
 
 
-                    // increase the index with one for the next item
-                    $collectionHolder.data('index', index + 1);
 
-                    // Display the form in the page in an li, before the "Add a tag" link li
-                    var $newFormLi = $('<li></li>').append(newForm);
 
+        function PreviewImage(imgTagId, selectFileId) {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById(selectFileId).files[0]);
 
+            oFReader.onload = function (oFREvent) {
+                document.getElementById(imgTagId).src = oFREvent.target.result;
+            };
+        }
+    </script>
+{% endblock %}
 
-                    // also add a remove button, just for this example
-                    $newFormLi.append('<a href="#" class="remove-tag">x</a>');
-
-                    $newLinkLi.before($newFormLi);
-
-                    // handle the removal, just for this example
-                    $('.remove-tag').click(function(e) {
-                        e.preventDefault();
-
-                        $(this).parent().remove();
-
-                        return false;
-                    });
-                    $('input[type="file"]').change(function(){
-
-                        var reader = new FileReader();
-                        var fileID=$(this).attr('id');
-                        reader.onload = function (e) {
-                            // get loaded data and render thumbnail.
-
-                            fileID=fileID.substr(0,fileID.length-14);
-                            fileID=fileID.substr(25,fileID.length-25);
-
-                            var imgTagID='post_property_floor_plans_FP'+fileID;
-
-                            document.getElementById(imgTagID).setAttribute('src',e.target.result);
-
-                        };
-
-                        // read the image file as a data URL.
-                        reader.readAsDataURL(this.files[0]);
-
-                    });
-
-
-                }
-
-
-
-
-                function PreviewImage(imgTagId, selectFileId) {
-                    var oFReader = new FileReader();
-                    oFReader.readAsDataURL(document.getElementById(selectFileId).files[0]);
-
-                    oFReader.onload = function (oFREvent) {
-                        document.getElementById(imgTagId).src = oFREvent.target.result;
-                    };
-                }
-            </script>
-        {% endblock %}
-    </body>
+</body>
 </html>

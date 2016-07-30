@@ -4,6 +4,7 @@ namespace Brooter\PropertyBundle\Controller;
 
 use Brooter\PropertyBundle\Entity\FloorPlans;
 use Brooter\PropertyBundle\Entity\YearBuilt;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -22,12 +23,21 @@ class PostPropertyController extends Controller
      */
     public function indexAction()
     {
+
+
+
+
         $em = $this->getDoctrine()->getManager();
 
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         $postProperties = $em->getRepository('BrooterPropertyBundle:PostProperty')->findAll();
 
+
+        
         return $this->render('postproperty/index.html.twig', array(
             'postProperties' => $postProperties,
+            'company' => $company,
+
         ));
     }
 
@@ -99,22 +109,32 @@ class PostPropertyController extends Controller
         $form->handleRequest($request);
 
         $this->fillYears();
-
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         if ($form->isSubmitted() && $form->isValid()) {
 
-//            $files = $postProperty->getImages();
-//            foreach ($files as $f)
-//            {
-//                $f = $this->get('brooter.admin.slider_uploader')->upload($file);
-//                $postProperty->setImages($fileName);
-//
-//            }
+            $files = $postProperty->getPropertyImage();
+            foreach ($files as $f)
+            {
+                $filename = $this->get('brooter.property.prop_post_uploader')->upload($f->getFilePath());
+                $f->setFilePath($filename);
+
+                
+            }
+
+            $floorplansfiles=$postProperty->getFloorPlans();
+            foreach ($floorplansfiles as $p)
+            {
+                $fname=$this->get('brooter.property.floor_plan_uploader')->upload($p->getImageFilePath());
+                $p->setImageFilePath($fname);
+            }
 //
 //            echo "<pre>";
 //            var_dump($postProperty);
 //            echo "</pre>";
 //            die;
             $em = $this->getDoctrine()->getManager();
+           
             $em->persist($postProperty);
             $em->flush();
 
@@ -125,6 +145,8 @@ class PostPropertyController extends Controller
         return $this->render('postproperty/new.html.twig', array(
             'postProperty' => $postProperty,
             'form' => $form->createView(),
+            'company' => $company,
+
         ));
     }
 

@@ -1,3 +1,15 @@
+brooter_payment:
+    resource: "@BrooterPaymentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+brooter_advertisement:
+    resource: "@BrooterAdvertisementBundle/Resources/config/routing.yml"
+    prefix:   /
+
+brooter_property:
+    resource: "@BrooterPropertyBundle/Resources/config/routing.yml"
+    prefix:   /
+
 brooter_web:
     resource: "@BrooterWebBundle/Resources/config/routing.yml"
     prefix:   /
@@ -14,13 +26,16 @@ brooter_admin:
     resource: "@BrooterAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
 
-brooter_property:
-    resource: "@BrooterPropertyBundle/Resources/config/routing.yml"
-    prefix:   /property
-
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
+payum_capture:
+    resource: "@PayumBundle/Resources/config/routing/capture.xml"
+
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"

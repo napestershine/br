@@ -8,6 +8,8 @@ imports:
     - { resource: "@BrooterBlogBundle/Resources/config/services.yml" }
     - { resource: "@BrooterWebBundle/Resources/config/services.yml" }
     - { resource: "@BrooterPropertyBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterAdvertisementBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterPaymentBundle/Resources/config/services.yml" }
 
 
 
@@ -118,6 +120,23 @@ knp_paginator:
     template:
         pagination: "KnpPaginatorBundle:Pagination:sliding.html.twig"     # sliding pagination controls template
         sortable: "KnpPaginatorBundle:Pagination:sortable_link.html.twig" # sort link template
+
+payum:
+    security:
+        token_storage:
+            Brooter\PaymentBundle\Entity\PaymentToken: { doctrine: orm }
+
+    storages:
+        Brooter\PaymentBundle\Entity\Payment: { doctrine: orm }
+
+    gateways:
+        paypal_payment_gateway:
+          factory: paypal_express_checkout
+          username:  'neeraj001_seller_api1.gmail.com'
+          password:  '8Z9PHC8XPDFPAZAF'
+          signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFB.bay9eOh6h7ddNpk5.7uV5Zqq'
+          sandbox: true
+
 
 vich_uploader:
     db_driver: orm

@@ -108,3 +108,7 @@ brooter_admin_propertyfacing:
 brooter_admin_materialused:
     resource: "@BrooterAdminBundle/Resources/config/routing/materialused.yml"
     prefix:   /materialused
+
+brooter_admin_advertisementpackage:
+        resource: "@BrooterAdminBundle/Resources/config/routing/advertisementpackage.yml"
+        prefix:   /advertisementpackage

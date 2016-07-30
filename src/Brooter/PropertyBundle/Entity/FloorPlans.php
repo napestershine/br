@@ -4,6 +4,7 @@ namespace Brooter\PropertyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Brooter\PropertyBundle\Entity\PostProperty;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -12,7 +13,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="floor_plans")
  * @ORM\Entity(repositoryClass="Brooter\PropertyBundle\Repository\FloorPlansRepository")
- * @Vich\Uploadable
  */
 class FloorPlans
 {
@@ -33,27 +33,12 @@ class FloorPlans
     private $title;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * @ORM\Column(type="string")
      *
-     * @Vich\UploadableField(mapping="floorplans_image", fileNameProperty="imageFilePath")
-     *
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ImageFilePath", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the slider image in jpg or jpeg or png format.")
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
      */
     private $imageFilePath;
-
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
-    private $updatedAt;
 
 
     /**
@@ -61,7 +46,6 @@ class FloorPlans
      * @ORM\JoinColumn(name="PostProperty_id", referencedColumnName="id")
      */
     private $postProperty;
-
     /**
      * Get id
      *
@@ -94,6 +78,29 @@ class FloorPlans
         return $this->title;
     }
 
+    /**
+     * Set imageFilePath
+     *
+     * @param string $imageFilePath
+     *
+     */
+    public function setImageFilePath($imageFilePath)
+    {
+        $this->imageFilePath = $imageFilePath;
+        return $this;
+    }
+
+    /**
+     * Get imageFilePath
+     *
+     * @return string
+     */
+    public function getImageFilePath()
+    {
+        return $this->imageFilePath;
+    }
+
+    
 
     /**
      * @param mixed $postProperty
@@ -107,73 +114,6 @@ class FloorPlans
     {
         $this->setPostProperty($postProperty);
     }
-
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return FloorPlans
-     */
-    /**
-     * @param File $imageFile
-     */
-    public function setImageFile(File $imageFile = null)
-    {
-        $this->imageFile = $imageFile;
-
-        if($imageFile)
-        {
-            $this->updatedAt=new \DateTime('now');
-        }
-        return $this;
-    }
-
-    /**
-     * @return File
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param string $imageFilePath
-     */
-    public function setImageFilePath($imageFilePath)
-    {
-        $this->imageFilePath = $imageFilePath;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageFilePath()
-    {
-        return $this->imageFilePath;
-    }
-
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
 
 }
 
