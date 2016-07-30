@@ -19,13 +19,13 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, array(
-                'label' => 'Enter Category : ',
+                'label' => 'Enter Category',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label',
+                    'class' => 'col-sm-4 control-label',
                     'for' => 'title'
                 ),
                 'attr' => array(
-                    'placeholder' => 'Enter Category ...',
+                    'placeholder' => 'Enter Category',
                     'class' => 'form-control',
                     'id' => 'title'
                 )
@@ -33,7 +33,7 @@ class CategoryType extends AbstractType
             ->add('parent', EntityType::class, array(
                 'label' => 'Select parent category',
                 'label_attr' => array(
-                    'class' => 'col-sm-2 control-label',
+                    'class' => 'col-sm-4 control-label',
                     'for' => 'parent'
                 ),
                 'placeholder' => "-- Parent Category --",

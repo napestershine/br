@@ -1,16 +1,41 @@
 {% extends 'admin.html.twig' %}
 
+{% block header %}Frequently Asked Questions{% endblock %}
+{% block subheader %}Add FAQ{% endblock %}
+
 {% block content %}
-    <h1>Faq creation</h1>
+<div class="panel-body">
+    <div class="form-horizontal">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('faq_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+        {{ form_start(form) }}
+        <div class="form-group">
+            <div class="col-md-2">Add Question</div>
+            <div class="col-md-6">
+                {{ form_widget(form.question, {'attr':{'class':'form-control', 'rows':'3'}}) }}
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-2">Add Answer</div>
+            <div class="col-md-6">
+                {{ form_widget(form.answer, {'attr':{'class':'form-control', 'rows':'3'}}) }}
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-2">Add FAQ Category</div>
+            <div class="col-md-6">
+                {{ form_widget(form.faqcategory, {'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-2">
+                <input type="submit" value="Save" class="btn btn-success"/>
+                <a href="{{ path('faq_index') }}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+        {% do form.postedOn.setRendered %}
+        {{ form_end(form) }}
+    </div>
+    {% endblock %}

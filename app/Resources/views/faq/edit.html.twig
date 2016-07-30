@@ -1,21 +1,50 @@
 {% extends 'admin.html.twig' %}
 
+{% block header %}Frequently Asked Questions{% endblock %}
+{% block subheader %}Edit FAQ{% endblock %}
+
 {% block content %}
-    <h1>Faq edit</h1>
+    <div class="panel-body">
+        <div class="form-horizontal">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                <div class="col-md-2">Edit Question</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.question, {'attr':{'class':'form-control', 'rows':'3'}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">Edit Answer</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.answer, {'attr':{'class':'form-control', 'rows':'3'}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">Edit FAQ Category</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.faqcategory, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a href="{{ path('faq_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            {% do edit_form.postedOn.setRendered %}
+            {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('faq_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <div class="form-group">
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
