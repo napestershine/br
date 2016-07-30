@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class FloorPlansType extends AbstractType
 {
@@ -20,8 +21,10 @@ class FloorPlansType extends AbstractType
             ->add('title', TextType::class, array(
                 'label' => 'Enter Title'
             ))
-            ->add('imageFilePath', FileType::class, array(
-                'label' => 'Select Image'
+            ->add('imageFilePath', VichFileType::class, array(
+                'required'      => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_link' => true, // not mandatory, default is true
             ))
         ;
     }
