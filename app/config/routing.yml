@@ -1,14 +1,14 @@
 brooter_payment:
     resource: "@BrooterPaymentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /payment
 
 brooter_advertisement:
     resource: "@BrooterAdvertisementBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /advertisenment
 
 brooter_property:
     resource: "@BrooterPropertyBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /property
 
 brooter_web:
     resource: "@BrooterWebBundle/Resources/config/routing.yml"
