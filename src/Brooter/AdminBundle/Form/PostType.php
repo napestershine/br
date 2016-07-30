@@ -17,14 +17,14 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
-            ->add('category')
-            ->add('file', FileType::class, array('label' => 'Image (jpg/jpeg/png file)', 'data_class' => null))
-            ->add('postedOn');
-
+            ->add('title', null, ['attr' => ['class' => 'form-control']])
+            ->add('content', null, ['attr' => ['class' => 'form-control']])
+            ->add('category', null, ['attr' => ['class' => 'form-control'],
+                'placeholder' => '-- Select Blog Category --',])
+            ->add('file', FileType::class, array('label' => 'Image (jpg/jpeg/png file)',
+                'data_class' => null, 'attr' => ['class' => 'form-control', 'required'=>false]));
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

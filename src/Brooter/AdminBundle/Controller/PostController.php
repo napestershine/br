@@ -43,6 +43,7 @@ class PostController extends Controller
             $file = $post->getFile();
             $fileName = $this->get('brooter.admin.postimage_uploader')->upload($file);
             $post->setFile($fileName);
+            $post->setPostedOn(new \DateTime());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
@@ -84,6 +85,11 @@ class PostController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
+            $file = $post->getFile();
+            $fileName = $this->get('brooter.admin.postimage_uploader')->upload($file);
+            $post->setFile($fileName);
+            $post->setPostedOn(new \DateTime());
+
             $em->persist($post);
             $em->flush();
 
