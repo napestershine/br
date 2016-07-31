@@ -14,11 +14,10 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Sr. No.</th>
+                <th>Sr. No</th>
                 <th>Title</th>
-                <th>Content</th>
-                <th>Post Image</th>
-                <th>Post Date</th>
+
+                <th>Posted On</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -27,13 +26,18 @@
                 <tr>
                     <td>{{ loop.index }}.</td>
                     <td>{{ post.title }}</td>
-                    <td>{{ post.content }}</td>
-                    <td><img src="{{ asset('uploads/posts/' ~ post.file) }}" height="100" width="200"/></td>
-                    <td>{{ post.postedOn | date('d-m-Y') }}</td>
+                    <td>{{ post.postedOn | date('d/m/Y') }}</td>
                     <td>
-                        <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-info">Show</a>
-                        <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-primary">Edit</a>
+                        <ul>
+                            <li>
+                                <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
+                            </li>
+                        </ul>
                     </td>
+
                 </tr>
             {% endfor %}
             </tbody>
