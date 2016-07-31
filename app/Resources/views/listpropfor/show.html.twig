@@ -2,32 +2,34 @@
 {% block header %} Property Advertisement For {% endblock %}
 {% block subheader %} Property Advertisement Purpose Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('listpropfor_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Type of Property Listing</label>
+            <div class="col-md-10">
+                {{ listPropFor.listPropForName }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('listpropfor_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('listpropfor_edit', { 'id': listPropFor.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ listPropFor.id }}</td>
-            </tr>
-            <tr>
-                <th>Listpropforname</th>
-                <td>{{ listPropFor.listPropForName }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('listpropfor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('listpropfor_edit', { 'id': listPropFor.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
