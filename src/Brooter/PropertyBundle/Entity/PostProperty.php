@@ -10,10 +10,12 @@ use Brooter\AdminBundle\Entity\MaterialUsed;
 use Brooter\AdminBundle\Entity\Overlooking;
 use Brooter\AdminBundle\Entity\Ownership;
 use Brooter\AdminBundle\Entity\PowerBackup;
+use Brooter\AdminBundle\Entity\PropertyCate;
 use Brooter\AdminBundle\Entity\PropertyFacing;
 use Brooter\AdminBundle\Entity\PropertyOnFloor;
 use Brooter\AdminBundle\Entity\PropFeatureAmen;
 use Brooter\AdminBundle\Entity\PropPossesion;
+use Brooter\AdminBundle\Entity\PropSubCate;
 use Brooter\AdminBundle\Entity\ReservedParking;
 use Brooter\AdminBundle\Entity\TypeOfFlooring;
 use Brooter\AdminBundle\Entity\WaterSource;
@@ -49,6 +51,13 @@ class PostProperty
      * @ORM\JoinColumn(name="PropCate_id", referencedColumnName="id")
      */
     private $propType;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brooter\AdminBundle\Entity\PropSubCate", inversedBy="postProperty", cascade={"persist"})
+     * @ORM\JoinColumn(name="PropSubCate_id", referencedColumnName="id")
+     */
+    private $propSubCate;
 
 
     /**
@@ -851,5 +860,51 @@ class PostProperty
     {
         return $this->propertyImage;
     }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getPropertyCate()
+    {
+        return $this->propType;
+    }
+
+    /**
+     * @param mixed $yearBuilt
+     */
+    public function setPropertyCate($propertyCate)
+    {
+        $this->propType = $propertyCate;
+    }
+
+    public function addPropertyCate(PropertyCate $propertyCate)
+    {
+        $this->setPropertyCate($propertyCate);
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPropSubCate()
+    {
+        return $this->propSubCate;
+    }
+
+    /**
+     * @param mixed $propSubCate
+     */
+    public function setPropSubCate($propSubCate)
+    {
+        $this->propSubCate = $propSubCate;
+    }
+
+    public function addPropSubCate(PropSubCate $propSubCate)
+    {
+        $this->setPropSubCate($propSubCate);
+    }
+
 }
 

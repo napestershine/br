@@ -28,6 +28,7 @@ class PostPropertyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
             ->add('title', TextType::class, array(
                 'label' => "Titlte",
@@ -39,9 +40,10 @@ class PostPropertyType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
                 'label' => "Type Of Property",
-                'attr' => array('class' => 'col-sm-9 '),
+                'attr' => array('class' => 'col-sm-9 propTypeRadio'),
                 'label_attr' => array('class' => 'col-sm-3')
             ))
+            ->add('propSubCate')
             ->add('area', AreaType::class, array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Area',
                 'label' => "Area",

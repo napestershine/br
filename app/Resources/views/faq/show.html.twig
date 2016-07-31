@@ -1,40 +1,49 @@
 {% extends 'admin.html.twig' %}
 
+{% block header %}Frequently Asked Questions{% endblock %}
+{% block subheader %}Show FAQ{% endblock %}
+
 {% block content %}
-    <h1>Faq</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ faq.id }}</td>
-            </tr>
-            <tr>
-                <th>Question</th>
-                <td>{{ faq.question }}</td>
-            </tr>
-            <tr>
-                <th>Answer</th>
-                <td>{{ faq.answer }}</td>
-            </tr>
-            <tr>
-                <th>Postedon</th>
-                <td>{% if faq.postedOn %}{{ faq.postedOn|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('faq_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('faq_edit', { 'id': faq.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('faq_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row">
+            <label for="question" class="col-md-2">Question</label>
+            <div class="col-md-10">
+                {{ faq.question }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <label for="answer" class="col-md-2">Answer</label>
+            <div class="col-md-10">
+                {{ faq.answer }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <label for="question" class="col-md-2">Posted On</label>
+            <div class="col-md-10">
+                {{ faq.postedOn|date('jS M Y') }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a href="{{ path('faq_index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ path('faq_edit', { 'id': faq.id }) }}" class="btn btn-info">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

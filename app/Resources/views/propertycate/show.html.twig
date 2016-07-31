@@ -2,32 +2,33 @@
 {% block header %} Property Type{% endblock %}
 {% block subheader %} Property Type Details{% endblock %}
 {% block content %}
-    <h1>PropertyCate</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ propertyCate.id }}</td>
-            </tr>
-            <tr>
-                <th>Propcatename</th>
-                <td>{{ propertyCate.propCateName }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('propertycate_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('propertycate_edit', { 'id': propertyCate.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propertycate_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row">
+            <label for="image" class="col-md-2">Property Type</label>
+            <div class="col-md-10">
+                {{ propertyCate.propCateName }}
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a href="{{ path('propertycate_index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ path('propertycate_edit', { 'id': propertyCate.id }) }}" class="btn btn-info">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

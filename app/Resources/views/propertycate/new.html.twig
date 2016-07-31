@@ -1,17 +1,26 @@
 {% extends 'admin.html.twig' %}
+
 {% block header %} Property Type{% endblock %}
 {% block subheader %} New Property Type{% endblock %}
+
 {% block content %}
-    <h1>PropertyCate creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('propertycate_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            {{ form_start(form) }}
+            <div class="form-group">
+                <div class="col-md-2">Add Property Type</div>
+                <div class="col-md-6">
+                    {{ form_widget(form.propCateName, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a href="{{ path('propertycate_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

@@ -25,3 +25,7 @@ brooter_web_privacypolicy:
 brooter_web_copyright:
     path:     /copyright
     defaults: { _controller: BrooterWebBundle:Default:copyright }
+
+brooter_web_contactus:
+    path:     /contactus
+    defaults: { _controller: BrooterWebBundle:Default:contactUs }

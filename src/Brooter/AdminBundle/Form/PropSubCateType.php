@@ -15,8 +15,9 @@ class PropSubCateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('propSubCateName')
             ->add('propertyCategory')
+            ->add('propSubCateName')
+
         ;
     }
     

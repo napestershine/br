@@ -63,4 +63,11 @@ class DefaultController extends Controller
         $copyright = $em->getRepository('BrooterAdminBundle:CMS')->findOneById(1)->getCopyright();
         return $this->render('BrooterWebBundle:Default:copyright.html.twig', ['company' => $company, 'copyright' => $copyright]);
     }
+
+    public function contactUsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
+        return $this->render('BrooterWebBundle:Default:contactus.html.twig', ['company' => $company]);
+    }
 }
