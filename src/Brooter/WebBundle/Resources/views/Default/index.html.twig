@@ -37,7 +37,7 @@
                         <div id="rent" class="search_form tab-pane fade in active">
                             <form action="#">
                                 <div class="selectmenu_type_1 space_fix single_form">
-                                    <input type="text" placeholder="Search By  City / Town...">
+                                    <input id="geocomplete" type="text" placeholder="Search By  City / Town...">
                                 </div> <!-- End .single_form -->
 
                                 <div class="selectmenu_type_2 space_fix single_form space_fix_small_device">
@@ -231,7 +231,30 @@
 
         </div>
     </div> <!-- End #main_banner -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{{ asset('reweb/geocomplete/js/jquery.geocomplete.min.js') }}"></script>
+    <script>
+        $(function(){
+            $("#geocomplete").geocomplete()
+                    .bind("geocode:result", function(event, result){
+                        $.log("Result: " + result.formatted_address);
+                    })
+                    .bind("geocode:error", function(event, status){
+                        $.log("ERROR: " + status);
+                    })
+                    .bind("geocode:multiple", function(event, results){
+                        $.log("Multiple: " + results.length + " results found");
+                    });
+
+            $("#find").click(function(){
+                $("#geocomplete").trigger("geocode");
+            });
+
+
+        });
+    </script>
 {% endblock %}
 {% block content %}
+
 
 {% endblock %}
