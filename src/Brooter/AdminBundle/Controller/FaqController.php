@@ -41,6 +41,7 @@ class FaqController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $faq->setpostedOn(new \DateTime());
             $em->persist($faq);
             $em->flush();
 

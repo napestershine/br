@@ -46,7 +46,7 @@ class Post
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\NotBlank(message="Please, upload the Post image in jpg or jpeg or png format.")
      * @Assert\File(mimeTypes={ "image/png", "image/jpeg", "image/jpg" })
