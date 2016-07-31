@@ -2,6 +2,7 @@
 
 namespace Brooter\AdminBundle\Entity;
 
+use Brooter\PropertyBundle\Entity\PostProperty;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -86,6 +87,41 @@ class PropertyCate
     public function __toString()
     {
         return $this->propCateName;
+    }
+    /**
+     * @return mixed
+     */
+    public function getPostProperty()
+    {
+        return $this->postProperty;
+    }
+    public function addPostProperty(PostProperty $postProperty)
+    {
+        $postProperty->addPropertyCate($this);
+        $this->postProperty->add($postProperty);
+    }
+    public function removePostProperty(PostProperty $postProperty)
+    {
+        $this->postProperty->removeElement($postProperty);
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPropSubCate()
+    {
+        return $this->propSubCate;
+    }
+
+    public function addPropSubCate(PropSubCate $propSubCate)
+    {
+        $$propSubCate->addPropertyCate($this);
+        $this->propSubCate->add($propSubCate);
+    }
+    public function removePropSubCate(PropSubCate $propSubCate)
+    {
+        $this->propSubCate->removeElement($propSubCate);
     }
 }
 
