@@ -3,7 +3,7 @@
 {% block bodyclass %}blog_list{% endblock %}
 {% block pagecontentclass %}blog_list_view blog container{% endblock %}
 {% block content %}
-    {% for post in posts %}
+    {% for post in pagination %}
     <!-- ______________single blog list________________ -->
     <div class="blog_single_item_list">
         <div class="blog_post_meta">
@@ -31,7 +31,12 @@
         </div> <!-- End .blog_post_meta -->
     </div> <!-- End .blog_single_item_list -->
     {% endfor %}
+    {# display navigation #}
+    <div class="navigation" align="center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}
+
 
 {% block overlay %}
     <div class="title">
