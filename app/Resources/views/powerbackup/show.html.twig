@@ -2,32 +2,34 @@
 {% block header %} Power Backup Facilities{% endblock %}
 {% block subheader %} Power Backup Facility Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('powerbackup_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Type of Power Backup</label>
+            <div class="col-md-10">
+                {{ powerBackup.powerBackupName}}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('powerbackup_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('powerbackup_edit', { 'id': powerBackup.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ powerBackup.id }}</td>
-            </tr>
-            <tr>
-                <th>Powerbackupname</th>
-                <td>{{ powerBackup.powerBackupName }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('powerbackup_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('powerbackup_edit', { 'id': powerBackup.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

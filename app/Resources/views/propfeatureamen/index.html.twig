@@ -2,39 +2,35 @@
 {% block header %} Property Features and Amenities{% endblock %}
 {% block subheader %} Property Features and Amenities List{% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propfeatureamen_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Featureamenname</th>
+                <th>Sr. No.</th>
+                <th>Features or Amenities Name</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for propFeatureAman in propFeatureAmens %}
-            <tr>
-                <td><a href="{{ path('propfeatureamen_show', { 'id': propFeatureAman.id }) }}">{{ propFeatureAman.id }}</a></td>
-                <td>{{ propFeatureAman.featureAmenName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('propfeatureamen_show', { 'id': propFeatureAman.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('propfeatureamen_edit', { 'id': propFeatureAman.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for propFeatureAman in propFeatureAmens %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{propFeatureAman.featureAmenName}}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('propfeatureamen_show', { 'id': propFeatureAman.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('propfeatureamen_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('propfeatureamen_edit', { 'id': propFeatureAman.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

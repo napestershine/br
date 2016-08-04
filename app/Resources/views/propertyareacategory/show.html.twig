@@ -1,32 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+{% block header %} Property Area Category {% endblock %}
+{% block subheader %} Property Area Category Details {% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propertyareacategory_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Property Area Category</label>
+            <div class="col-md-10">
+                {{ propertyAreaCategory.propAreaCategoryName }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('propertyareacategory_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('propertyareacategory_edit', { 'id': propertyAreaCategory.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-{% block body %}
-    <h1>PropertyAreaCategory</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ propertyAreaCategory.id }}</td>
-            </tr>
-            <tr>
-                <th>Propareacategoryname</th>
-                <td>{{ propertyAreaCategory.propAreaCategoryName }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('propertyareacategory_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('propertyareacategory_edit', { 'id': propertyAreaCategory.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

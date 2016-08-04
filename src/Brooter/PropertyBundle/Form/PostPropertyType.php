@@ -31,7 +31,7 @@ class PostPropertyType extends AbstractType
         
         $builder
             ->add('title', TextType::class, array(
-                'label' => "Titlte",
+                'label' => "Title",
                 'attr' => array('class' => 'col-sm-9', 'placeholder' => 'Enter title ...'),
                 'label_attr' => array('class' => 'col-sm-3')
             ))
@@ -43,7 +43,12 @@ class PostPropertyType extends AbstractType
                 'attr' => array('class' => 'col-sm-9 propTypeRadio'),
                 'label_attr' => array('class' => 'col-sm-3')
             ))
-            ->add('propSubCate')
+            ->add('propSubCate',EntityType::class,array(
+                'class' => 'Brooter\AdminBundle\Entity\PropSubCate',
+                'label' => "Property Sub-category",
+                'label_attr' => array('class' => 'col-sm-3'),
+                'attr' => array('class' => 'col-sm-9')
+            ))
             ->add('area', AreaType::class, array(
                 'data_class' => 'Brooter\AdminBundle\Entity\Area',
                 'label' => "Area",
@@ -125,7 +130,6 @@ class PostPropertyType extends AbstractType
             ->add('yearBuilt')
             ->add('floorPlans', CollectionType::class, array(
                 'entry_type' => FloorPlansType::class,
-                'label' => 'Floor Plan',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
@@ -133,7 +137,6 @@ class PostPropertyType extends AbstractType
             ))
             ->add('propertySpecification', CollectionType::class, array(
                 'entry_type' => PropertySpecificationType::class,
-                'label' => 'Property Specification',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
@@ -141,7 +144,6 @@ class PostPropertyType extends AbstractType
             ))
             ->add('propertyImage', CollectionType::class, array(
                 'entry_type' => PropertyImageType::class,
-                'label' => 'Property Image',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,

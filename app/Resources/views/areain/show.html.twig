@@ -2,32 +2,34 @@
 {% block header %}Area In {% endblock %}
 {% block subheader %}Show Area Unit Details {% endblock %}
 {% block content %}
-    <h1>AreaIn</h1>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('areain_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ areaIn.id }}</td>
-            </tr>
-            <tr>
-                <th>Areainname</th>
-                <td>{{ areaIn.areaInName }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Area Unit Name</label>
+            <div class="col-md-10">
+                {{ areaIn.areaInName }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('areain_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('areain_edit', { 'id': areaIn.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <ul>
-        <li>
-            <a href="{{ path('areain_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('areain_edit', { 'id': areaIn.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -2,39 +2,35 @@
 {% block header %} Ownership{% endblock %}
 {% block subheader %} Ownership List{% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('ownership_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Ownershiptype</th>
+                <th>Sr. No.</th>
+                <th>Type of Ownership</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for ownership in ownerships %}
-            <tr>
-                <td><a href="{{ path('ownership_show', { 'id': ownership.id }) }}">{{ ownership.id }}</a></td>
-                <td>{{ ownership.ownershipType }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('ownership_show', { 'id': ownership.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ownership_edit', { 'id': ownership.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for ownership in ownerships %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ ownership.ownershipType }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('ownership_show', { 'id': ownership.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('ownership_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('ownership_edit', { 'id': ownership.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

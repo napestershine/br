@@ -2,39 +2,35 @@
 {% block header %}Types of Flooring  {% endblock %}
 {% block subheader %}Types of Flooring List {% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('typeofflooring_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Flooringtypename</th>
+                <th>Sr. No.</th>
+                <th>Type of Flooring</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for typeOfFlooring in typeOfFloorings %}
-            <tr>
-                <td><a href="{{ path('typeofflooring_show', { 'id': typeOfFlooring.id }) }}">{{ typeOfFlooring.id }}</a></td>
-                <td>{{ typeOfFlooring.flooringTypeName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('typeofflooring_show', { 'id': typeOfFlooring.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('typeofflooring_edit', { 'id': typeOfFlooring.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for typeOfFlooring in typeOfFloorings %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ typeOfFlooring.flooringTypeName }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('typeofflooring_show', { 'id': typeOfFlooring.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('typeofflooring_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('typeofflooring_edit', { 'id': typeOfFlooring.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

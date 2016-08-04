@@ -1,33 +1,35 @@
 {% extends 'admin.html.twig' %}
-{% block header %} Reserved Parking Facilities {% endblock %}
-{% block subheader %} Reserved Parking Facilities  Details {% endblock %}
+{% block header %} Reserved Parking {% endblock %}
+{% block subheader %} Reserved Parking with Property{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('reservedparking_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Type of Reserved Parking</label>
+            <div class="col-md-10">
+                {{ reservedParking.reservedParkingType }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('reservedparking_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('reservedparking_edit', { 'id': reservedParking.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservedParking.id }}</td>
-            </tr>
-            <tr>
-                <th>Reservedparkingtype</th>
-                <td>{{ reservedParking.reservedParkingType }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('reservedparking_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('reservedparking_edit', { 'id': reservedParking.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -18,16 +18,15 @@
                     <input class="btn btn-success" type="submit" value="Edit"/>
                     <a class="btn btn-primary" href="{{ path('availability_index') }}">Back</a>
                 </div>
-            </div>
-            {{ form_end(edit_form) }}
-
-            <div class="form-group">
                 <div class="col-md-1 pull-right">
                     {{ form_start(delete_form) }}
                     <input class="btn btn-danger" type="submit" value="Delete">
                     {{ form_end(delete_form) }}
                 </div>
             </div>
+            {{ form_end(edit_form) }}
+
+
         </div>
     </div>
 {% endblock %}

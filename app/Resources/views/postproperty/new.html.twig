@@ -1,6 +1,35 @@
 {% extends 'PostProperty.html.twig' %}
-{% block PostPropertyBlock %}
 
+{% form_theme form _self %}
+
+{%- block checkbox_widget -%}
+    <span style="white-space: nowrap;display:inline-block;margin-right: 10px;">
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />          <label
+                for="{{ id }}">{{ label|trans }}</label>
+</span>
+{%- endblock checkbox_widget -%}
+
+
+
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+
+{%- block radio_widget -%}
+    <span style="white-space: nowrap;display:inline-block;margin-right: 10px;">
+    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />          <label
+                for="{{ id }}">{{ label|trans }}</label>
+</span>
+{%- endblock radio_widget -%}
+
+
+
+{% block PostPropertyBlock %}
     <div class="register_page container">
 
         <div class="row">
@@ -11,26 +40,246 @@
                 <!-- Register form -->
                 <div class="register">
                     <h6>Post Your Property Now</h6>
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <ul class="floorplans" data-prototype="{{ form_row(form.floorPlans) }}">
-                    </ul>
+                    {{ form_start(form, {'attr':{'class':'form-horizonal'}}) }}
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Title</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.title, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
 
-                    <ul class="propertyspecification" data-prototype="{{ form_row(form.propertySpecification) }}">
-                    </ul>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Type</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propType, {'attr':{'class':''}}) }}
+                        </div>
+                    </div>
 
-                    <ul class="propertyimage" data-prototype="{{ form_row(form.propertyImage) }}">
-                    </ul>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Sub-Category</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propSubCate, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <label class="col-sm-3 control-label"> Area</label>
+                        <div class="col-sm-9">
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">Calculated Area</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.area.calculatedArea, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">Area Type</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.area.propAreaCategoryName, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-sm-3 control-label">Address</label>
+                        <div class="col-sm-9">
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">Locality</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.address.locality, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">Near Landmark</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.address.nearLandmark, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">Address</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.address.propAddress, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-sm-3 control-label">City</label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.address.city, {'attr':{'class':'form-control'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">No. of Bedrooms</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.noofbedroom, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">No. of Bathrooms</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.noofbathroom, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">No. of Balcony</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.noofbalcony, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">No. of Floors</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.totalfloor, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Proerty on Floor</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propOnFloor, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Reserved Parking</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.reservedParking, {'attr':{'class':''}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Expected Price</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.expectedPrice, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Age of Property</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.ageOfProp, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Ownership</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.ownership, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Overlooking</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.overLooking) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Water Sources</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.waterSource) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Power Backup</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.powerBackup) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Type of Flooring</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.typeOfFlooring) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Furnished</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form._furnished) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Availability</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.availability) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Features and Amenities</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propFeatureAmen) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Facing</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propertyFacing, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Material Used</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.materialUsed, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Year Built</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.yearBuilt, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Floor Plan</label>
+                        <div class="col-md-7">
+                            <ul class="floorplans" data-prototype="{{ form_widget(form.floorPlans.vars.prototype)|e('html_attr') }}">
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Specification</label>
+                        <div class="col-md-7">
+                            <ul class="propertyspecification" data-prototype="{{ form_widget(form.propertySpecification.vars.prototype)|e('html_attr') }}">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Image</label>
+                        <div class="col-md-7">
+                            <ul class="propertyimage" data-prototype="{{ form_widget(form.propertyImage.vars.prototype)|e('html_attr') }}">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Possession</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.propPossesion, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label">Property Description</label>
+                        <div class="col-md-7">
+                            {{ form_widget(form.description, {'attr':{'class':'form-control'}}) }}
+                        </div>
+                    </div>
                     <input class="btn btn-info" type="submit" value="Create"/>
-                    {{ form_end(form) }}
+                    {% do form.floorPlans.setRendered %}
+                    {% do form.propertySpecification.setRendered %}
+                    {% do form.propertyImage.setRendered %}
 
-                    {#<ul>
-                        <li>
-                            <a href="{{ path('postproperty_index') }}">Back to the list</a>
-                        </li>
-                    </ul>#}
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}

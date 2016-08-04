@@ -349,13 +349,13 @@
         $(document).ready(function () {
 
             // Get the ul that holds the collection of property image
-            $collectionHolderPropImg=$('#post_property_propertyImage');
+            $collectionHolderPropImg=$('ul.propertyimage');
 
             // Get the ul that holds the collection of property specification
-            $collectionHolderPropSpec=$('#post_property_propertySpecification');
+            $collectionHolderPropSpec=$('ul.propertyspecification');
 
             // Get the ul that holds the collection of floor plans
-            $collectionHolder = $('#post_property_floorPlans');
+            $collectionHolder = $('ul.floorplans');
 
 
 
@@ -393,6 +393,7 @@
                 // add a new tag form (see next code block)
                 addFloorPlanForm($collectionHolder, $newLinkLi);
             });
+
 
 
 
@@ -442,8 +443,10 @@
                 reader.onload = function (e) {
                     // get loaded data and render thumbnail.
 
-                    fileID=fileID.substr(0,fileID.length-9);
+                    fileID=fileID.substr(0,fileID.length-14);
+
                     fileID=fileID.substr(28,fileID.length-27);
+
 
                     var imgTagID='post_property_propertyImage_PI'+fileID;
 
@@ -550,7 +553,7 @@
                 reader.onload = function (e) {
                     // get loaded data and render thumbnail.
 
-                    fileID=fileID.substr(0,fileID.length-14);
+                    fileID=fileID.substr(0,fileID.length-19);
                     fileID=fileID.substr(25,fileID.length-25);
 
                     var imgTagID='post_property_floor_plans_FP'+fileID;
@@ -568,7 +571,9 @@
 
 
         }
-        $('#post_property_propType > input[type=radio]').change(function() {
+
+        $('#post_property_propType > span > input[type=radio]').change(function() {
+
 
             var t=$(this).val();
             var path="{{ path('postproperty_search',{'id':'id'}) }}";

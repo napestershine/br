@@ -2,31 +2,34 @@
 {% block header %} Property on Floor {% endblock %}
 {% block subheader %} Property on Floor Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propertyonfloor_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ propertyOnFloor.id }}</td>
-            </tr>
-            <tr>
-                <th>Propfloor</th>
-                <td>{{ propertyOnFloor.propFloor }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Property Floor</label>
+            <div class="col-md-10">
+                {{ propertyOnFloor.propFloor }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('propertyonfloor_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('propertyonfloor_edit', { 'id': propertyOnFloor.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <ul>
-        <li>
-            <a href="{{ path('propertyonfloor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('propertyonfloor_edit', { 'id': propertyOnFloor.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -2,38 +2,35 @@
 {% block header %} Property on Floor {% endblock %}
 {% block subheader %} Property Floor List{% endblock %}
 {% block content %}
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propertyonfloor_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Propfloor</th>
+                <th>Sr. No.</th>
+                <th>Property Floor</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for propertyOnFloor in propertyOnFloors %}
-            <tr>
-                <td><a href="{{ path('propertyonfloor_show', { 'id': propertyOnFloor.id }) }}">{{ propertyOnFloor.id }}</a></td>
-                <td>{{ propertyOnFloor.propFloor }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('propertyonfloor_show', { 'id': propertyOnFloor.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('propertyonfloor_edit', { 'id': propertyOnFloor.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for propertyOnFloor in propertyOnFloors %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ propertyOnFloor.propFloor }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('propertyonfloor_show', { 'id': propertyOnFloor.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('propertyonfloor_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('propertyonfloor_edit', { 'id': propertyOnFloor.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

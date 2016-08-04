@@ -2,32 +2,34 @@
 {% block header %} Overlooking Facilities {% endblock %}
 {% block subheader %} Overlooking Facility Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('overlooking_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Type of Overlooking</label>
+            <div class="col-md-10">
+                {{ overlooking.overLookingType }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('overlooking_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('overlooking_edit', { 'id': overlooking.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ overlooking.id }}</td>
-            </tr>
-            <tr>
-                <th>Overlookingtype</th>
-                <td>{{ overlooking.overLookingType }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('overlooking_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('overlooking_edit', { 'id': overlooking.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

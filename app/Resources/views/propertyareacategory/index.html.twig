@@ -1,39 +1,35 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>PropertyAreaCategory list</h1>
-
-    <table>
-        <thead>
+{% extends 'admin.html.twig' %}
+{% block header %} Property Area Category {% endblock %}
+{% block subheader %} Property Area Category List{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('propertyareacategory_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Propareacategoryname</th>
+                <th>Sr. No.</th>
+                <th>Type of Property Area</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for propertyAreaCategory in propertyAreaCategories %}
-            <tr>
-                <td><a href="{{ path('propertyareacategory_show', { 'id': propertyAreaCategory.id }) }}">{{ propertyAreaCategory.id }}</a></td>
-                <td>{{ propertyAreaCategory.propAreaCategoryName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('propertyareacategory_show', { 'id': propertyAreaCategory.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('propertyareacategory_edit', { 'id': propertyAreaCategory.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for propertyAreaCategory in propertyAreaCategories %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ propertyAreaCategory.propAreaCategoryName }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('propertyareacategory_show', { 'id': propertyAreaCategory.id }) }}">show</a>
+                        <a class="btn btn-primary" href="{{ path('propertyareacategory_edit', { 'id': propertyAreaCategory.id }) }}">edit</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('propertyareacategory_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -3,38 +3,35 @@
 {% block subheader %} Water Source Facility List{% endblock %}
 {% block content %}
 
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('watersource_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Watersourcetype</th>
+                <th>Sr. No.</th>
+                <th>Water Source Name</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for waterSource in waterSources %}
-            <tr>
-                <td><a href="{{ path('watersource_show', { 'id': waterSource.id }) }}">{{ waterSource.id }}</a></td>
-                <td>{{ waterSource.waterSourceType }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('watersource_show', { 'id': waterSource.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('watersource_edit', { 'id': waterSource.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for waterSource in waterSources %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ waterSource.waterSourceType }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('watersource_show', { 'id': waterSource.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('watersource_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('watersource_edit', { 'id': waterSource.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

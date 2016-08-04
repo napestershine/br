@@ -1,24 +1,32 @@
 {% extends 'admin.html.twig' %}
 {% block header %} Property Area Category {% endblock %}
-{% block subheader %} Edit Availability{% endblock %}
+{% block subheader %} Property Area Category{% endblock %}
 {% block content %}
 
-{% block body %}
-    <h1>PropertyAreaCategory edit</h1>
+<div class="panel-body">
+    <div class="form-horizontal">
+        {{ form_start(edit_form) }}
+        <div class="form-group">
+            <div class="col-md-3">Edit Property Area Category</div>
+            <div class="col-md-6">
+                {{ form_widget(edit_form.propAreaCategoryName) }}
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-2">
+                <input class="btn btn-success" type="submit" value="Edit"/>
+                <a class="btn btn-primary" href="{{ path('propertyareacategory_index') }}">Back</a>
+            </div>
+            <div class="col-md-1 pull-right">
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('propertyareacategory_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    </div>
+</div>
 {% endblock %}

@@ -2,39 +2,35 @@
 {% block header %} Furnished Info {% endblock %}
 {% block subheader %} Furnished Info List{% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('furnished_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Furnishedtypename</th>
+                <th>Sr. No.</th>
+                <th>Furnishing Name</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for furnished in furnisheds %}
-            <tr>
-                <td><a href="{{ path('furnished_show', { 'id': furnished.id }) }}">{{ furnished.id }}</a></td>
-                <td>{{ furnished.furnishedTypeName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('furnished_show', { 'id': furnished.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('furnished_edit', { 'id': furnished.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for furnished in furnisheds %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ furnished.furnishedTypeName }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('furnished_show', { 'id': furnished.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('furnished_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('furnished_edit', { 'id': furnished.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
