@@ -5,6 +5,7 @@ namespace Brooter\PropertyBundle\Controller;
 use Brooter\PropertyBundle\Entity\FloorPlans;
 use Brooter\PropertyBundle\Entity\YearBuilt;
 use Doctrine\Common\Collections\ArrayCollection;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -23,7 +24,7 @@ class PostPropertyController extends Controller
      * Lists all PostProperty entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
 
 
@@ -32,10 +33,21 @@ class PostPropertyController extends Controller
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         $postProperties = $em->getRepository('BrooterPropertyBundle:PostProperty')->findAll();
 
+        
 
+        $dql   = "SELECT a FROM BrooterPropertyBundle:PostProperty a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
         return $this->render('postproperty/index.html.twig', array(
             'postProperties' => $postProperties,
             'company' => $company,
+            'pagination' => $pagination
 
         ));
     }
