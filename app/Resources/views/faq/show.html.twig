@@ -1,0 +1,49 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Frequently Asked Questions{% endblock %}
+{% block subheader %}Show FAQ{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('faq_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row">
+            <label for="question" class="col-md-2">Question</label>
+            <div class="col-md-10">
+                {{ faq.question }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <label for="answer" class="col-md-2">Answer</label>
+            <div class="col-md-10">
+                {{ faq.answer }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <label for="question" class="col-md-2">Posted On</label>
+            <div class="col-md-10">
+                {{ faq.postedOn|date('jS M Y') }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a href="{{ path('faq_index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ path('faq_edit', { 'id': faq.id }) }}" class="btn btn-info">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

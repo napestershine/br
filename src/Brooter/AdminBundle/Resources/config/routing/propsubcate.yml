@@ -1,0 +1,24 @@
+propsubcate_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PropSubCate:index" }
+    methods:  GET
+
+propsubcate_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PropSubCate:show" }
+    methods:  GET
+
+propsubcate_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PropSubCate:new" }
+    methods:  [GET, POST]
+
+propsubcate_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PropSubCate:edit" }
+    methods:  [GET, POST]
+
+propsubcate_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PropSubCate:delete" }
+    methods:  DELETE

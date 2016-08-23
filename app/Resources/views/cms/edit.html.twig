@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Brooter CMS{% endblock %}
+{% block subheader %}Edit CMS Details{% endblock %}
+
+{% block content %}
+
+    <div class="panel-body">
+        {{ form_start(edit_form) }}
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-2">Edit About Us</div>
+                <div class="col-md-8">
+                    {{ form_widget(edit_form.aboutus) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">Edit DMCA</div>
+                <div class="col-md-8">
+                    {{ form_widget(edit_form.dmca) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">Edit Terms of Services</div>
+                <div class="col-md-8">
+                    {{ form_widget(edit_form.terms) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">Edit Privacy Policy</div>
+                <div class="col-md-8">
+                    {{ form_widget(edit_form.privacypolicy) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">Edit Copyright</div>
+                <div class="col-md-8">
+                    {{ form_widget(edit_form.copyright) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <br/><br/>
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-success" name="submit" value="Save"/>
+                    <a href="{{ path('cms_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+
+{% endblock %}

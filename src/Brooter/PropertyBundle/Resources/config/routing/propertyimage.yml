@@ -1,0 +1,24 @@
+propertyimage_index:
+    path:     /
+    defaults: { _controller: "BrooterPropertyBundle:PropertyImage:index" }
+    methods:  GET
+
+propertyimage_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterPropertyBundle:PropertyImage:show" }
+    methods:  GET
+
+propertyimage_new:
+    path:     /new
+    defaults: { _controller: "BrooterPropertyBundle:PropertyImage:new" }
+    methods:  [GET, POST]
+
+propertyimage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterPropertyBundle:PropertyImage:edit" }
+    methods:  [GET, POST]
+
+propertyimage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterPropertyBundle:PropertyImage:delete" }
+    methods:  DELETE

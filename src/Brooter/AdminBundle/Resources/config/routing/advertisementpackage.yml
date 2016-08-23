@@ -1,0 +1,24 @@
+advertisementpackage_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:AdvertisementPackage:index" }
+    methods:  GET
+
+advertisementpackage_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:AdvertisementPackage:show" }
+    methods:  GET
+
+advertisementpackage_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:AdvertisementPackage:new" }
+    methods:  [GET, POST]
+
+advertisementpackage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:AdvertisementPackage:edit" }
+    methods:  [GET, POST]
+
+advertisementpackage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:AdvertisementPackage:delete" }
+    methods:  DELETE

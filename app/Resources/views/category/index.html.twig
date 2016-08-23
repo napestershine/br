@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Categories{% endblock %}
+{% block subheader %}Blog Post Categories{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('category_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th width="7%">Sr. No.</th>
+                <th width="60%">Category</th>
+                <th>Level</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td width="7%">{{ loop.index }}.</td>
+                    <td width="60%">{{ category.title }}</td>
+                    <td>{{ category.lvl }}</td>
+                    <td>
+                        <a href="{{ path('category_show', { 'id': category.id }) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('category_edit', { 'id': category.id }) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

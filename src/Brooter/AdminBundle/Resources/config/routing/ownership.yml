@@ -1,0 +1,24 @@
+ownership_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:Ownership:index" }
+    methods:  GET
+
+ownership_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:Ownership:show" }
+    methods:  GET
+
+ownership_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:Ownership:new" }
+    methods:  [GET, POST]
+
+ownership_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:Ownership:edit" }
+    methods:  [GET, POST]
+
+ownership_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:Ownership:delete" }
+    methods:  DELETE

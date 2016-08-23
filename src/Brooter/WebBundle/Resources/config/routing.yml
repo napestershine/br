@@ -1,0 +1,31 @@
+brooter_web_homepage:
+    path:     /
+    defaults: { _controller: BrooterWebBundle:Default:index }
+
+brooter_web_aboutus:
+    path:     /aboutus
+    defaults: { _controller: BrooterWebBundle:Default:aboutUs }
+
+brooter_web_terms:
+    path:     /terms
+    defaults: { _controller: BrooterWebBundle:Default:terms }
+
+brooter_web_dmca:
+    path:     /dmca
+    defaults: { _controller: BrooterWebBundle:Default:dmca }
+
+brooter_web_faq:
+    path:     /faq
+    defaults: { _controller: BrooterWebBundle:Default:faq }
+
+brooter_web_privacypolicy:
+    path:     /privacypolicy
+    defaults: { _controller: BrooterWebBundle:Default:privacyPolicy }
+
+brooter_web_copyright:
+    path:     /copyright
+    defaults: { _controller: BrooterWebBundle:Default:copyright }
+
+brooter_web_contactus:
+    path:     /contactus
+    defaults: { _controller: BrooterWebBundle:Default:contactUs }

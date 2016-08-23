@@ -1,0 +1,4 @@
+services:
+#    brooter_blog.example:
+#        class: Brooter\BlogBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

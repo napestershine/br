@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>PropertyAreaCategory list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propareacategoryname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyAreaCategory in propertyAreaCategories %}
+            <tr>
+                <td><a href="{{ path('propertyareacategory_show', { 'id': propertyAreaCategory.id }) }}">{{ propertyAreaCategory.id }}</a></td>
+                <td>{{ propertyAreaCategory.propAreaCategoryName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertyareacategory_show', { 'id': propertyAreaCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertyareacategory_edit', { 'id': propertyAreaCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertyareacategory_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

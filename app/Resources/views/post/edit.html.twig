@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Blog Posts{% endblock %}
+{% block subheader %}Edit Blog Post{% endblock %}
+
+{% block content %}
+    <div class="panel-body">
+        <div class="form-horizontal">
+
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                <div class="col-md-3">Edit Title</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.title) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">Edit Content</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.content) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">Choose Category</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.category) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">Edit Image (jpg/jpeg/png)</div>
+                <div class="col-md-6">
+                    <img src="{{ asset('uploads/posts/' ~ post.file) }}" width="50%"/>
+                    {{ form_widget(edit_form.file,{'attr': {'value': '/uploads/posts/'~ post.file}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a href="{{ path('post_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
+            <div class="form-group">
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'blog.html.twig' %}
+{% block pagetitle %}Blog List{% endblock %}
+{% block bodyclass %}blog_list{% endblock %}
+{% block pagecontentclass %}blog_list_view blog container{% endblock %}
+{% block content %}
+    {% for post in posts %}
+    <!-- ______________single blog list________________ -->
+    <div class="blog_single_item_list">
+        <div class="blog_post_meta">
+            <div class="img_holder">
+                <img src="{{ asset('uploads/posts/'~ post.file) }}" alt="blogimage" class="img-responsive" style="width:270px;height: 244px;">
+            </div> <!-- End .img_holder -->
+            <div class="post">
+                <!-- Main_title2__________ -->
+                <div class="main_title2">
+                    <h6>{{ post.title }}</h6>
+                </div>
+                <!-- End Main_title2______ -->
+                <div class="date">
+                    <span>{{ post.postedOn|date('d') }}<br>{{ post.postedOn|date('M') }}</span>
+                </div>
+                <ul>
+                    <li><i class="fa fa-user"></i> Admin</li>
+                    <li><i class="fa fa-tags"></i> Real Estate, Sale, Villa</li>
+                </ul>
+                <p>{{ post.content|length > 30 ? post.content|slice(0, 30) ~ '...' : post.content  }}</p>
+
+                <a href="{{ path('brooter_blog_showpage', {id:post.id}) }}" class="theme-btn tran3s">Read More</a>
+            </div> <!-- End .post -->
+            <div class="clear_fix"></div>
+        </div> <!-- End .blog_post_meta -->
+    </div> <!-- End .blog_single_item_list -->
+    {% endfor %}
+{% endblock %}
+
+{% block overlay %}
+    <div class="title">
+        <h2>Blog</h2>
+        <ul>
+            <li><a href="{{ path('brooter_web_homepage') }}">Home</a></li>
+            <li><i class="fa fa-angle-double-right"></i></li>
+            <li>Blog</li>
+        </ul>
+    </div> <!-- End .title -->
+{% endblock %}

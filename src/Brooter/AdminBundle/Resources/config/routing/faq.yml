@@ -1,0 +1,24 @@
+faq_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:Faq:index" }
+    methods:  GET
+
+faq_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:Faq:show" }
+    methods:  GET
+
+faq_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:Faq:new" }
+    methods:  [GET, POST]
+
+faq_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:Faq:edit" }
+    methods:  [GET, POST]
+
+faq_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:Faq:delete" }
+    methods:  DELETE

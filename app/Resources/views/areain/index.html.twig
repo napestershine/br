@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Area In {% endblock %}
+{% block subheader %} List of Area Units {% endblock %}
+{% block content %}
+    <h1>AreaIn list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Areainname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for areaIn in areaIns %}
+            <tr>
+                <td><a href="{{ path('areain_show', { 'id': areaIn.id }) }}">{{ areaIn.id }}</a></td>
+                <td>{{ areaIn.areaInName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('areain_show', { 'id': areaIn.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('areain_edit', { 'id': areaIn.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('areain_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

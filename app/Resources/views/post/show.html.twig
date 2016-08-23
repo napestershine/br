@@ -1,0 +1,53 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Blog Posts{% endblock %}
+{% block subheader %}Show Blog Post{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('post_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Title</label>
+            <div class="col-md-10">
+                {{ post.title }}
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="content" class="col-md-2">Content</label>
+            <div class="col-md-10">
+                {{ post.content }}
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="image" class="col-md-2">Image</label>
+            <div class="col-md-10">
+                <img src="{{ asset('uploads/posts/' ~ post.file) }}" width="50%"/>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Posted On</label>
+            <div class="col-md-10">
+                {{ post.postedOn|date('jS M Y') }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a href="{{ path('post_index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-info">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+adveruser_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdvertisementBundle:AdverUser:new" }
+    methods:  [GET, POST]

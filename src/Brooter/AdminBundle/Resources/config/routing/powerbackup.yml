@@ -1,0 +1,24 @@
+powerbackup_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:PowerBackup:index" }
+    methods:  GET
+
+powerbackup_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:PowerBackup:show" }
+    methods:  GET
+
+powerbackup_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:PowerBackup:new" }
+    methods:  [GET, POST]
+
+powerbackup_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:PowerBackup:edit" }
+    methods:  [GET, POST]
+
+powerbackup_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:PowerBackup:delete" }
+    methods:  DELETE

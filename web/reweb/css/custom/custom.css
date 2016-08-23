@@ -1,0 +1,9 @@
+.bg-black-transparent {
+    background: rgba(0,0,0,0.4);
+}
+.margin-top-120 {
+    margin-top: 120px;
+}
+.no-padding {
+    padding: 0;
+}

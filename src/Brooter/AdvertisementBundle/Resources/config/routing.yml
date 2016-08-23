@@ -1,0 +1,7 @@
+brooter_advertisement_homepage:
+    path:     /
+    defaults: { _controller: BrooterAdvertisementBundle:Default:index }
+
+brooter_advertisement_adveruser:
+    resource: "@BrooterAdvertisementBundle/Resources/config/routing/adveruser.yml"
+    prefix:   /adveruser

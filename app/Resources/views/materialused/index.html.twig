@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Material Used{% endblock %}
+{% block subheader %}Material Used List{% endblock %}
+{% block content %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Materialname</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materialUsed in materialUseds %}
+            <tr>
+                <td><a href="{{ path('materialused_show', { 'id': materialUsed.id }) }}">{{ materialUsed.id }}</a></td>
+                <td>{{ materialUsed.materialName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('materialused_show', { 'id': materialUsed.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('materialused_edit', { 'id': materialUsed.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('materialused_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

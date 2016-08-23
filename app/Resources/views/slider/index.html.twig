@@ -1,0 +1,36 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Home Sliders{% endblock %}
+{% block subheader %}Homepage Image slider{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('slider_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Slider Image</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for slider in sliders %}
+                <tr>
+                    <td>{{ loop.index }}.</td>
+                    <td><img src="{{ asset('uploads/sliders/' ~ slider.file) }}" height="100" width="200"/></td>
+                    <td>
+                        <a href="{{ path('slider_show', { 'id': slider.id }) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('slider_edit', { 'id': slider.id }) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

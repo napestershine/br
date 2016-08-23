@@ -1,0 +1,39 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Age of Property {% endblock %}
+{% block subheader %} Property Age Lists{% endblock %}
+{% block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ageOfProperty in ageOfProperties %}
+            <tr>
+                <td><a href="{{ path('ageofproperty_show', { 'id': ageOfProperty.id }) }}">{{ ageOfProperty.id }}</a></td>
+                <td>{{ ageOfProperty.propAge }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ageofproperty_show', { 'id': ageOfProperty.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ageofproperty_edit', { 'id': ageOfProperty.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ageofproperty_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

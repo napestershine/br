@@ -1,0 +1,36 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Frequently Asked Questions{% endblock %}
+{% block subheader %}FAQ List{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('faq_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th width="80%">Question</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for faq in faqs %}
+                <tr>
+                    <td>{{ loop.index }}.</td>
+                    <td width="80%">{{ faq.question }}</td>
+                    <td>
+                        <a href="{{ path('faq_show', { 'id': faq.id }) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('faq_edit', { 'id': faq.id }) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

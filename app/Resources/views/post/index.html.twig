@@ -1,0 +1,42 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Blog Posts{% endblock %}
+{% block subheader %}Blog Posts List{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('post_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Post Image</th>
+                <th>Post Date</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ loop.index }}.</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td><img src="{{ asset('uploads/posts/' ~ post.file) }}" height="100" width="200"/></td>
+                    <td>{{ post.postedOn | date('d-m-Y') }}</td>
+                    <td>
+                        <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

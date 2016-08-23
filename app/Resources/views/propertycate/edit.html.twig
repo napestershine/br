@@ -1,0 +1,32 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Type{% endblock %}
+{% block subheader %} Edit Property Type{% endblock %}
+{% block content %}
+    <div class="panel-body">
+        <div class="form-horizontal">
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                <div class="col-md-2">Add Property Type</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.propCateName, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="btn btn-success"/>
+                    <a href="{{ path('propertycate_index') }}" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
+            <div class="form-group">
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

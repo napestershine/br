@@ -1,0 +1,47 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+    <h1>CMS list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Aboutus</th>
+                <th>Dmca</th>
+                <th>Terms</th>
+                <th>Privacypolicy</th>
+                <th>Copyright</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cM in cMSs %}
+            <tr>
+                <td><a href="{{ path('cms_show', { 'id': cM.id }) }}">{{ cM.id }}</a></td>
+                <td>{{ cM.aboutus }}</td>
+                <td>{{ cM.dmca }}</td>
+                <td>{{ cM.terms }}</td>
+                <td>{{ cM.privacypolicy }}</td>
+                <td>{{ cM.copyright }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cms_show', { 'id': cM.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cms_edit', { 'id': cM.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cms_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

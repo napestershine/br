@@ -1,0 +1,39 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property on Floor {% endblock %}
+{% block subheader %} Property Floor List{% endblock %}
+{% block content %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Propfloor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyOnFloor in propertyOnFloors %}
+            <tr>
+                <td><a href="{{ path('propertyonfloor_show', { 'id': propertyOnFloor.id }) }}">{{ propertyOnFloor.id }}</a></td>
+                <td>{{ propertyOnFloor.propFloor }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertyonfloor_show', { 'id': propertyOnFloor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertyonfloor_edit', { 'id': propertyOnFloor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertyonfloor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

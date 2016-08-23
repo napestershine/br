@@ -2,15 +2,29 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: doctrine_extensions.yml }
+    - { resource: "@BrooterAdminBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterUserBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterBlogBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterWebBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterPropertyBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterAdvertisementBundle/Resources/config/services.yml" }
+    - { resource: "@BrooterPaymentBundle/Resources/config/services.yml" }
+
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    sliders_directory: '%kernel.root_dir%/../web/uploads/sliders'
+    posts_directory: '%kernel.root_dir%/../web/uploads/posts'
+    propImgs_directory: '%kernel.root_dir%/../web/uploads/propImgs'
+    floorImgs_directory: '%kernel.root_dir%/../web/uploads/floorplansImgs'
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -18,7 +32,7 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale:  "%locale%"
@@ -58,6 +72,17 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            gedmo_tree:
+                type: annotation
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                alias: GedmoTree # this one is default and will default to the name set for the mapping
+                is_bundle: false
+
+stof_doctrine_extensions:
+    class:
+        tree: Brooter\AdminBundle\TreeListener
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -66,3 +91,67 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Brooter\UserBundle\Entity\User
+    registration:
+        form:
+            type: Brooter\UserBundle\Form\RegistrationType
+        confirmation:
+            enabled: true
+            from_email:
+                address: admin@brooter.com
+                sender_name: Admin
+    resetting:
+        email:
+            from_email:
+                address: reset@brooter.com
+                sender_name: reset admin
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: "KnpPaginatorBundle:Pagination:sliding.html.twig"     # sliding pagination controls template
+        sortable: "KnpPaginatorBundle:Pagination:sortable_link.html.twig" # sort link template
+
+payum:
+    security:
+        token_storage:
+            Brooter\PaymentBundle\Entity\PaymentToken: { doctrine: orm }
+
+    storages:
+        Brooter\PaymentBundle\Entity\Payment: { doctrine: orm }
+
+    gateways:
+        paypal_payment_gateway:
+          factory: paypal_express_checkout
+          username:  'neeraj001_seller_api1.gmail.com'
+          password:  '8Z9PHC8XPDFPAZAF'
+          signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFB.bay9eOh6h7ddNpk5.7uV5Zqq'
+          sandbox: true
+
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        property_image:
+            uri_prefix:         /uploads/propImgs
+            upload_destination: '%kernel.root_dir%/../web/uploads/propImgs'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid
+        floor_plans:
+            uri_prefix:         /uploads/floorplansImgs
+            upload_destination: '%kernel.root_dir%/../web/uploads/floorplansImgs'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer:              vich_uploader.namer_uniqid

@@ -1,0 +1,24 @@
+listpropfor_index:
+    path:     /
+    defaults: { _controller: "BrooterAdminBundle:ListPropFor:index" }
+    methods:  GET
+
+listpropfor_show:
+    path:     /{id}/show
+    defaults: { _controller: "BrooterAdminBundle:ListPropFor:show" }
+    methods:  GET
+
+listpropfor_new:
+    path:     /new
+    defaults: { _controller: "BrooterAdminBundle:ListPropFor:new" }
+    methods:  [GET, POST]
+
+listpropfor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BrooterAdminBundle:ListPropFor:edit" }
+    methods:  [GET, POST]
+
+listpropfor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BrooterAdminBundle:ListPropFor:delete" }
+    methods:  DELETE

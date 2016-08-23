@@ -1,0 +1,90 @@
+{% extends 'admin.html.twig' %}
+
+{% block header %}Company Details{% endblock %}
+{% block subheader %}Edit Company Details{% endblock %}
+
+{% block content %}
+    <div class="panel-body">
+            {{ form_start(edit_form) }}
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-2">Address</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field1) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Phone</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field2) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Email</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field3) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Web</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field4) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Timings</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field5) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Facebook URL</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field6) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Twitter URL</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field7) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Google URL</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field8) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">LinkedIn URL</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field9) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Vimeo URL</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field10) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">Footer Content</div>
+                    <div class="col-md-6">
+                        {{ form_widget(edit_form.field11) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <br/><br/>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success" name="submit" value="Save"/>
+                        <a href="{{ path('brooter_admin_homepage') }}" class="btn btn-primary">Back</a>
+                    </div>
+                </div>
+                {% do edit_form.field12.setRendered %}
+                {% do edit_form.field13.setRendered %}
+                {% do edit_form.field14.setRendered %}
+                {% do edit_form.field15.setRendered %}
+            </div>
+            {{ form_end(edit_form) }}
+        </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'admin.html.twig' %}
+{% block header %} Property Facing{% endblock %}
+{% block subheader %} Property Facing List{% endblock %}
+{% block content %}
+
+
+
+    <h1>PropertyFacing list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Facingtype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propertyFacing in propertyFacings %}
+            <tr>
+                <td><a href="{{ path('propertyfacing_show', { 'id': propertyFacing.id }) }}">{{ propertyFacing.id }}</a></td>
+                <td>{{ propertyFacing.facingType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propertyfacing_show', { 'id': propertyFacing.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propertyfacing_edit', { 'id': propertyFacing.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propertyfacing_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
