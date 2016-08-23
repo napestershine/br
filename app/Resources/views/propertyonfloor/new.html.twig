@@ -2,15 +2,26 @@
 {% block header %} Property on Floor {% endblock %}
 {% block subheader %} New Property Floor{% endblock %}
 {% block content %}
+    <div class="panel-body">
+        <div class="form-horizontal">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+            {{ form_start(form) }}
+            <div class="form-group">
+                <div class="col-md-3">Property Floor</div>
+                <div class="col-md-6">
+                    {{ form_widget(form.propFloor) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
 
-    <ul>
-        <li>
-            <a href="{{ path('propertyonfloor_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    <input type="submit" value="Create" class="btn btn-success"/>
+                    <a class="btn btn-primary" href="{{ path('propertyonfloor_index') }}">Back</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
+

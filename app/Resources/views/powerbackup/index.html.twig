@@ -2,39 +2,35 @@
 {% block header %} Power Backup Facilities{% endblock %}
 {% block subheader %} Power Backup Facilities List {% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('powerbackup_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Powerbackupname</th>
+                <th>Sr. No.</th>
+                <th>Power backup Facility Name</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for powerBackup in powerBackups %}
-            <tr>
-                <td><a href="{{ path('powerbackup_show', { 'id': powerBackup.id }) }}">{{ powerBackup.id }}</a></td>
-                <td>{{ powerBackup.powerBackupName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('powerbackup_show', { 'id': powerBackup.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('powerbackup_edit', { 'id': powerBackup.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for powerBackup in powerBackups %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ powerBackup.powerBackupName }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('powerbackup_show', { 'id': powerBackup.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('powerbackup_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('powerbackup_edit', { 'id': powerBackup.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -2,39 +2,35 @@
 {% block header %} Area In {% endblock %}
 {% block subheader %} List of Area Units {% endblock %}
 {% block content %}
-    <h1>AreaIn list</h1>
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('areain_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Areainname</th>
+                <th>Sr. No.</th>
+                <th>Area In</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for areaIn in areaIns %}
-            <tr>
-                <td><a href="{{ path('areain_show', { 'id': areaIn.id }) }}">{{ areaIn.id }}</a></td>
-                <td>{{ areaIn.areaInName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('areain_show', { 'id': areaIn.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('areain_edit', { 'id': areaIn.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for areaIn in areaIns %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ areaIn.areaInName }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('areain_show', { 'id': areaIn.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('areain_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('areain_edit', { 'id': areaIn.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

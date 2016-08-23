@@ -5,11 +5,14 @@ namespace Brooter\PropertyBundle\Controller;
 use Brooter\PropertyBundle\Entity\FloorPlans;
 use Brooter\PropertyBundle\Entity\YearBuilt;
 use Doctrine\Common\Collections\ArrayCollection;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Brooter\PropertyBundle\Entity\PostProperty;
 use Brooter\PropertyBundle\Form\PostPropertyType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
 
 /**
  * PostProperty controller.
@@ -21,10 +24,8 @@ class PostPropertyController extends Controller
      * Lists all PostProperty entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-
-
 
 
         $em = $this->getDoctrine()->getManager();
@@ -32,11 +33,21 @@ class PostPropertyController extends Controller
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
         $postProperties = $em->getRepository('BrooterPropertyBundle:PostProperty')->findAll();
 
-
         
+
+        $dql   = "SELECT a FROM BrooterPropertyBundle:PostProperty a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
         return $this->render('postproperty/index.html.twig', array(
             'postProperties' => $postProperties,
             'company' => $company,
+            'pagination' => $pagination
 
         ));
     }
@@ -45,48 +56,39 @@ class PostPropertyController extends Controller
     public function fillYears()
     {
         $yearBuiltEM = $this->getDoctrine()->getManager()->getRepository('BrooterPropertyBundle:YearBuilt');
-        if(!($yearBuiltEM->findAll()))
-        {
-            $j=20;
-            $k=0;
-            $l=0;
-            for($i=20;;$i--)
-            {
+        if (!($yearBuiltEM->findAll())) {
+            $j = 20;
+            $k = 0;
+            $l = 0;
+            for ($i = 20; ; $i--) {
 
-                if($i==45)
-                {
+                if ($i == 45) {
                     break;
                 }
-                if($i<0)
-                {
-                    $i=99;
+                if ($i < 0) {
+                    $i = 99;
                     $j--;
                 }
-                if($i!=0)
-                {
-                    $k=$i;
-                    $l=$k-1;
+                if ($i != 0) {
+                    $k = $i;
+                    $l = $k - 1;
 
 
-                    if(strlen($k)<2)
-                    {
+                    if (strlen($k) < 2) {
 
-                        $k='0'.$k;
+                        $k = '0' . $k;
                     }
 
-                    if(strlen($l)<2)
-                    {
+                    if (strlen($l) < 2) {
 
-                        $l='0'.$l;
+                        $l = '0' . $l;
                     }
-                    $years=$j.$k.'-'.$l;
-                }
-                elseif($i==0)
-                {
-                    $years="2000-99";
+                    $years = $j . $k . '-' . $l;
+                } elseif ($i == 0) {
+                    $years = "2000-99";
                 }
 
-                $yearbuilt=new YearBuilt();
+                $yearbuilt = new YearBuilt();
                 $yearbuilt->setYearOfBuilding($years);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($yearbuilt);
@@ -97,6 +99,7 @@ class PostPropertyController extends Controller
         }
 
     }
+
     /**
      * Creates a new PostProperty entity.
      *
@@ -114,18 +117,16 @@ class PostPropertyController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $files = $postProperty->getPropertyImage();
-            foreach ($files as $f)
-            {
+            foreach ($files as $f) {
                 $filename = $this->get('brooter.property.prop_post_uploader')->upload($f->getFilePath());
                 $f->setFilePath($filename);
 
-                
+
             }
 
-            $floorplansfiles=$postProperty->getFloorPlans();
-            foreach ($floorplansfiles as $p)
-            {
-                $fname=$this->get('brooter.property.floor_plan_uploader')->upload($p->getImageFilePath());
+            $floorplansfiles = $postProperty->getFloorPlans();
+            foreach ($floorplansfiles as $p) {
+                $fname = $this->get('brooter.property.floor_plan_uploader')->upload($p->getImageFilePath());
                 $p->setImageFilePath($fname);
             }
 //
@@ -134,7 +135,7 @@ class PostPropertyController extends Controller
 //            echo "</pre>";
 //            die;
             $em = $this->getDoctrine()->getManager();
-           
+
             $em->persist($postProperty);
             $em->flush();
 
@@ -219,7 +220,27 @@ class PostPropertyController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('postproperty_delete', array('id' => $postProperty->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
+
+    public function filterPropertySubCateAction($id)
+    {
+
+
+        $repository = $this->getDoctrine()->getRepository('BrooterAdminBundle:PropSubCate');
+
+        $query = $repository->createQueryBuilder('p')
+            ->select('p.id', 'p.propSubCateName')
+            ->where('p.propertyCategory = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        $subCategories = $query->getResult(); //
+
+        $response = new Response(json_encode($subCategories));
+
+        return $response;
+    }
+
 }

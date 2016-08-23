@@ -2,31 +2,34 @@
 {% block header %} Age of Property {% endblock %}
 {% block subheader %} Property Age Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('ageofproperty_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ ageOfProperty.id }}</td>
-            </tr>
-            <tr>
-                <th>Propage</th>
-                <td>{{ ageOfProperty.propAge }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Age of Property</label>
+            <div class="col-md-10">
+                {{ ageOfProperty.propAge }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('ageofproperty_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('ageofproperty_edit', { 'id': ageOfProperty.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <ul>
-        <li>
-            <a href="{{ path('ageofproperty_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('ageofproperty_edit', { 'id': ageOfProperty.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

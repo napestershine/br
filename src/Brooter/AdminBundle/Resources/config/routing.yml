@@ -34,6 +34,10 @@ brooter_admin_propertycate:
     resource: "@BrooterAdminBundle/Resources/config/routing/propertycate.yml"
     prefix:   /propertycate
 
+brooter_admin_propsubcate:
+    resource: "@BrooterAdminBundle/Resources/config/routing/propsubcate.yml"
+    prefix:   /propsubcate
+
 brooter_admin_listpropfor:
     resource: "@BrooterAdminBundle/Resources/config/routing/listpropfor.yml"
     prefix:   /listpropfor

@@ -7,17 +7,31 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $posts = $em->getRepository('BrooterAdminBundle:Post')->findAll();
+
+
+
+
+        $dql   = "SELECT a FROM BrooterAdminBundle:Post a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         $categories = $em->getRepository('BrooterAdminBundle:Category')->findAll();
         $company = $em->getRepository('BrooterAdminBundle:Company')->findOneById(1);
 
         return $this->render('BrooterBlogBundle:Default:index.html.twig', array(
-            'posts' => $posts, 'company' => $company,
+            'company' => $company,
             'categories' => $categories,
+            'pagination' => $pagination,
         ));
     }
 

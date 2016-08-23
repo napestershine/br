@@ -1,4 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
+{% block header %} Area {% endblock %}
+{% block subheader %} Edit Area{% endblock %}
+{% block content %}
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                <div class="col-md-3">calc</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.calculatedArea) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">Edit Area</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.calculatedArea) }}
+                </div>
+            </div>
+
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input class="btn btn-success" type="submit" value="Edit"/>
+                    <a class="btn btn-primary" href="{{ path('area_index') }}">Back</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
+
+        </div>
+    </div>
+{% endblock %}
+
+
 
 {% block body %}
     <h1>Area edit</h1>

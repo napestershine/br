@@ -2,21 +2,30 @@
 {% block header %} Power Backup Facilities{% endblock %}
 {% block subheader %} Edit Power Backup Facility{% endblock %}
 {% block content %}
+    <div class="panel-body">
+        <div class="form-horizontal">
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                <div class="col-md-3">Edit Power Backup Facility</div>
+                <div class="col-md-6">
+                    {{ form_widget(edit_form.powerBackupName) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <input class="btn btn-success" type="submit" value="Edit"/>
+                    <a class="btn btn-primary" href="{{ path('powerbackup_index') }}">Back</a>
+                </div>
+                <div class="col-md-1 pull-right">
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
 
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('powerbackup_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}

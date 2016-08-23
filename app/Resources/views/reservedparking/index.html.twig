@@ -1,40 +1,36 @@
 {% extends 'admin.html.twig' %}
-{% block header %} Reserved Parking Facilities  {% endblock %}
-{% block subheader %} Reserved Parking Facilities List{% endblock %}
+{% block header %} Reserved Parking {% endblock %}
+{% block subheader %} Reserved Parking with Property{% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('reservedparking_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Reservedparkingtype</th>
+                <th>Sr. No.</th>
+                <th>Reserved Parking Type</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for reservedParking in reservedParkings %}
-            <tr>
-                <td><a href="{{ path('reservedparking_show', { 'id': reservedParking.id }) }}">{{ reservedParking.id }}</a></td>
-                <td>{{ reservedParking.reservedParkingType }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('reservedparking_show', { 'id': reservedParking.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('reservedparking_edit', { 'id': reservedParking.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for reservedParking in reservedParkings %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ reservedParking.reservedParkingType }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('reservedparking_show', { 'id': reservedParking.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('reservedparking_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('reservedparking_edit', { 'id': reservedParking.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

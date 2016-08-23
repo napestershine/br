@@ -168,7 +168,11 @@
                         <h2 style="margin-top:0;">Properties For Sale/Rent/Lease/Paying Guest</h2>
                     </div>
 
-                    <span class="left_side">{{ postProperties|length }}Listing</span>
+                    <span class="left_side">
+                        <div class="count">
+                                {{ pagination.getTotalItemCount }} Listing
+                        </div>
+                    </span>
                     <ul>
                         <li class="border-right">
                             <div class="dropdown">
@@ -207,7 +211,7 @@
 
                 <!-- ________________ Single Propery type __________________ -->
 
-                {% for postProp in postProperties %}
+                {% for postProp in pagination  %}
 
                 <div class="owl-carousel owl-theme properties-slider-two property_type">
                     <div class="single_properties item">
@@ -308,17 +312,19 @@
                 </div> <!-- End .property_type -->
                 {% endfor %}
 
-
-
-                <div class="page_indicator">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                </div> <!-- End .page_indicator -->
+                {# display navigation #}
+                <div class="navigation" align="center">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+                {#<div class="page_indicator">#}
+                    {#<ul>#}
+                        {#<li><a href="#"><i class="fa fa-angle-left"></i></a></li>#}
+                        {#<li class="active"><a href="#">1</a></li>#}
+                        {#<li><a href="#">2</a></li>#}
+                        {#<li><a href="#">3</a></li>#}
+                        {#<li><a href="#"><i class="fa fa-angle-right"></i></a></li>#}
+                    {#</ul>#}
+                {#</div> <!-- End .page_indicator -->#}
             </div> <!-- End of column -->
 
 

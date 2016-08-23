@@ -2,38 +2,35 @@
 {% block header %} Age of Property {% endblock %}
 {% block subheader %} Property Age Lists{% endblock %}
 {% block content %}
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('ageofproperty_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Propage</th>
+                <th>Sr. No.</th>
+                <th>Age of Property</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for ageOfProperty in ageOfProperties %}
-            <tr>
-                <td><a href="{{ path('ageofproperty_show', { 'id': ageOfProperty.id }) }}">{{ ageOfProperty.id }}</a></td>
-                <td>{{ ageOfProperty.propAge }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('ageofproperty_show', { 'id': ageOfProperty.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ageofproperty_edit', { 'id': ageOfProperty.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for ageOfProperty in ageOfProperties %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ ageOfProperty.propAge }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('ageofproperty_show', { 'id': ageOfProperty.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('ageofproperty_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="{{ path('ageofproperty_edit', { 'id': ageOfProperty.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

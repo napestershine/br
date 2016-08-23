@@ -27,3 +27,8 @@ postproperty_delete:
     path:     /{id}/delete
     defaults: { _controller: "BrooterPropertyBundle:PostProperty:delete" }
     methods:  DELETE
+
+postproperty_search:
+    path:     /{id}/search
+    defaults: { _controller: "BrooterPropertyBundle:PostProperty:filterPropertySubCate" }
+    methods:  GET

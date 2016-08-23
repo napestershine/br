@@ -2,32 +2,34 @@
 {% block header %} Furnished Info {% endblock %}
 {% block subheader %} Show Furnished Info Details{% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('furnished_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
 
+    <div class="panel-body">
+        <div class="row form-group">
+            <label for="title" class="col-md-2">Type of Furnishing</label>
+            <div class="col-md-10">
+                {{  furnished.furnishedTypeName }}
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('furnished_index') }}">Back</a>
+                    <a class="btn btn-info" href="{{ path('furnished_edit', { 'id': furnished.id }) }}">Edit</a>
+                </div>
+                <div class="col-md-1 pull-right">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ furnished.id }}</td>
-            </tr>
-            <tr>
-                <th>Furnishedtypename</th>
-                <td>{{ furnished.furnishedTypeName }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('furnished_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('furnished_edit', { 'id': furnished.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

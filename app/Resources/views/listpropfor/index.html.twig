@@ -2,39 +2,34 @@
 {% block header %} Property Advertisement For {% endblock %}
 {% block subheader %} Property Advertisement Purpose List{% endblock %}
 {% block content %}
-
-
-    <table>
-        <thead>
+    <div class="row">
+        <div class="col-md-1">
+            <a href="{{ path('listpropfor_new') }}" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+    <br/>
+    <div class="table table-responsive">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Listpropforname</th>
+                <th>Sr. No.</th>
+                <th>Property Listing Purpose</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for listPropFor in listPropFors %}
-            <tr>
-                <td><a href="{{ path('listpropfor_show', { 'id': listPropFor.id }) }}">{{ listPropFor.id }}</a></td>
-                <td>{{ listPropFor.listPropForName }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('listpropfor_show', { 'id': listPropFor.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('listpropfor_edit', { 'id': listPropFor.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for listPropFor in listPropFors %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ listPropFor.listPropForName }}</td>
+                    <td>
+                        <a class="btn btn-info"  href="{{ path('listpropfor_show', { 'id': listPropFor.id }) }}">show</a>
 
-    <ul>
-        <li>
-            <a href="{{ path('listpropfor_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary"  href="{{ path('listpropfor_edit', { 'id': listPropFor.id }) }}">edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

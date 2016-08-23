@@ -2,16 +2,25 @@
 {% block header %} Types of Flooring {% endblock %}
 {% block subheader %} New Type of Flooring {% endblock %}
 {% block content %}
+    <div class="panel-body">
+        <div class="form-horizontal">
 
+            {{ form_start(form) }}
+            <div class="form-group">
+                <div class="col-md-3">Type of Flooring</div>
+                <div class="col-md-6">
+                    {{ form_widget(form.flooringTypeName) }}
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="col-md-2">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('typeofflooring_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    <input type="submit" value="Create" class="btn btn-success"/>
+                    <a class="btn btn-primary" href="{{ path('typeofflooring_index') }}">Back</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
